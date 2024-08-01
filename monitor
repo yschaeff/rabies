@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+BUADRATE=115200
+DEV=$(ls /dev/ttyACM* | fzf -1 --header "Which device?")
+
+minicom -b $BAUDRATE -o -D $DEV
