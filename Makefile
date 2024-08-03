@@ -3,8 +3,7 @@ compile: build
 
 build:
 	mkdir -p build
-	export PICO_SDK_PATH=/home/yuri/repo/rp2040/pico-sdk
-	cd build;cmake ".."
+	cd build; PICO_SDK_PATH=/home/yuri/repo/rp2040/pico-sdk cmake ".."
 
 flash: compile
 	pmount /dev/sda1
