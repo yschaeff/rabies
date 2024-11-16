@@ -39,13 +39,13 @@ PYOCD_EXE		?= pyocd
 ##### Paths ############
 
 # C and CPP source folders
-CDIRS		:= User 
+CDIRS		:= raddr
 # Single C and CPP source files
 CFILES		:= 
 CPPFILES	:= 
 
 # ASM source folders
-ADIRS		:= User
+ADIRS		:= raddr
 # Single ASM source files
 AFILES		:= 
 
