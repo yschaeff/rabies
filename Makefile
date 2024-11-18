@@ -27,6 +27,8 @@ USE_EPAPER		?= n
 # Programmer, jlink or pyocd
 FLASH_PROGRM	?= pyocd
 
+USE_SEMIHOSTING ?= n
+
 ##### Toolchains #######
 
 ARM_TOOLCHAIN	?= /usr/bin
@@ -114,9 +116,9 @@ INCLUDES	+= Libraries/PY32F0xx_LL_Driver/Inc \
 LIB_FLAGS   += USE_FULL_LL_DRIVER
 else
 CDIRS		+= Libraries/PY32F0xx_HAL_Driver/Src \
-		Libraries/PY32F0xx_HAL_BSP/Src
+		$(null)
 INCLUDES	+= Libraries/PY32F0xx_HAL_Driver/Inc \
-		Libraries/PY32F0xx_HAL_BSP/Inc
+		$(null)
 endif
 # Startup file
 ifneq (,$(findstring PY32F002A,$(LIB_FLAGS)))

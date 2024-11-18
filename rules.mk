@@ -35,6 +35,11 @@ OBJS += $(ASOURCES:$(TOP)/%.s=$(BDIR)/%.o)
 # d files for detecting h file changes
 DEPS=$(CSOURCES:$(TOP)/%.c=$(BDIR)/%.d)
 
+#TODO why is this called LIB_FLAGS? Not CDEFINES or something similar?
+ifeq ($(USE_SEMIHOSTING),y)
+LIB_FLAGS += USE_SEMIHOSTING
+endif
+
 # Arch and target specified flags
 ARCH_FLAGS	:= -mcpu=cortex-m0plus
 # Debug options, -gdwarf-2 for debug, -g0 for release 
@@ -51,8 +56,19 @@ TGT_CFLAGS	?= $(ARCH_FLAGS) $(DEBUG_FLAGS) $(OPT) -std=c17 $(addprefix -D, $(LIB
 TGT_CPPFLAGS	?= $(ARCH_FLAGS) $(DEBUG_FLAGS) $(OPT) -std=c++11 $(addprefix -D, $(LIB_FLAGS)) -Wall -ffunction-sections -fdata-sections
 # ASM flags
 TGT_ASFLAGS	?= $(ARCH_FLAGS) $(DEBUG_FLAGS) $(OPT) -Wa,--warn
+
+#Specs file add linking rules and basically select the libraries we link against
+#nano.specs is always used.
+SPECS		= -specs=nano.specs
+ifeq ($(USE_SEMIHOSTING),y)
+#For semihosting we need to add rdimon.specs instead of nosys.specs
+SPECS 		+= -specs=rdimon.specs
+else
+SPECS 		+= -specs=nosys.specs
+endif
+
 # LD flags
-TGT_LDFLAGS	?= $(ARCH_FLAGS) -specs=nano.specs -specs=nosys.specs -lc -lm \
+TGT_LDFLAGS	?= $(ARCH_FLAGS) $(SPECS) -lc -lm \
 				-Wl,-Map=$(BDIR)/$(PROJECT).map \
 				-Wl,--gc-sections \
 				-Wl,--print-memory-usage

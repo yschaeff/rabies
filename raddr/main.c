@@ -1,11 +1,6 @@
-/***
- * Demo: LED Toggle
- *
- * PA0   ------> LED+
- * GND   ------> LED-
- */
-//#include "py32f0xx_bsp_printf.h"
-#include "py32f0xx_bsp_clock.h"
+#include <py32f0xx_hal.h>
+#include <py32f0xx_hal_rcc.h>
+#include "clk_config.h"
 
 /*  A wolf is:
  *  PA1 = switch (Pin 7)
@@ -22,19 +17,44 @@
 
 static void APP_GPIO_Config(void);
 
+static void do_debug_print(void) {
+#if defined USE_SEMIHOSTING
+    static int i = 0;
+    switch (i++) {
+        case 0: printf("Hello World\r\n"); break;
+        case 1: printf("Hello Yuri\r\n"); break;
+        case 2: printf("Holw\r\n"); break;
+        case 3: printf("Growl\r\n"); break;
+        case 4: printf("FULL MOON!\r\n"); break;
+        default:
+            i = 0;
+    }
+#endif
+}
+
+
 int main(void)
 {
+#if defined USE_SEMIHOSTING
+    {
+    //This 'magic' function needs to be called.
+    //libgloss will setup I/O structures to use
+    extern void initialise_monitor_handles();
+    initialise_monitor_handles();
+    printf("PY32F0xx\r\nSystem Clock: %ld\r\n", SystemCoreClock);
+    }
+#endif
+
   HAL_Init();
   BSP_HSI_24MHzClockConfig();
+
   APP_GPIO_Config();
-  //BSP_USART_Config();
-  //printf("PY32F0xx LED Toggle Demo\r\nSystem Clock: %ld\r\n", SystemCoreClock);
 
   while (1)
   {
     HAL_Delay(1000);
     HAL_GPIO_TogglePin(GPIOA, LED_PIN);
-    //printf("echo\r\n");
+    do_debug_print();
   }
 }
 
