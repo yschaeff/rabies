@@ -141,3 +141,15 @@ else ifeq ($(FLASH_PROGRM),pyocd)
 else
 	@echo "FLASH_PROGRM is invalid\n"
 endif
+
+#Only add the used files from CMSIS Device, instead of all
+CSCOPE_FILES = $(addprefix Libraries/CMSIS/Device/PY32F0xx/Include/, py32f002ax5.h py32f0xx.h py32f0xx.h)
+#Only add the used files from CMSIS core, instead of all
+CSCOPE_FILES += $(addprefix Libraries/CMSIS/Core/Include/, cmsis_gcc.h cmsis_compiler.h cmsis_version.h core_cm0plus.h)
+CSCOPE_FILES += $(CSOURCES)
+
+CSCOPE_DIRS = $(filter-out Libraries/CMSIS%, $(INCLUDES))
+
+cscope: $(CSCOPE_DIRS)
+	@$(info [Generating cscope files])
+	@cscope -b $(addprefix -s , $(^)) $(CSCOPE_FILES)
