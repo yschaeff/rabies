@@ -36,7 +36,7 @@ void statemachine(int bit, uint32_t elapsed)
                 state = S_BARK; //
                 break; //Wait for next bit
             }
-            bark_full(BARK); //Yelp, so next will copy next frame
+            bark_full(BARK);
             update_input();
             for (int k=0; k<K; k++) {
                 bark_full(SOME_INPUT[k]);

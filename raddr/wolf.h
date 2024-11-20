@@ -35,12 +35,12 @@ static inline void bark(int bit)
     gpio_set(1);
     sleep_ns(bit?T1H:T0H);
     gpio_set(0);
+    sleep_ns(bit?T1L:T0L); //wait low time of bit
 }
 
 static inline void bark_full(int bit)
 {
     bark(bit);
-    sleep_ns(bit?T1L:T0L); //wait low time of bit
     sleep_ns(STFU);
 }
 
