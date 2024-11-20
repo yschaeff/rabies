@@ -6,16 +6,22 @@
 
 #include "wolf.h"
 
-void statemachine(int bit)
+#define DBG 0
+
+void statemachine(int bit, uint32_t elapsed)
 {
     static int state = S_REST;
     static int bark_i = K;
 
+    if (elapsed > 4*STFU) {
+        state = S_REST;
+    }
+
     switch (state) {
         case S_REST:
-            printf("REST\r\n");
+            if (DBG) printf("REST\r\n");
             if (bit == GROWL) { //growl
-                printf("goto ALERT\r\n");
+                if (DBG) printf("goto ALERT\r\n");
                 state = S_ALERT;
                 bark(GROWL); //wake up next with growl
             } else {
@@ -23,10 +29,10 @@ void statemachine(int bit)
             }
             break; //Wait for next bit
         case S_ALERT:
-            printf("ALERT\r\n");
+            if (DBG) printf("ALERT\r\n");
             if (bit != HOWL) {
                 bark(BARK); //Yelp, so next will copy next frame
-                printf("goto BARK\r\n");
+                if (DBG) printf("goto BARK\r\n");
                 state = S_BARK; //
                 break; //Wait for next bit
             }
@@ -35,24 +41,24 @@ void statemachine(int bit)
             for (int k=0; k<K; k++) {
                 bark_full(SOME_INPUT[k]);
             }
-            printf("goto HOWL\r\n");
+            if (DBG) printf("goto HOWL\r\n");
             state = S_HOWL; // not really needed
             /* FALL-THROUGH */
         /* Since we do not have to wait for a bit we do a fall through here.
          * It *is* an actual state in the finite automata sense. */
         case S_HOWL:
-            printf("HOWL\r\n");
+            if (DBG) printf("HOWL\r\n");
             //Maybe include parity bit?
             bark_full(GROWL); //wake up next with growl
             bark(HOWL); //Howl, so next will also go to S_HOWL
-            printf("goto REST\r\n");
+            if (DBG) printf("goto REST\r\n");
             state = S_REST; //we are the last. Get some rest.
             break; //Wait for next bit
         case S_BARK:
-            printf("BARK\r\n");
+            if (DBG) printf("BARK\r\n");
             bark(bit); //Copy input to output
             if (!--bark_i) {
-                printf("goto ALERT\r\n");
+                if (DBG) printf("goto ALERT\r\n");
                 state = S_ALERT;
                 bark_i = K;
                 //maybe check parity? Go to S_REST on parity fail?

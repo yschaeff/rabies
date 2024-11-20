@@ -2,11 +2,13 @@
 #define WOLF_H
 
 #include <stdbool.h>
+#include <stdint.h>
 
-#define T0L 85
-#define T0H 40
-#define T1L 45
-#define T1H 80
+#define T0L 16
+#define T0H 4
+#define T1L 4
+#define T1H 16
+#define STFU (T0L + T0H)
 
 #define K 1
 
@@ -39,7 +41,7 @@ static inline void bark_full(int bit)
 {
     bark(bit);
     sleep_ns(bit?T1L:T0L); //wait low time of bit
-    sleep_ns(bit?T1L:T0L); //wait low time of bit
+    sleep_ns(STFU);
 }
 
 #endif

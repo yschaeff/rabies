@@ -112,23 +112,31 @@ int main(void)
 
     cfg_gpio();
 
+    uint32_t now, last_bit = 0;
+
     while (1) {
         if (PARENT) {
-            statemachine(1);
-            HAL_Delay(T1L); //TODO these are ms
-            HAL_Delay(T1L); //TODO these are ms
-            statemachine(1);
-            HAL_Delay(T1L); //TODO these are ms
-            HAL_Delay(T1L); //TODO these are ms
-            HAL_Delay(3000); //TODO these are ms
-            printf("howl!\r\n");
+            now = HAL_GetTick();
+            statemachine(1, now - last_bit);
+            last_bit = now;
+            HAL_Delay(STFU);
+
+            now = HAL_GetTick();
+            statemachine(1, now - last_bit);
+            last_bit = now;
+            HAL_Delay(STFU);
+
+            HAL_Delay(500);
+            /*printf("howl!\r\n");*/
         } else if (data_ready) {
             data_ready = 0;
 
             sleep_ns((T0H+T1H)/2);
             int bit = gpio_get();
-            printf("read %d\r\n", bit);
-            statemachine(bit);
+            /*printf("read %d\r\n", bit);*/
+            now = HAL_GetTick();
+            statemachine(bit, now - last_bit);
+            last_bit = now;
         }
 
     }
