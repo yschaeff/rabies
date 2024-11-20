@@ -2,7 +2,6 @@
 #define PACK_H
 
 void statemachine(int bit);
-void receive_bit();
 
 #endif
 

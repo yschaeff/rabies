@@ -8,7 +8,7 @@
 #define T1L 45
 #define T1H 80
 
-#define K 8
+#define K 1
 
 #define GROWL 1
 
@@ -38,6 +38,7 @@ static inline void bark(int bit)
 static inline void bark_full(int bit)
 {
     bark(bit);
+    sleep_ns(bit?T1L:T0L); //wait low time of bit
     sleep_ns(bit?T1L:T0L); //wait low time of bit
 }
 

@@ -10,7 +10,6 @@ void statemachine(int bit)
 {
     static int state = S_REST;
     static int bark_i = K;
-            printf("Hello\r\n");
 
     switch (state) {
         case S_REST:
@@ -25,7 +24,7 @@ void statemachine(int bit)
             break; //Wait for next bit
         case S_ALERT:
             printf("ALERT\r\n");
-            if (!bit) {
+            if (bit != HOWL) {
                 bark(BARK); //Yelp, so next will copy next frame
                 printf("goto BARK\r\n");
                 state = S_BARK; //
@@ -60,12 +59,4 @@ void statemachine(int bit)
             }
             break; //Wait for next bit
     }
-}
-
-void receive_bit()
-{
-    printf("recv\r\n");
-    sleep_ns((T0H+T1H)/2);
-    int bit = gpio_get();
-    statemachine(bit);
 }

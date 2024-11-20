@@ -1,8 +1,8 @@
 #include <py32f0xx_hal.h>
 #include <py32f0xx_hal_rcc.h>
 #include "clk_config.h"
-#include "uid.h"
 
+#include "uid.h"
 #include "wolf.h"
 #include "pack.h"
 
@@ -24,6 +24,8 @@
 // if parent send dataframes continuously to trigger child
 #define PARENT 0
 
+volatile int data_ready;
+
 void cfg_pin(uint32_t pin, uint32_t mode, uint32_t pull)
 {
     GPIO_InitTypeDef pin_cfg;
@@ -44,10 +46,10 @@ static void cfg_gpio(void)
     cfg_pin(KEY_OUT_PIN, GPIO_MODE_OUTPUT_PP,  GPIO_NOPULL);
 
     /* EXTI interrupt init*/
-    HAL_NVIC_SetPriority(EXTI0_1_IRQn, 3, 0);
+    HAL_NVIC_SetPriority(EXTI0_1_IRQn, 0, 0);
     HAL_NVIC_EnableIRQ(EXTI0_1_IRQn);
 
-    HAL_NVIC_SetPriority(EXTI2_3_IRQn, 3, 0);
+    HAL_NVIC_SetPriority(EXTI2_3_IRQn, 0, 0);
     HAL_NVIC_EnableIRQ(EXTI2_3_IRQn);
 }
 
@@ -66,7 +68,8 @@ int gpio_get(void)
     return HAL_GPIO_ReadPin(GPIOA, KEY_IN_PIN);
 }
 
-bool SOME_INPUT[K] = {0,0,0,0, 0,0,0,0};
+/*bool SOME_INPUT[K] = {0,0,0,0, 0,0,0,0};*/
+bool SOME_INPUT[K] = {0};
 
 void update_input(void)
 {
@@ -84,10 +87,8 @@ void EXTI0_1_IRQHandler(void)
 void EXTI2_3_IRQHandler(void)
 {
     if (!PARENT) {
-        //trigger statemachine
-        receive_bit();
-        /*int a = HAL_GPIO_ReadPin(GPIOA, KEY_IN_PIN);*/
-        /*HAL_GPIO_WritePin(GPIOA, KEY_OUT_PIN, a);*/
+        data_ready = 1;
+        /*printf("data ready!\r\n");*/
     }
     __HAL_GPIO_EXTI_CLEAR_IT(KEY_IN_PIN);
 }
@@ -98,15 +99,14 @@ int main(void)
      * And before running anything else */
     BSP_HSI_24MHzClockConfig();
     HAL_Init();
-
 #if defined USE_SEMIHOSTING
     {
-    //This 'magic' function needs to be called.
-    //libgloss will setup I/O structures to use
-    extern void initialise_monitor_handles();
-    initialise_monitor_handles();
-    printf("PY32F0xx\r\nSystem Clock: %ld\r\n", SystemCoreClock);
-    uid_print();
+        //This 'magic' function needs to be called.
+        //libgloss will setup I/O structures to use
+        extern void initialise_monitor_handles();
+        initialise_monitor_handles();
+        printf("PY32F0xx\r\nSystem Clock: %ld\r\n", SystemCoreClock);
+        uid_print();
     }
 #endif
 
@@ -116,10 +116,19 @@ int main(void)
         if (PARENT) {
             statemachine(1);
             HAL_Delay(T1L); //TODO these are ms
+            HAL_Delay(T1L); //TODO these are ms
             statemachine(1);
             HAL_Delay(T1L); //TODO these are ms
-            HAL_Delay(1000); //TODO these are ms
+            HAL_Delay(T1L); //TODO these are ms
+            HAL_Delay(3000); //TODO these are ms
             printf("howl!\r\n");
+        } else if (data_ready) {
+            data_ready = 0;
+
+            sleep_ns((T0H+T1H)/2);
+            int bit = gpio_get();
+            printf("read %d\r\n", bit);
+            statemachine(bit);
         }
 
     }
