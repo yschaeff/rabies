@@ -33,7 +33,7 @@ enum states {
 extern void gpio_set(int);
 extern int gpio_get(void);
 extern void sleep_ns(int);
-extern bool SOME_INPUT[K];
+extern bool K_BINARY_INPUTS[K];
 extern void update_input(void);
 
 static inline void bark(int bit)

@@ -42,8 +42,7 @@ void sleep_ns(int delay_ns)
     HAL_Delay(delay_ns); //TODO these are ms
 }
 
-/*bool SOME_INPUT[K] = {0,0,0,0, 0,0,0,0};*/
-bool SOME_INPUT[K] = {0};
+bool K_BINARY_INPUTS[K] = {0};
 
 void update_input(void)
 {
@@ -85,7 +84,7 @@ static void cfg_gpio(void)
  */
 void EXTI0_1_IRQHandler(void)
 {
-    SOME_INPUT[0] = !HAL_GPIO_ReadPin(GPIOA, SWC_PIN);
+    K_BINARY_INPUTS[0] = !HAL_GPIO_ReadPin(GPIOA, SWC_PIN);
     __HAL_GPIO_EXTI_CLEAR_IT(SWC_PIN);
 }
 

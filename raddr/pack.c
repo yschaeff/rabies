@@ -39,7 +39,7 @@ void join_cry(int bit, uint32_t elapsed)
             bark_full(BARK);
             update_input();
             for (int k=0; k<K; k++) {
-                bark_full(SOME_INPUT[k]);
+                bark_full(K_BINARY_INPUTS[k]);
             }
             if (DBG) printf("goto HOWL\r\n");
             state = S_HOWL; // not really needed
