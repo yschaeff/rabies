@@ -7,24 +7,50 @@
 #include "pack.h"
 
 /*  A wolf is:
- *  PA1 = switch (Pin 7)
+ *  PA1 = switch            (Pin 7)
  *  PA2 = shared with reset (Pin 6)
- *  PA13/PB3/SWDIO = SWD (Pin 5)
- *  PA14/PB3/SWCLK = SWC (Pin 4)
- *  PA3 = KEY Data in (Pin 3)
- *  PA4 = KEY Data out (Pin 2)
- *  VCC = (Pin 1)
- *
+ *  PA13/PB3/SWDIO = SWD    (Pin 5)
+ *  PA14/PB3/SWCLK = SWC    (Pin 4)
+ *  PA3 = KEY Data in       (Pin 3)
+ *  PA4 = KEY Data out      (Pin 2)
+ *  VCC =                   (Pin 1)
  * */
 
 #define SWC_PIN     GPIO_PIN_1
 #define KEY_IN_PIN  GPIO_PIN_3
 #define KEY_OUT_PIN GPIO_PIN_4
 
-// if parent send dataframes continuously to trigger child
-#define PARENT 0
-
 volatile int data_ready;
+
+/**
+ * These functions need to be implemented by us, They are called
+ * by the pack.c code
+ */
+/* start */
+int gpio_get(void)
+{
+    return HAL_GPIO_ReadPin(GPIOA, KEY_IN_PIN);
+}
+
+void gpio_set(int bit)
+{
+    HAL_GPIO_WritePin(GPIOA, KEY_OUT_PIN, bit);
+}
+
+void sleep_ns(int delay_ns)
+{
+    HAL_Delay(delay_ns); //TODO these are ms
+}
+
+/*bool SOME_INPUT[K] = {0,0,0,0, 0,0,0,0};*/
+bool SOME_INPUT[K] = {0};
+
+void update_input(void)
+{
+    // We update the in the switch interrupt handler so this is a NO-OP
+}
+/* end */
+
 
 void cfg_pin(uint32_t pin, uint32_t mode, uint32_t pull)
 {
@@ -53,43 +79,23 @@ static void cfg_gpio(void)
     HAL_NVIC_EnableIRQ(EXTI2_3_IRQn);
 }
 
-void gpio_set(int bit)
-{
-    HAL_GPIO_WritePin(GPIOA, KEY_OUT_PIN, bit);
-}
-
-void sleep_ns(int delay)
-{
-    HAL_Delay(delay); //TODO these are ms
-}
-
-int gpio_get(void)
-{
-    return HAL_GPIO_ReadPin(GPIOA, KEY_IN_PIN);
-}
-
-/*bool SOME_INPUT[K] = {0,0,0,0, 0,0,0,0};*/
-bool SOME_INPUT[K] = {0};
-
-void update_input(void)
-{
-    SOME_INPUT[0] = !HAL_GPIO_ReadPin(GPIOA, SWC_PIN);
-}
-
-//switch
+/**
+ * Switch interrupt handler
+ * Rising and falling edges
+ */
 void EXTI0_1_IRQHandler(void)
 {
-    //maybe read switch state here instead of update_input()?
+    SOME_INPUT[0] = !HAL_GPIO_ReadPin(GPIOA, SWC_PIN);
     __HAL_GPIO_EXTI_CLEAR_IT(SWC_PIN);
 }
 
-//key
+/**
+ * Key in interrupt handler
+ * Falling edges
+ */
 void EXTI2_3_IRQHandler(void)
 {
-    if (!PARENT) {
-        data_ready = 1;
-        /*printf("data ready!\r\n");*/
-    }
+    data_ready = 1;
     __HAL_GPIO_EXTI_CLEAR_IT(KEY_IN_PIN);
 }
 
@@ -112,34 +118,31 @@ int main(void)
 
     cfg_gpio();
 
-    uint32_t now, last_bit = 0;
+    uint32_t t_last_call = 0;
 
+#ifdef AKELA
     while (1) {
-        if (PARENT) {
-            now = HAL_GetTick();
-            statemachine(1, now - last_bit);
-            last_bit = now;
-            HAL_Delay(STFU);
-
-            now = HAL_GetTick();
-            statemachine(1, now - last_bit);
-            last_bit = now;
-            HAL_Delay(STFU);
-
-            HAL_Delay(500);
-            /*printf("howl!\r\n");*/
-        } else if (data_ready) {
-            data_ready = 0;
-
-            sleep_ns((T0H+T1H)/2);
-            int bit = gpio_get();
-            /*printf("read %d\r\n", bit);*/
-            now = HAL_GetTick();
-            statemachine(bit, now - last_bit);
-            last_bit = now;
-        }
-
+        rally_pack(); //wakeup pack and bark own state
+        // Stop Yapping for a while
+        sleep_ns(500);
     }
+#else
+    while (1) {
+        if (!data_ready) continue;
+        data_ready = 0;
+
+        sleep_ns((T0H+T1H)/2);
+        int bit = gpio_get();
+
+        // The statemachine needs to know the elapsed time so
+        // it can reset when out of sync.
+        uint32_t now = HAL_GetTick();
+        uint32_t t_elapsed = now - t_last_call;
+        t_last_call = now;
+
+        join_cry(bit, t_elapsed);
+    }
+#endif /*AKELA*/
 }
 
 

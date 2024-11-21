@@ -9,13 +9,19 @@
 #define T1L 4
 #define T1H 16
 #define STFU (T0L + T0H)
+// if it is quit for longer than 4 bits consider it a reset
+#define TRES (4*(T0L + T0H))
 
 #define K 1
 
+// Start of transmission
+// Will be followed by either a HOWL or a BARK
 #define GROWL 1
-
-#define BARK 0
+// End of transmission
+// Will be quiet for at least TRES
 #define HOWL 1
+// Will be followed by a dataframe of K bits
+#define BARK (!HOWL)
 
 enum states {
     S_REST,       //do nothing

@@ -8,12 +8,12 @@
 
 #define DBG 0
 
-void statemachine(int bit, uint32_t elapsed)
+void join_cry(int bit, uint32_t elapsed)
 {
     static int state = S_REST;
     static int bark_i = K;
 
-    if (elapsed > 4*STFU) {
+    if (elapsed > TRES) {
         state = S_REST;
     }
 
@@ -65,4 +65,18 @@ void statemachine(int bit, uint32_t elapsed)
             }
             break; //Wait for next bit
     }
+}
+
+/**
+ * Initiate cry of the pack, To be used by Akela only
+ */
+void rally_pack()
+{
+    // Call the statemachine with a GROWL, pick a large elapsed
+    // time so we know the statemachine is reset
+    join_cry(1, TRES*2);
+    //Sleep some interbit time, probably not necessary...?
+    sleep_ns(STFU);
+    //Actual elapsed time not important as long as it is < TRES
+    join_cry(1, T1H + T1L + STFU);
 }
