@@ -129,10 +129,11 @@ int main(void)
 #else
     while (1) {
         if (!data_ready) continue;
-        data_ready = 0;
 
         sleep_ns((T0H+T1H)/2);
         int bit = gpio_get();
+
+        data_ready = 0;
 
         // The statemachine needs to know the elapsed time so
         // it can reset when out of sync.
