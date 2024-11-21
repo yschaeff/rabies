@@ -75,7 +75,8 @@ void rally_pack()
     // Call the statemachine with a GROWL, pick a large elapsed
     // time so we know the statemachine is reset
     join_cry(1, TRES*2);
-    //Sleep some interbit time, probably not necessary...?
+    sleep_ns(T1L);
+    //Sleep some inter-bit time
     sleep_ns(STFU);
     //Actual elapsed time not important as long as it is < TRES
     join_cry(1, T1H + T1L + STFU);
