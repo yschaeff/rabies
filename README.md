@@ -1,3 +1,16 @@
+# Build and debug
+
+> make -B -j USE_SEMIHOSTING=y AKELA=1 flash
+> pyocd gdb -S
+> telnet localhost 4444
+> gdb-multiarch -ex 'set architecture armv6-m' -ex 'target remote :3333' Build/app.elf
+
+## use GDB
+
+> load
+> c
+
+
 # py32f0-template
 
 * Template project for Puya PY32F0 MCU
