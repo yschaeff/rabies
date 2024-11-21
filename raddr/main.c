@@ -119,13 +119,17 @@ int main(void)
 
     uint32_t t_last_call = 0;
 
-#ifdef AKELA
-    while (1) {
+    // if switch pressed at boot become AKELA.
+    int akela = !HAL_GPIO_ReadPin(GPIOA, SWC_PIN);
+
+    if (akela) while (1) {
         rally_pack(); //wakeup pack and bark own state
         // Stop Yapping for a while
-        sleep_ns(500);
+#define N 3
+        sleep_ns((T1H+T1L+STFU)*(N*K+N+3) + 100);
+#undef N
     }
-#else
+
     while (1) {
         if (!data_ready) continue;
 
@@ -142,7 +146,6 @@ int main(void)
 
         join_cry(bit, t_elapsed);
     }
-#endif /*AKELA*/
 }
 
 

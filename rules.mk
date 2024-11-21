@@ -40,10 +40,6 @@ ifeq ($(USE_SEMIHOSTING),y)
 LIB_FLAGS += USE_SEMIHOSTING
 endif
 
-ifeq ($(AKELA),y)
-LIB_FLAGS += AKELA
-endif
-
 # Arch and target specified flags
 ARCH_FLAGS	:= -mcpu=cortex-m0plus
 # Debug options, -gdwarf-2 for debug, -g0 for release 
