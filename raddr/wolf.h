@@ -4,10 +4,10 @@
 #include <stdbool.h>
 #include <stdint.h>
 
-#define T0L 16
-#define T0H 4
-#define T1L 4
-#define T1H 16
+#define T0L 4
+#define T0H 1
+#define T1L T0H
+#define T1H T0L
 #define STFU T0H
 // if it is quit for longer than 4 bits consider it a reset
 #define TRES (4*(T0L + T0H))
