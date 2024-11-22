@@ -36,6 +36,11 @@ static void do_debug_print(void) {
 
 int main(void)
 {
+    /* Setup clock BEFORE HAL_Init.
+     * And before running anything else */
+    BSP_HSI_24MHzClockConfig();
+    HAL_Init();
+
 #if defined USE_SEMIHOSTING
     {
     //This 'magic' function needs to be called.
@@ -46,9 +51,6 @@ int main(void)
     uid_print();
     }
 #endif
-
-  HAL_Init();
-  BSP_HSI_24MHzClockConfig();
 
   APP_GPIO_Config();
 
