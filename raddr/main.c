@@ -1,6 +1,7 @@
 #include <py32f0xx_hal.h>
 #include <py32f0xx_hal_rcc.h>
 #include "clk_config.h"
+#include "uid.h"
 
 /*  A wolf is:
  *  PA1 = switch (Pin 7)
@@ -42,6 +43,7 @@ int main(void)
     extern void initialise_monitor_handles();
     initialise_monitor_handles();
     printf("PY32F0xx\r\nSystem Clock: %ld\r\n", SystemCoreClock);
+    uid_print();
     }
 #endif
 
