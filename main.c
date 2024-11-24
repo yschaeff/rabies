@@ -4,6 +4,7 @@
 
 #include "pico/stdlib.h"
 #include "hardware/pio.h"
+#include "hardware/gpio.h"
 #include "hardware/clocks.h"
 #include "ws2812.pio.h"
 
@@ -19,17 +20,17 @@ put_pixel(uint8_t r, uint8_t g, uint8_t b)
 }
 
 uint8_t
-sin_xsp(uint x, uint scale float phase)
+sin_xsp(uint x, uint scale, float phase)
 {
-    return sinf(((float)x)/scale2*M_PI - phase)*127.0 + 127;
+    return sinf(((float)x)/scale*2*M_PI - phase)*127.0 + 127;
 }
 
 void pattern(uint n, uint t)
 {
     for (uint i = 0; i < n; ++i) {
-        uint8_t r = sin_xsp(t, 95, M_PI*2*(i+0)/n);
-        uint8_t g = sin_xsp(t, 100, M_PI*2*(i+2)/n);
-        uint8_t b = sin_xsp(t, 105, M_PI*2*(i+4)/n);
+        uint8_t r = sin_xsp(t, 9, M_PI*2*(i+0)/n);
+        uint8_t g = sin_xsp(t, 10, M_PI*2*(i+2)/n);
+        uint8_t b = sin_xsp(t, 11, M_PI*2*(i+4)/n);
 
         put_pixel(r,g,b);
     }
@@ -45,7 +46,8 @@ int main()
     unsigned int t = 0;
     while (1) {
         pattern(W, t);
-        sleep_ms(10);
+        sleep_ms(100);
         t++;
+        printf("hello\n");
     }
 }
