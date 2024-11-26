@@ -65,12 +65,21 @@ int main()
 
     uint offset = pio_add_program(pio0, &ws2812_program);
     ws2812_program_init(pio0, 0, offset, LED_OUT_PIN, 800000, IS_RGBW);
-    gpio_set_irq_enabled_with_callback(3, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &gpio_callback);
 
+    offset = pio_add_program(pio1, &rabi_program);
+    rabi_program_init(pio1, 1, offset, 3, 500);
+
+    /*gpio_set_irq_enabled_with_callback(3, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &gpio_callback);*/
+
+    printf("hello\n");
     unsigned int t = 0;
     while (1) {
-        pattern(W, t);
-        sleep_ms(100);
-        t++;
+        /*pattern(W, t);*/
+        /*sleep_ms(100);*/
+        /*t++;*/
+        uint32_t b = pio_sm_get_blocking(pio1, 1);
+        printf("%d\n", b&1);
+        /*if (b) break;*/
     }
+    printf("bye\n");
 }
