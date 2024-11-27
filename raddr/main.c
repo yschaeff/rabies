@@ -1,5 +1,4 @@
 #include <py32f0xx_hal.h>
-#include <py32f0xx_hal_rcc.h>
 #include "clk_config.h"
 
 #include "uid.h"
@@ -7,13 +6,15 @@
 #include "pack.h"
 
 /*  A wolf is:
- *  PA1 = switch            (Pin 7)
- *  PA2 = shared with reset (Pin 6)
- *  PA13/PB3/SWDIO = SWD    (Pin 5)
- *  PA14/PB3/SWCLK = SWC    (Pin 4)
- *  PA3 = KEY Data in       (Pin 3)
- *  PA4 = KEY Data out      (Pin 2)
- *  VCC =                   (Pin 1)
+ *  Pin     Port(s)         PCB function    Alternate functions
+ *  Pin 8   GND             GND             -
+ *  Pin 7   PA1             switch          SPI1_SCK / USART1_RTS / SPI1_MOSI / TIM1_CH4 / TIM1_CH2N
+ *  Pin 6   PA2/PF2         reset           SPI1_MOSI / USART1_TX / COMP2_OUT / SPI_SCK / I2C_SDA (PF2: MCO)
+ *  Pin 5   PA13            SWD             SWDIO / USART1_RX / SPI1_MISO / TIM1_CH2
+ *  Pin 4   PA14/PB3        SWC             SWCLK / USART1_TX / MCO # PB3: SPI1_SCK / TIM1_CH2 / USART1_RTS
+ *  Pin 3   PA3             KEY Data inp    USART1_RX / SPI1_MOSI / I2C_SCL / TIM1_CH1
+ *  Pin 2   PA4/PA10        KEY Data out    SPI1_NSS/ USART1_CK # PA10: USART1_RX / TIM1_CH3 / I2C_SDA / USART1_TX / SPI1_NSS / I2C_SCL
+ *  Pin 1   VCC             VCC             -
  * */
 
 #define SWC_PIN     GPIO_PIN_1
