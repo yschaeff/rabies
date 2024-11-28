@@ -1,8 +1,11 @@
 #pragma once
 #include <stdint.h>
 #include <stdbool.h>
-#include "py32f0xx_hal_conf.h"
+#include "py32f0xx_hal.h"
+
 void raddr_output_init(void);
+
+#undef RADDR_OUTPUT_DEBUG
 
 /* Just run it at maximum speed for maximum resolution */
 //#define TIMER_DESIRED_BASE_TICK     (1/24e6)
@@ -20,5 +23,21 @@ static inline uint16_t us_to_timer_tick(uint16_t tmo) {
     return t;
 }
 
+/* Schedule bit to be output for tmo long.
+ * tmo is specified in TIMER_ACTUAL_TIME_PER_TICK */
 void raddr_output_schedule(bool bit, uint16_t tmo);
+
+
+static inline void raddr_output_debug(void)
+{
+#if defined(RADDR_OUTPUT_DEBUG)
+    HAL_Delay(1000);
+    uint16_t t = us_to_timer_tick(10);
+    for (int i = 0; i < 16/2; i++) //FIFO_SIZE / 2
+    {
+        raddr_output_schedule(1, t);
+        raddr_output_schedule(0, t);
+    }
+#endif
+}
 

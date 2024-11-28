@@ -114,8 +114,6 @@ int main(void)
         extern void initialise_monitor_handles();
         initialise_monitor_handles();
         printf("PY32F0xx\r\nSystem Clock: %ld\r\n", SystemCoreClock);
-        printf("HSI Clock: %ld, divider %ld\r\n", HSI_VALUE, TIMER_DIVIDER);
-        printf("100us: %d, 10us %d\r\n", us_to_timer_tick(100), us_to_timer_tick(1));
         uid_print();
     }
 #endif

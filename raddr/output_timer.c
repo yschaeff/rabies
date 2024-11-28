@@ -22,8 +22,8 @@ _Static_assert((FIFO_SIZE & (FIFO_SIZE - 1)) == 0 , "FIFO_SIZE needs to be a pow
 
 /* The fifo to hold our rabi barks'n'howls */
 static struct {
-    uint32_t write;
-    uint32_t read;
+    uint8_t write;
+    uint8_t read;
     volatile uint32_t size;
     uint32_t buf[FIFO_SIZE];
 } fifo;
@@ -46,11 +46,11 @@ static uint32_t fifo_read(void)
  *
  *  If there is no more work to be done the GPIO is set to OFF
  *
- *  If queueing very low tmo the ISR finish before the next fifo write.
+ *  If queueing a very low tmo the ISR may finish before the next fifo write.
  *  If this happens there will be a low pulse!
  *
- *  The whole ISR routing add about ~3.5us extra.
- *  Having >6 makes it work reliable: the fifo is not empty in between,
+ *  The whole ISR routing adds about ~3.5us extra.
+ *  Having >6us makes it work reliable: the fifo will not empty in between.
  * */
 void raddr_output_schedule(bool bit, uint16_t tmo)
 {
@@ -63,7 +63,14 @@ void raddr_output_schedule(bool bit, uint16_t tmo)
     uint32_t idx = fifo.write;
     fifo.buf[fifo.write] = d;
     fifo.write = (idx +1) % FIFO_SIZE;
+
+    /* Incrementing the fifo must be atomic against the TIM16 ISR.
+     * Since Cortex-M0 does not have STREX/LDREX nor SWP instruction we need to rely on libatomic.
+     * Which for reasons beyond me is not implemented for arm-gcc-none-eabi and friends.
+     * So lets stick to disabling the TIM16 interrupt for now */
+    HAL_NVIC_DisableIRQ(TIM16_IRQn);
     fifo.size++;
+    HAL_NVIC_EnableIRQ(TIM16_IRQn);
 
     /* If ISR not enabled the ISR is not running. Start it */
     if (!(TIM16->DIER & TIM_DIER_UIE)) {
@@ -75,7 +82,7 @@ void raddr_output_schedule(bool bit, uint16_t tmo)
     }
 }
 
-#if defined USE_SEMIHOSTING
+#if defined(USE_SEMIHOSTING)
 static int cnt = 0;
 void debug_print(void)
 {
@@ -122,7 +129,11 @@ void TIM16_IRQHandler(void)
     /* Update reload register with new timeout */
     TIM16->ARR = tmo;
 
+#if defined(USE_SEMIHOSTING)
+    //This sort-of indicates the number CPU before we reach this point.
+    //That sort-of indicates the time needed in the ISR
     cnt = TIM16->CNT;
+#endif
     /* Reload timer to force pickup new ARR. */
     /* TODO find a better solution for this.
      * This does ensure the pulse is at least as long as specified. */
@@ -160,5 +171,10 @@ void raddr_output_init(void)
 
     /* Enable our interrupt */
     HAL_NVIC_EnableIRQ(TIM16_IRQn);
+
+#if defined(USE_SEMIHOSTING) && defined(RADDR_OUTPUT_DEBUG)
+    printf("HSI Clock: %ld, divider %ld\r\n", HSI_VALUE, TIMER_DIVIDER);
+    printf("100us: %d, 10us %d\r\n", us_to_timer_tick(100), us_to_timer_tick(1));
+#endif
 }
 
