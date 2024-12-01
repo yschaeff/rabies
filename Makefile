@@ -15,4 +15,4 @@ flash: build/firmware.uf2
 clean:
 	rm -rf build generated
 
-.PHONY: ALL flash flashb clean
+.PHONY: ALL flash clean

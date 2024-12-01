@@ -11,6 +11,8 @@
 #define IS_RGBW false
 #define W 6
 #define LED_OUT_PIN 2
+#define KEY_IN_PIN  3
+#define KEY_OUT_PIN 4
 
 static inline void
 put_pixel(uint8_t r, uint8_t g, uint8_t b)
@@ -61,25 +63,41 @@ void gpio_callback(uint gpio, uint32_t events)
 
 int main()
 {
+    uint prg_addr;
     stdio_init_all();
 
-    uint offset = pio_add_program(pio0, &ws2812_program);
-    ws2812_program_init(pio0, 0, offset, LED_OUT_PIN, 800000, IS_RGBW);
+    /*prg_addr = pio_add_program(pio0, &ws2812_program);*/
+    /*ws2812_program_init(pio0, 0, prg_addr, LED_OUT_PIN, 800000, IS_RGBW);*/
 
-    offset = pio_add_program(pio1, &rabi_program);
-    rabi_program_init(pio1, 1, offset, 3, 500);
+    prg_addr = pio_add_program(pio0, &rabi_trigger_program);
+    rabi_trigger_program_init(pio0, 0, prg_addr, KEY_OUT_PIN, 1);
+
+    prg_addr = pio_add_program(pio1, &rabi_program);
+    rabi_program_init(pio1, 0, prg_addr, KEY_IN_PIN, 500);
 
     /*gpio_set_irq_enabled_with_callback(3, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &gpio_callback);*/
 
+    printf("hello. sleeping\n");
+    sleep_ms(2000);
     printf("hello\n");
+
     unsigned int t = 0;
+    absolute_time_t t_next = 0;
+
     while (1) {
-        /*pattern(W, t);*/
-        /*sleep_ms(100);*/
-        /*t++;*/
-        uint32_t b = pio_sm_get_blocking(pio1, 1);
-        printf("%d\n", b&1);
-        /*if (b) break;*/
+        absolute_time_t t_now = get_absolute_time();
+        /*if (t_next < t_now) {*/
+            /*t_next = t_now + 50000;*/
+            /*pattern(W, t++);*/
+        /*}*/
+        if (t_next < t_now) {
+            printf("\nput %d\n", t++);
+            t_next = t_now + 3000000; //each second tickle trigger
+            pio_sm_put_blocking(pio0, 0, 1);
+        }
+        if (pio_sm_is_rx_fifo_empty(pio1, 0)) continue;
+        uint32_t b = pio_sm_get_blocking(pio1, 0);
+        printf("%d", b&1);
     }
     printf("bye\n");
 }

@@ -79,3 +79,35 @@ rabi_program_init(PIO pio, uint sm, uint offset, uint pin, float freq)
     pio_sm_set_enabled(pio, sm, true);
 }
 %}
+
+.program rabi_trigger
+.wrap_target
+    pull
+    set pins, 1    [10] ;
+    set pins, 0    [10] ;
+    set pins, 1    [10] ;
+    set pins, 0    [10] ;
+.wrap
+
+% c-sdk {
+#include "hardware/clocks.h"
+
+static inline void
+rabi_trigger_program_init(PIO pio, uint sm, uint offset, uint pin, float freq)
+{
+    pio_gpio_init(pio, pin);
+    pio_sm_set_consecutive_pindirs(pio, sm, pin, 1, true);
+
+    pio_sm_config c = rabi_trigger_program_get_default_config(offset);
+    sm_config_set_set_pins(&c, pin, 1);
+    /*sm_config_set_fifo_join(&c, PIO_FIFO_JOIN_TX);*/
+
+    /*Sample at 2 ms*/
+    int cycles_per_bit = 2;
+    float div = clock_get_hz(clk_sys) / (freq * cycles_per_bit);
+    sm_config_set_clkdiv(&c, div);
+
+    pio_sm_init(pio, sm, offset, &c);
+    pio_sm_set_enabled(pio, sm, true);
+}
+%}
