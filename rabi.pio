@@ -1,0 +1,66 @@
+.program howl_listen
+.wrap_target
+    wait 1 pin 0    [4] ; wait for state high then delay for sampletime (4 instructions)
+    in pins, 1          ; shift 1 pinstate in ISR, autopush will put it in the fifo
+    wait 0 pin 0        ; Wait for state low. Then repeat.
+.wrap
+
+.program howl_start
+.wrap_target
+    pull
+    set pins, 1    [10] ;
+    set pins, 0    [10] ;
+    set pins, 1    [10] ;
+    set pins, 0    [10] ;
+.wrap
+
+% c-sdk {
+#include "hardware/clocks.h"
+
+static inline void
+howl_listen_init(PIO pio, uint sm, uint offset, uint inpin, float freq)
+{
+    pio_gpio_init(pio, inpin);
+
+    pio_sm_set_consecutive_pindirs(pio, sm, inpin, 1, false);
+
+    pio_sm_config c = howl_listen_program_get_default_config(offset);
+
+    sm_config_set_in_pins(&c, inpin);
+    sm_config_set_in_shift(&c, false, true, 1);
+
+    sm_config_set_fifo_join(&c, PIO_FIFO_JOIN_RX);
+
+    /*Sample at 2 ms*/
+    int cycles_per_bit = 1;
+    float div = clock_get_hz(clk_sys) / (freq * cycles_per_bit);
+    sm_config_set_clkdiv(&c, div);
+
+    pio_sm_init(pio, sm, offset, &c);
+    pio_sm_set_enabled(pio, sm, true);
+}
+%}
+
+% c-sdk {
+#include "hardware/clocks.h"
+
+static inline void
+howl_start_program_init(PIO pio, uint sm, uint offset, uint pin, float freq)
+{
+    pio_gpio_init(pio, pin);
+    pio_sm_set_consecutive_pindirs(pio, sm, pin, 1, true);
+
+    pio_sm_config c = howl_start_program_get_default_config(offset);
+    sm_config_set_set_pins(&c, pin, 1);
+    /*sm_config_set_fifo_join(&c, PIO_FIFO_JOIN_TX);*/
+
+    /*Sample at 2 ms*/
+    int cycles_per_bit = 2;
+    float div = clock_get_hz(clk_sys) / (freq * cycles_per_bit);
+    sm_config_set_clkdiv(&c, div);
+
+    pio_sm_init(pio, sm, offset, &c);
+    pio_sm_set_enabled(pio, sm, true);
+}
+%}
+
