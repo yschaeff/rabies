@@ -50,24 +50,33 @@ static inline void ws2812_program_init(PIO pio, uint sm, uint offset, uint pin, 
 .program rabi
 
 .wrap_target
-bitloop:
-    wait 1 pin 0    [4] ; wait for state high then delay for sampletime (4 instructions)
+    /*pull*/
+    /*set pins, 1    [10] ;*/
+    /*set pins, 0    [10] ;*/
+    /*set pins, 1    [10] ;*/
+    /*set pins, 0         ;*/
+/*bitloop:*/
+    wait 1 gpio 3    [4] ; wait for state high then delay for sampletime (4 instructions)
     in pins, 1          ; shift 1 pinstate in ISR, autopush will put it in the fifo
-    wait 0 pin 0        ; Wait for state low. Then repeat.
+    wait 0 gpio 3        ; Wait for state low. Then repeat.
+    /*jmp bitloop*/
 .wrap
 
 % c-sdk {
 #include "hardware/clocks.h"
 
 static inline void
-rabi_program_init(PIO pio, uint sm, uint offset, uint pin, float freq)
+rabi_program_init(PIO pio, uint sm, uint offset, uint inpin, float freq)
 {
-    pio_gpio_init(pio, pin);
-    pio_sm_set_consecutive_pindirs(pio, sm, pin, 1, false);
+    pio_gpio_init(pio, inpin);
+
+    pio_sm_set_consecutive_pindirs(pio, sm, inpin, 1, false);
 
     pio_sm_config c = rabi_program_get_default_config(offset);
-    sm_config_set_in_pins(&c, pin);
+
+    sm_config_set_in_pins(&c, inpin);
     sm_config_set_in_shift(&c, false, true, 1);
+
     sm_config_set_fifo_join(&c, PIO_FIFO_JOIN_RX);
 
     /*Sample at 2 ms*/

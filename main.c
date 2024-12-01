@@ -66,14 +66,15 @@ int main()
     uint prg_addr;
     stdio_init_all();
 
-    /*prg_addr = pio_add_program(pio0, &ws2812_program);*/
-    /*ws2812_program_init(pio0, 0, prg_addr, LED_OUT_PIN, 800000, IS_RGBW);*/
-
-    prg_addr = pio_add_program(pio0, &rabi_trigger_program);
-    rabi_trigger_program_init(pio0, 0, prg_addr, KEY_OUT_PIN, 1);
+    prg_addr = pio_add_program(pio0, &ws2812_program);
+    ws2812_program_init(pio0, 0, prg_addr, LED_OUT_PIN, 800000, IS_RGBW);
 
     prg_addr = pio_add_program(pio1, &rabi_program);
     rabi_program_init(pio1, 0, prg_addr, KEY_IN_PIN, 500);
+
+    prg_addr = pio_add_program(pio1, &rabi_trigger_program);
+    rabi_trigger_program_init(pio1, 1, prg_addr, KEY_OUT_PIN, 500);
+
 
     /*gpio_set_irq_enabled_with_callback(3, GPIO_IRQ_EDGE_RISE | GPIO_IRQ_EDGE_FALL, true, &gpio_callback);*/
 
@@ -82,22 +83,26 @@ int main()
     printf("hello\n");
 
     unsigned int t = 0;
-    absolute_time_t t_next = 0;
+    absolute_time_t t_next_led = 0;
+    absolute_time_t t_next_trigger = 0;
+
+    pio_sm_put_blocking(pio1, 1, 1);
 
     while (1) {
         absolute_time_t t_now = get_absolute_time();
-        /*if (t_next < t_now) {*/
-            /*t_next = t_now + 50000;*/
-            /*pattern(W, t++);*/
-        /*}*/
-        if (t_next < t_now) {
+        if (t_next_led < t_now) {
+            t_next_led = t_now + 50000;
+            pattern(W, t++);
+        }
+        if (t_next_trigger < t_now) {
             printf("\nput %d\n", t++);
-            t_next = t_now + 3000000; //each second tickle trigger
-            pio_sm_put_blocking(pio0, 0, 1);
+            t_next_trigger = t_now + 1000000; //each second tickle trigger
+            /*pio_sm_set_enabled(pio1, 0, true); //enable prog*/
+            pio_sm_put_blocking(pio1, 1, 1);
         }
         if (pio_sm_is_rx_fifo_empty(pio1, 0)) continue;
         uint32_t b = pio_sm_get_blocking(pio1, 0);
-        printf("%d", b&1);
+        printf("%d\n", b&1);
     }
     printf("bye\n");
 }
