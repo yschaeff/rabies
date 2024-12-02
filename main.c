@@ -21,15 +21,23 @@
 #define RB_LISTEN_SM 0
 #define RB_HOWL_SM 1
 
-#define K 1
-#define W 9
+#define K 1             /* Number if inputs per RABI */
+#define W 9             /* Number of RABIs */
+
+#define WATCH_DOG_PATIENCE 100000  /* uS after which the watchdog intervenes */
+
 
 uint8_t led_states[W];
-uint8_t *key_states_read;
-uint8_t *key_states_write;
+
+//Two buffers holding the key state. Once a full message is received
+//we flip the buffers so we do not get spurious key toggles while receiving
+//a message. Later we might compare the 2 to get key up and down events.
 uint8_t key_states_a[W];
 uint8_t key_states_b[W];
+uint8_t *key_states_read = key_states_a;
+uint8_t *key_states_write = key_states_b;
 
+// Do full brightness on key down. Fade out on key up.
 void update_leds(uint n)
 {
     for (uint i = 0; i < n; ++i) {
@@ -43,6 +51,7 @@ void update_leds(uint n)
     }
 }
 
+// Flip read and write buffer
 void flip()
 {
     if (key_states_read == key_states_a) {
@@ -52,9 +61,8 @@ void flip()
         key_states_read  = key_states_a;
         key_states_write = key_states_b;
     }
+    memset(key_states_write, 0, W);
 }
-
-
 
 void setup()
 {
@@ -71,15 +79,11 @@ void setup()
     //statemachine 1 initiates cry when data in TX queue
     uint rb_howl_addr = pio_add_program(RB_PIO, &howl_start_program);
     howl_start_program_init(RB_PIO, RB_HOWL_SM, rb_howl_addr, KEY_OUT_PIN, 500);
-
-    //Make sure both buffers point to something
-    flip();
 }
 
 bool statemachine(bool bit, bool reset)
 {
-    static uint k, w, state = 0;
-
+    static uint input_id, wolf_id, state = 0;
 
     /*
       " Everyone knows that debugging is twice as hard as writing
@@ -91,19 +95,18 @@ bool statemachine(bool bit, bool reset)
     if (reset) state = 0;
     switch (state) {
         case 0:                     //wait for wakeup
-            w = -1;
+            wolf_id = -1;
             state = bit;
             return false;
         case 1:                     //recv next header
-            k = K;
+            input_id = K;           //we expect to rcv K bits from neighbor
             state = bit + 2;
-            w++;
-            /*key_states_write[w] = 0;*/
+            wolf_id++;
             return false;
         case 2:                     //read 1 of K bits
-            key_states_write[w] <<= 1;
-            key_states_write[w] |= bit;
-            state -= !--k;
+            key_states_write[wolf_id] <<= 1;
+            key_states_write[wolf_id] |= bit;
+            state -= !--input_id;
             return false;
         case 3:                     //end ow howl
             state = 0;
@@ -113,10 +116,9 @@ bool statemachine(bool bit, bool reset)
 
 int main()
 {
-    unsigned int t = 0;
     absolute_time_t t_next_led = 0;
-    absolute_time_t t_last_bit = 0;
-    bool howl_done = true;
+    absolute_time_t t_watch_dog = 0;
+    bool idle = true;
 
     setup();
 
@@ -127,27 +129,30 @@ int main()
             t_next_led = t_now + 50000;
             update_leds(W);
         }
-        if (!howl_done && t_now - t_last_bit > 100000) {
-            //1 second silence. lets reset
+        if (!idle && t_now > t_watch_dog) {
+            // 100ms passed but we are still not done. We are probably
+            // terribly confused. Lets reset the statemachine and try again.
+            idle = true;
             (void)statemachine(0, true);
-            howl_done = true;
+            t_watch_dog = t_now + WATCH_DOG_PATIENCE;
             printf("\nout of sync?");
         }
 
-        if (howl_done && t_now - t_last_bit > 100000) {
-            printf("\nhowl %d\n", t++);
-            pio_sm_put_blocking(RB_PIO, RB_HOWL_SM, 1);
-            t_last_bit = t_now;
-            howl_done = false;
+        // process events and initiate new howl
+        if (idle) {
+            idle = false;
+            // for edge detection get diff between buffers before doing the flip.
             flip();
-            memset(key_states_write, 0, W);
+            pio_sm_put_blocking(RB_PIO, RB_HOWL_SM, 1);
+            t_watch_dog = t_now + WATCH_DOG_PATIENCE;
+            printf("\nhowl ");
         }
 
         if (!pio_sm_is_rx_fifo_empty(RB_PIO, RB_LISTEN_SM)) {
             uint32_t b = pio_sm_get(RB_PIO, RB_LISTEN_SM);
             printf("%d", b&1);
-            howl_done = statemachine(b&1, false);
-            t_last_bit = t_now;
+            idle = statemachine(b&1, false);
+            t_watch_dog = t_now + WATCH_DOG_PATIENCE;
         }
     }
 }
