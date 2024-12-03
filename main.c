@@ -37,16 +37,33 @@ uint8_t key_states_b[W];
 uint8_t *key_states_read = key_states_a;
 uint8_t *key_states_write = key_states_b;
 
-// Do full brightness on key down. Fade out on key up.
-void update_leds(uint n)
+uint8_t clamp(float in, uint8_t min, uint8_t max)
 {
+    if (in < min)
+        return min;
+    else if (in > max)
+        return max;
+    else
+        return (uint8_t) in;
+}
+
+// Do full brightness on key down. Fade out on key up.
+void update_leds(uint n, absolute_time_t now)
+{
+    float u = fabs(((now/20000)%500)/250.0 - 1); //mean
+    float sigma = 0.05; //stddev
+
     for (uint i = 0; i < n; ++i) {
+        float x = i/(float)n;
+        float y = pow(M_E, (-pow(x-u, 2)/(2*pow(sigma,2))));
+        uint8_t g = clamp(y*255, 0, 255);
+
         if (key_states_read[i]) {
             led_states[i] = 0xFF;
         } else {
             led_states[i] >>= 1;
         }
-        uint32_t grba = led_states[i]<<16;
+        uint32_t grba = (led_states[i]<<8) | (g<<16);
         pio_sm_put_blocking(WS_PIO, WS_SM, grba);
     }
 }
@@ -127,7 +144,7 @@ int main()
 
         if (t_next_led < t_now) {
             t_next_led = t_now + 50000;
-            update_leds(W);
+            update_leds(W, t_now);
         }
         if (!idle && t_now > t_watch_dog) {
             // 100ms passed but we are still not done. We are probably
