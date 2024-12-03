@@ -47,23 +47,48 @@ uint8_t clamp(float in, uint8_t min, uint8_t max)
         return (uint8_t) in;
 }
 
+float gauss(float x, float mu, float sigma)
+{
+    return pow(M_E, (-pow(x-mu, 2) / (2*pow(sigma, 2))) );
+}
+
+uint8_t knight_rider(uint8_t i, uint8_t n, absolute_time_t now)
+{
+#define STEPS 500
+#define ANIM_TIME 5000000
+#define STEP_TIME (ANIM_TIME/STEPS)
+#define SIGMA 0.1 // 68% width of bell curve
+    //get a value between [0, 1] for peak (mean in gauss function)
+    //dependent on time
+    float mu = ( (now/STEP_TIME)%STEPS ) / (float)STEPS ; //mean
+    //stretch out to [-1, 1] on fold over to get [0,1] again
+    //this will give an oscillating effect
+    mu = fabs(mu*2-1);
+
+    float y = gauss(i/(float)n, mu, SIGMA);
+    return clamp(y*255, 0, 255);
+#undef STEPS
+#undef ANIM_TIME
+#undef STEP_TIME
+#undef SIGMA
+}
+
 // Do full brightness on key down. Fade out on key up.
 void update_leds(uint n, absolute_time_t now)
 {
-    float u = fabs(((now/20000)%500)/250.0 - 1); //mean
-    float sigma = 0.05; //stddev
-
     for (uint i = 0; i < n; ++i) {
-        float x = i/(float)n;
-        float y = pow(M_E, (-pow(x-u, 2)/(2*pow(sigma,2))));
-        uint8_t g = clamp(y*255, 0, 255);
-
         if (key_states_read[i]) {
             led_states[i] = 0xFF;
         } else {
             led_states[i] >>= 1;
         }
-        uint32_t grba = (led_states[i]<<8) | (g<<16);
+    }
+    for (uint i = 0; i < n; ++i) {
+        uint8_t r = knight_rider(i, n, now);
+        uint8_t g = 5;
+        uint8_t b = led_states[i];
+
+        uint32_t grba = (r<<16) | (g<<24) | (b<<8);
         pio_sm_put_blocking(WS_PIO, WS_SM, grba);
     }
 }
