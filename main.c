@@ -82,6 +82,11 @@ uint8_t knight_rider(uint8_t i, uint8_t n, absolute_time_t now)
 #undef SIGMA
 }
 
+uint8_t pulse(uint8_t i, uint8_t n, absolute_time_t now)
+{
+    return clamp((sinf((float)(now/4000.0))*128)+128, 0, 255);
+}
+
 // Do full brightness on key down. Fade out on key up.
 void update_leds(uint n, absolute_time_t now)
 {
@@ -94,12 +99,17 @@ void update_leds(uint n, absolute_time_t now)
     }
     for (uint i = 0; i < n; ++i) {
         uint8_t r = 0;
-        if (caps_lock)
+        uint8_t g = 0;
+        uint8_t b = 0;
+
+        if (caps_lock) {
             r = knight_rider(i, n, now);
-        else
-            r = 0xFF;
-        uint8_t g = 5;
-        uint8_t b = led_states[i];
+            g = 5;
+        } else {
+            r = pulse(i, n, now);
+            g = pulse(i, n, now+1333);
+        }
+        b = led_states[i];
 
         uint32_t grba = (r<<16) | (g<<24) | (b<<8);
         pio_sm_put_blocking(WS_PIO, WS_SM, grba);
