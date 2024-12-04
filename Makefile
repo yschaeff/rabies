@@ -1,6 +1,6 @@
 ALL: build/firmware.uf2
 
-build:
+build: CMakeLists.txt
 	mkdir -p build
 	cd build; PICO_SDK_PATH=/home/yuri/repo/rp2040/pico-sdk cmake ".."
 
