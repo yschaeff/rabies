@@ -9,6 +9,9 @@
 #include "hardware/clocks.h"
 #include "ws2812.pio.h"
 #include "rabi.pio.h"
+#include "bsp/board.h"
+#include "tusb.h"
+#include "usb_descriptors.h"
 
 #define LED_OUT_PIN 2
 #define KEY_IN_PIN  3
@@ -24,8 +27,11 @@
 #define K 1             /* Number if inputs per RABI */
 #define W 9             /* Number of RABIs */
 
+uint8_t key_mapping[W] = { HID_KEY_A, HID_KEY_B, HID_KEY_C, HID_KEY_D, HID_KEY_E, HID_KEY_F, HID_KEY_P, HID_KEY_I, HID_KEY_O };
+
 #define WATCH_DOG_PATIENCE 100000  /* uS after which the watchdog intervenes */
 
+void hid_task(absolute_time_t t_now);
 
 uint8_t led_states[W];
 
@@ -36,6 +42,9 @@ uint8_t key_states_a[W];
 uint8_t key_states_b[W];
 uint8_t *key_states_read = key_states_a;
 uint8_t *key_states_write = key_states_b;
+uint8_t key_states_events[W];
+
+bool caps_lock = false;
 
 uint8_t clamp(float in, uint8_t min, uint8_t max)
 {
@@ -84,7 +93,11 @@ void update_leds(uint n, absolute_time_t now)
         }
     }
     for (uint i = 0; i < n; ++i) {
-        uint8_t r = knight_rider(i, n, now);
+        uint8_t r = 0;
+        if (caps_lock)
+            r = knight_rider(i, n, now);
+        else
+            r = 0xFF;
         uint8_t g = 5;
         uint8_t b = led_states[i];
 
@@ -103,12 +116,17 @@ void flip()
         key_states_read  = key_states_a;
         key_states_write = key_states_b;
     }
+    for (int i = 0; i < W; i++) {
+        key_states_events[i] = key_states_a[i]^key_states_b[i];
+    }
     memset(key_states_write, 0, W);
 }
 
 void setup()
 {
     stdio_init_all();
+    board_init(); //something for tinyUSB
+    tusb_init();
 
     //PIO 0 handles WS2812
     uint ws_addr = pio_add_program(WS_PIO, &ws2812_program);
@@ -167,6 +185,9 @@ int main()
     while (1) {
         absolute_time_t t_now = get_absolute_time();
 
+        tud_task(); // tinyusb device task
+        hid_task(t_now);
+
         if (t_next_led < t_now) {
             t_next_led = t_now + 50000;
             update_leds(W, t_now);
@@ -183,7 +204,6 @@ int main()
         // process events and initiate new howl
         if (idle) {
             idle = false;
-            // for edge detection get diff between buffers before doing the flip.
             flip();
             pio_sm_put_blocking(RB_PIO, RB_HOWL_SM, 1);
             t_watch_dog = t_now + WATCH_DOG_PATIENCE;
@@ -197,4 +217,78 @@ int main()
             t_watch_dog = t_now + WATCH_DOG_PATIENCE;
         }
     }
+}
+
+// Invoked when device is mounted
+void tud_mount_cb(void) { }
+// Invoked when device is unmounted
+void tud_umount_cb(void) { }
+// Invoked when usb bus is suspended
+// remote_wakeup_en : if host allow us  to perform remote wakeup
+// Within 7ms, device must draw an average of current less than 2.5 mA from bus
+void tud_suspend_cb(bool remote_wakeup_en) { }
+// Invoked when usb bus is resumed
+void tud_resume_cb(void) { }
+
+
+void hid_task(absolute_time_t t_now)
+{
+    static absolute_time_t t_next = 0;
+    if ( t_now < t_next) return;
+    t_next = t_now + 10;
+
+    if ( !tud_hid_ready() ) return;
+
+    uint8_t pressed_keys[6] = { 0 };
+
+    for (int i = 0, j = 0; i < W; i++) {
+        if (key_states_read[i]) {
+            pressed_keys[j++] = key_mapping[i];
+        }
+        if (j >= 6) break;
+    }
+
+    uint8_t mods = 0;
+    if (caps_lock)
+        mods |= KEYBOARD_MODIFIER_LEFTSHIFT;
+    tud_hid_keyboard_report(REPORT_ID_KEYBOARD, 0, pressed_keys);
+}
+
+// Invoked when sent REPORT successfully to host
+// Application can use this to send the next report
+// Note: For composite reports, report[0] is report ID
+void tud_hid_report_complete_cb(uint8_t instance, uint8_t const* report, uint16_t len)
+{
+  (void) instance;
+  (void) report;
+  (void) len;
+}
+
+// Invoked when received GET_REPORT control request
+// Application must fill buffer report's content and return its length.
+// Return zero will cause the stack to STALL request
+uint16_t tud_hid_get_report_cb(uint8_t instance, uint8_t report_id, hid_report_type_t report_type, uint8_t* buffer, uint16_t reqlen)
+{
+  // TODO not Implemented
+  (void) instance;
+  (void) report_id;
+  (void) report_type;
+  (void) buffer;
+  (void) reqlen;
+
+  return 0;
+}
+
+// Invoked when received SET_REPORT control request or
+// received data on OUT endpoint ( Report ID = 0, Type = 0 )
+void tud_hid_set_report_cb(uint8_t instance, uint8_t report_id, hid_report_type_t report_type, uint8_t const* buffer, uint16_t bufsize)
+{
+    (void) instance;
+
+    if (report_type != HID_REPORT_TYPE_OUTPUT) return;
+    if (report_id != REPORT_ID_KEYBOARD) return;
+    if ( bufsize < 1 ) return; // bufsize should be (at least) 1
+
+    uint8_t const kbd_leds = buffer[0];
+    caps_lock = kbd_leds & KEYBOARD_LED_CAPSLOCK;
 }
