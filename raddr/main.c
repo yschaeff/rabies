@@ -71,8 +71,8 @@ static void cfg_gpio(void)
     cfg_pin(KEY_OUT_PIN, GPIO_MODE_OUTPUT_PP,  GPIO_NOPULL);
 
     /* EXTI interrupt init*/
-    HAL_NVIC_SetPriority(EXTI0_1_IRQn, 0, 0);
-    HAL_NVIC_EnableIRQ(EXTI0_1_IRQn);
+    /*HAL_NVIC_SetPriority(EXTI0_1_IRQn, 1, 0);*/
+    /*HAL_NVIC_EnableIRQ(EXTI0_1_IRQn);*/
 
     HAL_NVIC_SetPriority(EXTI2_3_IRQn, 0, 0);
     HAL_NVIC_EnableIRQ(EXTI2_3_IRQn);
@@ -84,6 +84,7 @@ static void cfg_gpio(void)
  */
 void EXTI0_1_IRQHandler(void)
 {
+    //I think this causes bounce issues
     K_BINARY_INPUTS[0] = !HAL_GPIO_ReadPin(GPIOA, SWC_PIN);
     __HAL_GPIO_EXTI_CLEAR_IT(SWC_PIN);
 }
@@ -132,8 +133,20 @@ int main(void)
     }
     */
 
+    uint32_t t_bounce = 0;
     while (1) {
-        if (!data_ready) continue;
+        uint32_t now = HAL_GetTick();
+
+        if (!data_ready) {
+            // if no data, take the time to update inputs
+            bool input = !HAL_GPIO_ReadPin(GPIOA, SWC_PIN);
+            // if input changed only set it when done bouncing
+            if (input^K_BINARY_INPUTS[0] && t_bounce < now) {
+                K_BINARY_INPUTS[0] = input;
+                t_bounce = now + 2; // only accept change in 2ms
+            }
+            continue;
+        }
 
         sleep_ns((T0H+T1H)/2);
         int bit = gpio_get();
@@ -142,11 +155,8 @@ int main(void)
 
         // The statemachine needs to know the elapsed time so
         // it can reset when out of sync.
-        uint32_t now = HAL_GetTick();
-        uint32_t t_elapsed = now - t_last_call;
+        join_cry(bit, now - t_last_call);
         t_last_call = now;
-
-        join_cry(bit, t_elapsed);
     }
 }
 
