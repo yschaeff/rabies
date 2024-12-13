@@ -7,14 +7,14 @@
 #include "pack.h"
 
 /*  A wolf is:
- *  Pin     Port(s)         PCB function    Alternate functions
+ *  Pin     Port(s)         PCB function    SPI1        I2C     UART1       TIM1        Alternate functions
  *  Pin 8   GND             GND             -
- *  Pin 7   PA1             switch          SPI1_SCK / USART1_RTS / SPI1_MOSI / TIM1_CH4 / TIM1_CH2N
- *  Pin 6   PA2/PF2         reset           SPI1_MOSI / USART1_TX / COMP2_OUT / SPI_SCK / I2C_SDA (PF2: MCO)
- *  Pin 5   PA13            SWD             SWDIO / USART1_RX / SPI1_MISO / TIM1_CH2
- *  Pin 4   PA14/PB3        SWC             SWCLK / USART1_TX / MCO # PB3: SPI1_SCK / TIM1_CH2 / USART1_RTS
- *  Pin 3   PA3             KEY Data inp    USART1_RX / SPI1_MOSI / I2C_SCL / TIM1_CH1
- *  Pin 2   PA4/PA10        KEY Data out    SPI1_NSS/ USART1_CK # PA10: USART1_RX / TIM1_CH3 / I2C_SDA / USART1_TX / SPI1_NSS / I2C_SCL
+ *  Pin 7   PA1             switch          SCK/MOSI            RTS         CH4 / CH2N
+ *  Pin 6   PA2/PF2         reset           SCK/MOSI    SDA     TX                      COMP2_OUT (PF2: RESET/MCO)
+ *  Pin 5   PA13            SWD             MISO                RX          CH2         SWDIO
+ *  Pin 4   PA14/PB3        SWC             SCK                 TX / RTS    CH2         SWCLK / MCO
+ *  Pin 3   PA3             KEY Data inp    MOSI        SCL     RX          CH1
+ *  Pin 2   PA4/PA10        KEY Data out    NSS         SDA/SCL CK /RX /TX  CH3
  *  Pin 1   VCC             VCC             -
  * */
 
