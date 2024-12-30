@@ -3,14 +3,17 @@
 
 #include <stdbool.h>
 #include <stdint.h>
+#include "output_timer.h"
 
-#define T0L 4
-#define T0H 1
+/* Time in uS */
+#define T0L 140
+#define T0H 50
 #define T1L T0H
 #define T1H T0L
 #define STFU T0H
 // if it is quit for longer than 4 bits consider it a reset
-#define TRES (4*(T0L + T0H))
+//This is in ms!
+#define TRES (2) //(4*(T0L + T0H))
 
 #define K 1
 
@@ -44,9 +47,11 @@ extern void update_input(void);
  */
 static inline void bark(int bit)
 {
-    gpio_set(1);
-    sleep_ns(bit?T1H:T0H);
-    gpio_set(0);
+    uint16_t tmo = bit ? us_to_timer_tick(T1H) : us_to_timer_tick(T0H);
+    raddr_output_schedule(1, tmo);
+    //gpio_set(1);
+    //sleep_ns(bit?T1H:T0H);
+    //gpio_set(0);
 }
 
 /**
@@ -56,8 +61,10 @@ static inline void bark(int bit)
 static inline void bark_full(int bit)
 {
     bark(bit);
-    sleep_ns(bit?T1L:T0L); //wait low time of bit
-    sleep_ns(STFU);
+    uint16_t tmo = bit ? us_to_timer_tick(T1L) : us_to_timer_tick(T0L);
+    raddr_output_schedule(0, tmo);
+    //sleep_ns(bit?T1L:T0L); //wait low time of bit
+    //sleep_ns(STFU); //Huh wait what? Not here right?
 }
 
 #endif
