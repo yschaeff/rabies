@@ -3,6 +3,7 @@
 
 #include "uid.h"
 #include "output_timer.h"
+#include "input_capture.h"
 #include "wolf.h"
 #include "pack.h"
 
@@ -123,6 +124,7 @@ int main(void)
 
     cfg_gpio();
     raddr_output_init();
+    raddr_input_capture_init();
 
     uint32_t t_last_call = 0;
 
@@ -150,6 +152,12 @@ int main(void)
             if (input^K_BINARY_INPUTS[0] && t_bounce < now) {
                 K_BINARY_INPUTS[0] = input;
                 t_bounce = now + 2; // only accept change in 2ms
+            }
+            if (1) {
+                //raddr_output_debug();
+                uint16_t one_ms = us_to_timer_tick(1000);
+                raddr_output_schedule(1, 1 * one_ms);
+                HAL_Delay(1000);
             }
             continue;
         }
