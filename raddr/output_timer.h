@@ -9,14 +9,14 @@ void raddr_output_init(void);
 
 /* Just run it at maximum speed for maximum resolution */
 //#define TIMER_DESIRED_BASE_TICK     (1/24e6)
-//#define TIMER_DIVIDER               ((uint32_t)(HSI_VALUE * TIMER_DESIRED_BASE_TICK))
-#define TIMER_DIVIDER               (1ul)
+#define TIMER_DESIRED_BASE_TICK     (10/1e6)
+#define TIMER_DIVIDER               ((uint32_t)(HSI_VALUE * TIMER_DESIRED_BASE_TICK))
 _Static_assert(TIMER_DIVIDER < 65535, "Divider too large. Consider lowering input clock");
 
 #define TIMER_ACTUAL_TIME_PER_TICK (1.0 * TIMER_DIVIDER / HSI_VALUE)
 //Only feed this constants. Otherwise we drag in floating point code!
 //Also note that tmo should be at least 4, otherwise we underflow
-static inline uint16_t us_to_timer_tick(uint16_t tmo) {
+static inline uint16_t us_to_timer_tick(uint32_t tmo) {
     // - 3.5 because our ISR takes about so long
     uint16_t t = (tmo) * (1e-6 / TIMER_ACTUAL_TIME_PER_TICK);
     t -= (uint16_t)(3.5 * (1e-6 / TIMER_ACTUAL_TIME_PER_TICK));
