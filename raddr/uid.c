@@ -35,7 +35,7 @@ void uid_print(void)
 {
 #if defined(USE_SEMIHOSTING)
     printf("Raw hex: ");
-    for( int i= 0; i < ARRAY_SIZE(UID->raw_bytes); i++) {
+    for (unsigned int i= 0; i < ARRAY_SIZE(UID->raw_bytes); i++) {
         printf("%x ", UID->raw_bytes[i]);
     }
     printf("\r\n");
