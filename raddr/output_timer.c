@@ -20,13 +20,19 @@
 _Static_assert(FIFO_SIZE > 2*K, "FIFO_SIZE needs to be able to contain at least a full K of barks");
 _Static_assert((FIFO_SIZE & (FIFO_SIZE - 1)) == 0 , "FIFO_SIZE needs to be a power of 2 to make access FAST");
 
+/* The length the pulse is actually larger the specified.
+ * We compensate by reducing the pulse length.
+ * Note that is CPU cycles.
+ * If the prescaler is not 1 then this number should be divided by the prescaler value! .*/
+#define FIXED_LATENCY (72)
+
 /* The fifo to hold our rabi barks'n'howls */
 static struct {
     uint8_t write;
     uint8_t read;
     volatile uint32_t size;
     uint32_t buf[FIFO_SIZE];
-} fifo;
+} fifo = {.size = 0};
 
 static bool fifo_is_full(void)
 {
@@ -41,36 +47,35 @@ static uint32_t fifo_read(void)
     return d;
 }
 
-/* Supports a single writer only!
- *  A few things to note here:
- *
- *  If there is no more work to be done the GPIO is set to OFF
- *
- *  If queueing a very low tmo the ISR may finish before the next fifo write.
- *  If this happens there will be a low pulse!
- *
- *  The whole ISR routing adds about ~3.5us extra.
- *  Having >6us makes it work reliable: the fifo will not empty in between.
- * */
-void raddr_output_schedule(bool bit, uint16_t tmo)
+static void fifo_write(bool bit, uint16_t tmo)
 {
-    if (fifo_is_full()) {
-        //printf("Fifo full!\r\n");
-        return; //Drop it, sorry. Programmer error
-    }
-
-    uint32_t d = tmo | bit << 31;
+    uint32_t isr_latency = FIXED_LATENCY; //Number of cpu cycles spend in ISR
+    uint32_t d = (tmo - isr_latency) | bit << 31;
     uint32_t idx = fifo.write;
     fifo.buf[fifo.write] = d;
-    fifo.write = (idx +1) % FIFO_SIZE;
+    fifo.write = (idx + 1) % FIFO_SIZE;
+}
 
+static int bulk_size;
+void raddr_output_bulk_begin(void)
+{
+    bulk_size = 0;
+}
+
+void raddr_output_bulk_schedule(bool bit, uint16_t tmo)
+{
+    fifo_write(bit, tmo);
+    bulk_size++;
+}
+
+void raddr_output_bulk_end(void) {
     /* Incrementing the fifo must be atomic against the TIM16 ISR.
      * Since Cortex-M0 does not have STREX/LDREX nor SWP instruction we need to rely on libatomic.
      * Which for reasons beyond me is not implemented for arm-gcc-none-eabi and friends.
      * So lets stick to disabling the TIM16 interrupt for now */
-    HAL_NVIC_DisableIRQ(TIM16_IRQn);
-    fifo.size++;
-    HAL_NVIC_EnableIRQ(TIM16_IRQn);
+    NVIC_DisableIRQ(TIM16_IRQn);
+    fifo.size += bulk_size;
+    NVIC_EnableIRQ(TIM16_IRQn);
 
     /* If ISR not enabled the ISR is not running. Start it */
     if (!(TIM16->DIER & TIM_DIER_UIE)) {
@@ -82,14 +87,52 @@ void raddr_output_schedule(bool bit, uint16_t tmo)
     }
 }
 
-#if defined(USE_SEMIHOSTING)
+/* Supports a single writer only!
+ *  A few things to note here:
+ *
+ *  If there is no more work to be done the GPIO is set to OFF
+ *
+ *  If queueing a very low tmo the ISR may finish before the next fifo write.
+ *  If this happens there will be a low pulse!
+ *
+ *  The whole ISR routing adds about ~2.2us (56 cycles on 24Mhz) extra.
+ *  Having >6us makes it work reliable: the fifo will not empty in between.
+ * */
+void raddr_output_schedule(bool bit, uint16_t tmo)
+{
+    if (fifo_is_full()) {
+        //printf("Fifo full!\r\n");
+        return; //Drop it, sorry. Programmer error
+    }
+
+    fifo_write(bit, tmo);
+
+    /* Incrementing the fifo must be atomic against the TIM16 ISR.
+     * Since Cortex-M0 does not have STREX/LDREX nor SWP instruction we need to rely on libatomic.
+     * Which for reasons beyond me is not implemented for arm-gcc-none-eabi and friends.
+     * So lets stick to disabling the TIM16 interrupt for now */
+    NVIC_DisableIRQ(TIM16_IRQn);
+    fifo.size++;
+    NVIC_EnableIRQ(TIM16_IRQn);
+
+    /* If ISR not enabled the ISR is not running. Start it */
+    if (!(TIM16->DIER & TIM_DIER_UIE)) {
+        /* Generate event to wakeup the ISR */
+        TIM16->EGR = TIM_EGR_UG;
+
+        /* Enable the timer interrupt, this will take us to the ISR instantly */
+        TIM16->DIER = TIM_DIER_UIE;
+    }
+}
+
+#if defined(RADDR_OUTPUT_DEBUG)
 static int cnt = 0;
 void debug_print(void)
 {
     printf("Cnt %d / %ld\r\n", cnt, TIM16->CNT);
 }
 #endif
-
+bool huge_difference = false;
 
 void TIM16_IRQHandler(void)
 {
@@ -123,13 +166,23 @@ void TIM16_IRQHandler(void)
     /* Disable the interrupt,
      * to force not getting here again.
      * It also signal to the writer we are done */
-    if (tmo == 0)
+    if (tmo == 0) {
         TIM16->DIER = 0;
+    }
+
+#if 0
+    static uint16_t last_tmo = 0;
+    uint32_t old_arr = TIM16->CNT - last_tmo;
+    if (last_tmo && old_arr > 10) {
+        huge_difference = true;
+    }
+    last_tmo = tmo;
+#endif
 
     /* Update reload register with new timeout */
     TIM16->ARR = tmo;
 
-#if defined(USE_SEMIHOSTING)
+#if defined(RADDR_OUTPUT_DEBUG)
     //This sort-of indicates the number CPU before we reach this point.
     //That sort-of indicates the time needed in the ISR
     cnt = TIM16->CNT;
@@ -141,7 +194,6 @@ void TIM16_IRQHandler(void)
 
     /* Acknowledge the interrupt */
     TIM16->SR = ~TIM_IT_UPDATE;
-
 }
 
 void raddr_output_init(void)
@@ -167,12 +219,12 @@ void raddr_output_init(void)
     TIM16->CR1 = tmpcr1;
 
     /* We need to be the highest priority, to ensure rock solid jitter free output! */
-    HAL_NVIC_SetPriority(TIM16_IRQn, 0, 0);
+    HAL_NVIC_SetPriority(TIM16_IRQn, PRIORITY_HIGHEST, 0);
 
     /* Enable our interrupt */
     HAL_NVIC_EnableIRQ(TIM16_IRQn);
 
-#if defined(USE_SEMIHOSTING) && defined(RADDR_OUTPUT_DEBUG)
+#if defined(RADDR_OUTPUT_DEBUG)
     printf("HSI Clock: %ld, divider %ld\r\n", HSI_VALUE, TIMER_DIVIDER);
     printf("100us: %d, 10us %d\r\n", us_to_timer_tick(100), us_to_timer_tick(1));
 #endif

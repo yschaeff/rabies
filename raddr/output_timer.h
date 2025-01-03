@@ -6,27 +6,30 @@
 void raddr_output_init(void);
 
 #undef RADDR_OUTPUT_DEBUG
+#if defined(USE_SEMIHOSTING)
+//#define RADDR_OUTPUT_DEBUG
+#endif
 
 /* Just run it at maximum speed for maximum resolution */
-//#define TIMER_DESIRED_BASE_TICK     (1/24e6)
-#define TIMER_DESIRED_BASE_TICK     (10/1e6)
+#define TIMER_DESIRED_BASE_TICK     (1.0/HSI_VALUE)
 #define TIMER_DIVIDER               ((uint32_t)(HSI_VALUE * TIMER_DESIRED_BASE_TICK))
 _Static_assert(TIMER_DIVIDER < 65535, "Divider too large. Consider lowering input clock");
 
 #define TIMER_ACTUAL_TIME_PER_TICK (1.0 * TIMER_DIVIDER / HSI_VALUE)
 //Only feed this constants. Otherwise we drag in floating point code!
-//Also note that tmo should be at least 4, otherwise we underflow
+//Also note that tmo should be at least 6, otherwise we underflow
 static inline uint16_t us_to_timer_tick(uint32_t tmo) {
-    // - 3.5 because our ISR takes about so long
-    uint16_t t = (tmo) * (1e-6 / TIMER_ACTUAL_TIME_PER_TICK);
-    t -= (uint16_t)(3.5 * (1e-6 / TIMER_ACTUAL_TIME_PER_TICK));
-    return t;
+    return (tmo) * (1e-6 / TIMER_ACTUAL_TIME_PER_TICK);
 }
 
 /* Schedule bit to be output for tmo long.
  * tmo is specified in TIMER_ACTUAL_TIME_PER_TICK */
 void raddr_output_schedule(bool bit, uint16_t tmo);
 
+
+void raddr_output_bulk_begin(void);
+void raddr_output_bulk_schedule(bool bit, uint16_t tmo);
+void raddr_output_bulk_end(void);
 
 static inline void raddr_output_debug(void)
 {
