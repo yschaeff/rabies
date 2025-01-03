@@ -6,8 +6,8 @@
 #include "output_timer.h"
 
 /* Time in uS */
-#define T0L 140
-#define T0H 50
+#define T0L 14
+#define T0H 27
 #define T1L T0H
 #define T1H T0L
 #define STFU T0H
@@ -45,14 +45,11 @@ extern void update_input(void);
  * bit we are ready to receive more data. Waiting the full bit length might
  * cause us to miss an event or act to late.
  */
-static inline void bark(int bit)
-{
-    uint16_t tmo = bit ? us_to_timer_tick(T1H) : us_to_timer_tick(T0H);
-    raddr_output_schedule(1, tmo);
-    //gpio_set(1);
-    //sleep_ns(bit?T1H:T0H);
-    //gpio_set(0);
-}
+//static inline void bark(int bit)
+//{
+//    uint16_t tmo = bit ? us_to_timer_tick(T1H) : us_to_timer_tick(T0H);
+//    raddr_output_schedule(1, tmo);
+//}
 
 /**
  * like a bark but now wait for a full bit. This is useful when sending multiple
@@ -60,11 +57,11 @@ static inline void bark(int bit)
  */
 static inline void bark_full(int bit)
 {
-    bark(bit);
-    uint16_t tmo = bit ? us_to_timer_tick(T1L) : us_to_timer_tick(T0L);
+    uint16_t tmo;
+    tmo = bit ? us_to_timer_tick(T1H) : us_to_timer_tick(T0H);
+    raddr_output_schedule(1, tmo);
+    tmo = bit ? us_to_timer_tick(T1L) : us_to_timer_tick(T0L);
     raddr_output_schedule(0, tmo);
-    //sleep_ns(bit?T1L:T0L); //wait low time of bit
-    //sleep_ns(STFU); //Huh wait what? Not here right?
 }
 
 #endif

@@ -23,8 +23,6 @@
 #define KEY_IN_PIN  GPIO_PIN_3
 #define KEY_OUT_PIN GPIO_PIN_4
 
-volatile int data_ready;
-
 /**
  * These functions need to be implemented by us, They are called
  * by the pack.c code
@@ -77,11 +75,9 @@ static void cfg_gpio(void)
     cfg_pin(KEY_OUT_PIN, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL);
 
     /* EXTI interrupt init*/
-    /*HAL_NVIC_SetPriority(EXTI0_1_IRQn, 1, 0);*/
-    /*HAL_NVIC_EnableIRQ(EXTI0_1_IRQn);*/
+    HAL_NVIC_SetPriority(EXTI0_1_IRQn, 2, 0);
+    HAL_NVIC_EnableIRQ(EXTI0_1_IRQn);
 
-    HAL_NVIC_SetPriority(EXTI2_3_IRQn, 0, 0);
-    HAL_NVIC_EnableIRQ(EXTI2_3_IRQn);
 }
 
 /**
@@ -93,16 +89,6 @@ void EXTI0_1_IRQHandler(void)
     //I think this causes bounce issues
     K_BINARY_INPUTS[0] = !HAL_GPIO_ReadPin(GPIOA, SWC_PIN);
     __HAL_GPIO_EXTI_CLEAR_IT(SWC_PIN);
-}
-
-/**
- * Key in interrupt handler
- * Falling edges
- */
-void EXTI2_3_IRQHandler(void)
-{
-    data_ready = 1;
-    __HAL_GPIO_EXTI_CLEAR_IT(KEY_IN_PIN);
 }
 
 int main(void)
@@ -126,7 +112,6 @@ int main(void)
     raddr_output_init();
     raddr_input_capture_init();
 
-    uint32_t t_last_call = 0;
 
     /*
     // if switch pressed at boot become AKELA.
@@ -142,10 +127,14 @@ int main(void)
     */
 
     uint32_t t_bounce = 0;
+    uint32_t t_last_tx = 0;
+    uint32_t t_last_tx_duration = 1000;
+    bool use_bulk = true;
+    const int bits_to_send = 3;
     while (1) {
         uint32_t now = HAL_GetTick();
 
-        if (!data_ready) {
+        if (!receive_bits_available()) {
             // if no data, take the time to update inputs
             bool input = !HAL_GPIO_ReadPin(GPIOA, SWC_PIN);
             // if input changed only set it when done bouncing
@@ -153,24 +142,57 @@ int main(void)
                 K_BINARY_INPUTS[0] = input;
                 t_bounce = now + 2; // only accept change in 2ms
             }
-            if (1) {
-                //raddr_output_debug();
-                uint16_t one_ms = us_to_timer_tick(1000);
-                raddr_output_schedule(1, 1 * one_ms);
-                HAL_Delay(1000);
+            if (now - t_last_tx > 1000) {
+                //uint32_t tmo = us_to_timer_tick(T1H);
+                //printf("\r\n====\r\nOutputting %ld\r\n", t_last_tx_duration);
+                t_last_tx_duration += 10;
+                if (t_last_tx_duration > 480) {
+                    t_last_tx_duration = 240;
+                }
+                if (use_bulk) {
+                    raddr_output_bulk_begin();
+                    for(int i = 0; i < bits_to_send; i++) {
+                        raddr_output_bulk_schedule(1, t_last_tx_duration);
+                        raddr_output_bulk_schedule(0, t_last_tx_duration);
+                    }
+                    raddr_output_bulk_end();
+                }
+                else {
+                    for(int i = 0; i < bits_to_send; i++) {
+                        raddr_output_schedule(1, t_last_tx_duration);
+                        raddr_output_schedule(0, t_last_tx_duration);
+                    }
+                }
+                t_last_tx = now;
             }
             continue;
         }
 
-        sleep_ns((T0H+T1H)/2);
-        int bit = gpio_get();
+        int cnt = receive_bits_available();
+        if (cnt != bits_to_send)
+            continue;
 
-        data_ready = 0;
+        for(int i = 0; i < bits_to_send; i++) {
+            uint32_t received_bits_read(void);
+            uint32_t t = received_bits_read() & 0xFFFF;
 
-        // The statemachine needs to know the elapsed time so
-        // it can reset when out of sync.
-        join_cry(bit, now - t_last_call);
-        t_last_call = now;
+            int diff = t - t_last_tx_duration;
+            if (diff < 0)
+                diff *= -1;
+            if (diff > 3)
+                printf("%ld - %ld = %d\r\n", t, t_last_tx_duration, diff);
+        }
+        continue;
+
+        int bit = receive_bit();
+
+        if ( bit >= 0 ) {
+            join_cry(bit, 0);
+        } else {
+            /* The input capture got confused, or a forced reset is applied */
+            printf("Received RESET!\r\n");
+            join_cry(!GROWL, ~0);
+        }
     }
 }
 

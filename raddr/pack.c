@@ -23,7 +23,7 @@ void join_cry(int bit, uint32_t elapsed)
             if (bit == GROWL) { //growl
                 if (DBG) printf("goto ALERT\r\n");
                 state = S_ALERT;
-                bark(GROWL); //wake up next with growl
+                bark_full(GROWL); //wake up next with growl
             } else {
                 /* a BARK makes no sense here. Therefor just absorb it */
             }
@@ -31,7 +31,7 @@ void join_cry(int bit, uint32_t elapsed)
         case S_ALERT:
             if (DBG) printf("ALERT\r\n");
             if (bit != HOWL) {
-                bark(BARK); //Yelp, so next will copy next frame
+                bark_full(BARK); //Yelp, so next will copy next frame
                 if (DBG) printf("goto BARK\r\n");
                 state = S_BARK; //
                 break; //Wait for next bit
@@ -50,13 +50,13 @@ void join_cry(int bit, uint32_t elapsed)
             if (DBG) printf("HOWL\r\n");
             //Maybe include parity bit?
             bark_full(GROWL); //wake up next with growl
-            bark(HOWL); //Howl, so next will also go to S_HOWL
+            bark_full(HOWL); //Howl, so next will also go to S_HOWL
             if (DBG) printf("goto REST\r\n");
             state = S_REST; //we are the last. Get some rest.
             break; //Wait for next bit
         case S_BARK:
             if (DBG) printf("BARK\r\n");
-            bark(bit); //Copy input to output
+            bark_full(bit); //Copy input to output
             if (!--bark_i) {
                 if (DBG) printf("goto ALERT\r\n");
                 state = S_ALERT;
@@ -75,9 +75,9 @@ void rally_pack()
     // Call the statemachine with a GROWL, pick a large elapsed
     // time so we know the statemachine is reset
     join_cry(1, TRES*2);
-    sleep_ns(T1L);
+    //sleep_ns(T1L);
     //Sleep some inter-bit time
     sleep_ns(STFU);
     //Actual elapsed time not important as long as it is < TRES
-    join_cry(1, T1H + T1L + STFU);
+    join_cry(1, 0);
 }
