@@ -4,35 +4,45 @@
 #include "wolf.h"
 #include "input_capture.h"
 
+//For 24Mhz this is 41ns
+#define INPUT_TIMER_ACTUAL_TIME_PER_TICK (1.0 * INPUT_TIMER_DIVIDER / HSI_VALUE)
+#define us_to_tick(_us)   ((uint32_t)(_us * (1e-6 / INPUT_TIMER_ACTUAL_TIME_PER_TICK)))
+
+#define T0H_TICKS   us_to_tick(T0H)
+#define T0L_TICKS   us_to_tick(T0L)
+#define T1H_TICKS   us_to_tick(T1H)
+#define T1L_TICKS   us_to_tick(T1L)
+
 #define MAX(_a,_b) (_a > _b ? _a : _b)
 #define MIN(_a,_b) (_a < _b ? _a : _b)
-#define UPPER_LIMIT ((uint32_t)(MAX(T0L * 1.2, T0H*1.2)))
-#define LOWER_LIMIT ((uint32_t)(MIN(T0L * 0.8, T0H*0.8)))
+#define UPPER_LIMIT ((uint32_t)(MAX(T0L_TICKS * 1.2, T0H_TICKS * 1.2)))
+#define LOWER_LIMIT ((uint32_t)(MIN(T0L_TICKS * 0.8, T0H_TICKS * 0.8)))
 
 #define FIFO_SIZE 16 //Must be a power of 2
 _Static_assert((FIFO_SIZE & (FIFO_SIZE - 1)) == 0 , "FIFO_SIZE needs to be a power of 2 to make access FAST");
+_Static_assert(T0H > T1H, "T0H must be lower than T1H to let this code work");
 
 /* The fifo to hold the barks'n'howls we received */
 static struct {
     uint8_t write;
     uint8_t read;
     volatile uint32_t size;
-    uint8_t buf[FIFO_SIZE];
-} fifo;
+    uint32_t buf[FIFO_SIZE];
+} fifo = {.size = 0};
 
 static bool fifo_is_full(void)
 {
     return fifo.size >= FIFO_SIZE;
 }
 
-/* To be used by the main thread (a single thread anyway) */
+/* To be used by the main thread (or any other single thread) */
 uint32_t receive_bits_available(void)
 {
     return fifo.size;
 }
 
-/* To be used by the main thread (a single thread anyway), only after checking fifo is not empty! */
-uint8_t received_bits_read(void)
+/* Extract data from the fifo */
+uint32_t received_bits_read(void)
 {
     uint32_t idx = fifo.read;
     uint32_t d = fifo.buf[idx];
@@ -46,8 +56,48 @@ uint8_t received_bits_read(void)
     return d;
 }
 
+
+/* Only to be called after receive_bits_available returned true!
+ * Return <0 if the length of the receive pulse is not understood.
+ * The received bit otherwise. */
+int receive_bit(void)
+{
+    uint32_t d = received_bits_read();
+    uint16_t tmo = d & 0xFFFF;
+#if defined(RADDR_INPUT_DEBUG)
+    uint16_t status = (d >> 16) & 0xFFFF;
+    printf("tmo %d (%dnS) status %x "
+            "%ld %ld %ld %ld" "\r\n",
+            tmo, 1000 * tmo / 24, status,
+            LOWER_LIMIT,
+            UPPER_LIMIT,
+            T1H_TICKS,
+            T0H_TICKS
+            );
+#endif
+
+    /* TODO maybe we can use case '...' magic here to define the range */
+    //We distinguish a zero and one by the length of the pulse.
+    //Not a valid bit send reset?
+    if (tmo >= UPPER_LIMIT) {
+        //printf("TMO to large %d >= %ld", tmo, UPPER_LIMIT);
+        return -1; //error
+    }
+    else if (tmo < LOWER_LIMIT) {
+        //printf("TMO to small %d < %ld", tmo, LOWER_LIMIT);
+        return -1; //error
+    }
+    else if (tmo >= T0H_TICKS) {
+        return 0;
+    } else if (tmo > T1H_TICKS) {
+        return 1;
+    }
+    //printf("Wouter je logica is beroerd!\r\n");
+    return -1; //error
+}
+
 /* Only to be used by the ISR! */
-static void fifo_write(bool bit, bool reset)
+static void fifo_write(uint32_t tmo)
 {
     uint32_t idx = fifo.write;
     if (fifo_is_full()) {
@@ -55,18 +105,11 @@ static void fifo_write(bool bit, bool reset)
         //This should never happen, programmers error.
         return;
     }
-    fifo.buf[idx] = bit | reset<<1;
+    fifo.buf[idx] = tmo;
     fifo.write = (idx + 1) % FIFO_SIZE;
 
     /* Updating size must be atomic! Against main thread */
     fifo.size++;
-}
-
-void TIM1_BRK_UP_TRG_COM_IRQHandler(void) {
-    /* Clear/acknowledge pending interrupts */
-    TIM1->SR = 0;
-    //uint16_t status = TIM1->SR;
-    //printf("TRG ISR status: %x\r\n",status);
 }
 
 /* The ISR for TIM1 compare */
@@ -78,34 +121,9 @@ void TIM1_CC_IRQHandler(void)
     /* Clear/acknowledge pending interrupts */
     TIM1->SR = 0;
 
-    /* Trigger started */
-    if (status & TIM_SR_TIF) {
-        //printf( "UNEXPECTED Trigger ISR !!!!!!!! \r\n");
-        return;
-    }
-    if (!(status & TIM_SR_CC2IF)) {
-        //printf( "Not CCR ISR Trigger ISR !!!!!!!! \r\n");
-        //return;
-    }
-    //We distinguish a zero and one by the length of the pulse.
-    //Not a valid bit send reset?
-    if (tmo >= UPPER_LIMIT) {
-        fifo_write(false, true);
-    }
-    else if (tmo < LOWER_LIMIT) {
-        fifo_write(false, true);
-        //Too short!
-    }
-    else if (tmo >= T1H) {
-       fifo_write(true, false);
-    } else if (tmo > T0H) {
-       fifo_write(true, false);
-    } else {
-        fifo_write(false, true);
-    }
+    fifo_write(status << 16 | tmo);
 
-    //if(tmo)
-    if (0)
+#if 0 && defined(RADDR_INPUT_DEBUG)
     printf(
             "CCR1: %ld \r\n"
             "CCR2: %d \r\n"
@@ -119,6 +137,7 @@ void TIM1_CC_IRQHandler(void)
             TIM1->CCR4,
             status
             );
+#endif
 
 
 }
@@ -172,8 +191,6 @@ void raddr_input_capture_init(void)
 
     /* Only enable compare 2 interrupt for now */
     TIM1->DIER = TIM_DIER_CC2IE |
-                 //TIM_DIER_CC1IE |
-                 TIM_DIER_TIE | /* Trigger enable */
                  0;
     TIM1->CCR1 = 10000;
     TIM1->CCR3 = 20000;
@@ -190,14 +207,10 @@ void raddr_input_capture_init(void)
     TIM1->CR1 = tmp;
 
     /* We need to be the next to highest priority */
-    HAL_NVIC_SetPriority(TIM1_CC_IRQn, 1, 0);
-    HAL_NVIC_SetPriority(TIM1_BRK_UP_TRG_COM_IRQn, 1, 0);
-
-    /* Enable our interrupts */
-    HAL_NVIC_EnableIRQ(TIM1_BRK_UP_TRG_COM_IRQn);
+    HAL_NVIC_SetPriority(TIM1_CC_IRQn, PRIORITY_HIGH, 0);
     HAL_NVIC_EnableIRQ(TIM1_CC_IRQn);
 
-#if defined(USE_SEMIHOSTING) && defined(RADDR_INPUT_DEBUG)
+#if defined(RADDR_INPUT_DEBUG)
     printf("Input divider %ld %ld"
             " %lx"
             " %lx"
