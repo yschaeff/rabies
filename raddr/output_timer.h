@@ -5,10 +5,10 @@
 
 void raddr_output_init(void);
 
-#undef RADDR_OUTPUT_DEBUG
 #if defined(USE_SEMIHOSTING)
-//#define RADDR_OUTPUT_DEBUG
+#define RADDR_OUTPUT_DEBUG
 #endif
+#undef RADDR_OUTPUT_DEBUG
 
 /* Just run it at maximum speed for maximum resolution */
 #define TIMER_DESIRED_BASE_TICK     (1.0/HSI_VALUE)
