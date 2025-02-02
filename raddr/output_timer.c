@@ -5,7 +5,7 @@
 #include "output_timer.h"
 //
 //TODO get these from a header file
-#define LED_PIN     GPIO_PIN_4
+#define KEY_DATA_OUT_PIN     GPIO_PIN_4
 
 //We need to pick the tick_per_clock as low as reasonably possible.
 //But is also defines the upper time:
@@ -159,7 +159,7 @@ void TIM16_IRQHandler(void)
     /* BSRR => Bit Set Reset Register.
      * Lower 16 bit: Write 1 to set I/O
      * Upper 16 bit: Write 1 to clear I/O */
-    GPIOA->BSRR = bit ? LED_PIN : LED_PIN << 16;
+    GPIOA->BSRR = bit ? KEY_DATA_OUT_PIN : KEY_DATA_OUT_PIN << 16;
 
     /* Last part is writing the timer registers */
 

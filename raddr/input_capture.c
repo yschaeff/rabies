@@ -7,20 +7,22 @@
 //For 24Mhz this is 41ns
 #define INPUT_TIMER_ACTUAL_TIME_PER_TICK (1.0 * INPUT_TIMER_DIVIDER / HSI_VALUE)
 #define us_to_tick(_us)   ((uint32_t)(_us * (1e-6 / INPUT_TIMER_ACTUAL_TIME_PER_TICK)))
+//Multiply by 1million to ensure we have enough range. HSI is normally 24Mhz.
+#define tick_to_ns(_ti)   ((1000 * _ti)/ (((HSI_VALUE) / INPUT_TIMER_DIVIDER) / 1000))
 
-#define T0H_TICKS   us_to_tick(T0H)
-#define T0L_TICKS   us_to_tick(T0L)
-#define T1H_TICKS   us_to_tick(T1H)
-#define T1L_TICKS   us_to_tick(T1L)
+#define TRESET_TICKS    us_to_tick(TRESET)
+#define T0H_TICKS       us_to_tick(T0H)
+#define T0L_TICKS       us_to_tick(T0L)
+#define T1H_TICKS       us_to_tick(T1H)
+#define T1L_TICKS       us_to_tick(T1L)
 
-#define MAX(_a,_b) (_a > _b ? _a : _b)
-#define MIN(_a,_b) (_a < _b ? _a : _b)
-#define UPPER_LIMIT ((uint32_t)(MAX(T0L_TICKS * 1.2, T0H_TICKS * 1.2)))
-#define LOWER_LIMIT ((uint32_t)(MIN(T0L_TICKS * 0.8, T0H_TICKS * 0.8)))
+//#define MAX(_a,_b) (_a > _b ? _a : _b)
+//#define MIN(_a,_b) (_a < _b ? _a : _b)
+//#define UPPER_LIMIT ((uint32_t)(MAX(T0L_TICKS * 1.2, T0H_TICKS * 1.2)))
+//#define LOWER_LIMIT ((uint32_t)(MIN(T0L_TICKS * 0.8, T0H_TICKS * 0.8)))
 
 #define FIFO_SIZE 16 //Must be a power of 2
 _Static_assert((FIFO_SIZE & (FIFO_SIZE - 1)) == 0 , "FIFO_SIZE needs to be a power of 2 to make access FAST");
-_Static_assert(T0H > T1H, "T0H must be lower than T1H to let this code work");
 
 /* The fifo to hold the barks'n'howls we received */
 static struct {
