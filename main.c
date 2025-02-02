@@ -132,7 +132,7 @@ void flip()
     memset(key_states_write, 0, W);
 }
 
-void setup()
+static void setup()
 {
     stdio_init_all();
     board_init(); //something for tinyUSB
@@ -145,10 +145,12 @@ void setup()
     //PIO 1 handles the rabies
     //statemachine 0 listen to howls and pushed to RX queue
     uint rb_listen_addr = pio_add_program(RB_PIO, &howl_listen_program);
-    howl_listen_init(RB_PIO, RB_LISTEN_SM, rb_listen_addr, KEY_IN_PIN, 500);
+    //1_000_000 Hz => 1uS
+    howl_listen_init(RB_PIO, RB_LISTEN_SM, rb_listen_addr, KEY_IN_PIN, 1000 * 1000);
     //statemachine 1 initiates cry when data in TX queue
     uint rb_howl_addr = pio_add_program(RB_PIO, &howl_start_program);
-    howl_start_program_init(RB_PIO, RB_HOWL_SM, rb_howl_addr, KEY_OUT_PIN, 500);
+    howl_start_program_init(RB_PIO, RB_HOWL_SM, rb_howl_addr, KEY_OUT_PIN, 1000 * 1000);
+
 }
 
 bool statemachine(bool bit, bool reset)
@@ -208,7 +210,7 @@ int main()
             idle = true;
             (void)statemachine(0, true);
             t_watch_dog = t_now + WATCH_DOG_PATIENCE;
-            printf("\nout of sync?");
+            //printf("\nout of sync?");
         }
 
         // process events and initiate new howl
@@ -217,12 +219,12 @@ int main()
             flip();
             pio_sm_put_blocking(RB_PIO, RB_HOWL_SM, 1);
             t_watch_dog = t_now + WATCH_DOG_PATIENCE;
-            printf("\nhowl ");
+            //printf("\nhowl ");
         }
 
         if (!pio_sm_is_rx_fifo_empty(RB_PIO, RB_LISTEN_SM)) {
             uint32_t b = pio_sm_get(RB_PIO, RB_LISTEN_SM);
-            printf("%d", b&1);
+            //printf("%d", b&1);
             idle = statemachine(b&1, false);
             t_watch_dog = t_now + WATCH_DOG_PATIENCE;
         }

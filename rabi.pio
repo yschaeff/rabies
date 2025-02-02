@@ -1,6 +1,14 @@
+;All timing is in us for now
+.define public TRESET (64/2)
+.define public TTOTAL 20
+.define public T0H 6
+.define public T1H 10
+.define public T0L (TTOTAL - T0H)
+.define public T1L (TTOTAL - T1H)
+
 .program howl_listen
 .wrap_target
-    wait 1 pin 0    [4] ; wait for state high then delay for sampletime (4 instructions)
+    wait 1 pin 0    [(T0H + T0L) / 2]; wait for state high then delay for sampletime
     in pins, 1          ; shift 1 pinstate in ISR, autopush will put it in the fifo
     wait 0 pin 0        ; Wait for state low. Then repeat.
 .wrap
@@ -8,10 +16,13 @@
 .program howl_start
 .wrap_target
     pull
-    set pins, 1    [10] ;
-    set pins, 0    [10] ;
-    set pins, 1    [10] ;
-    set pins, 0    [10] ;
+    set pins, 1    [TRESET - 1] ; 
+    set pins, 1    [TRESET - 1] ; 
+    set pins, 0    [TRESET - 1] ; 
+    set pins, 1    [T1H - 1] ; 
+    set pins, 0    [T1L - 1] ;
+    set pins, 1    [T1H - 1] ;
+    set pins, 0    [T1L - 1] ;
 .wrap
 
 % c-sdk {
@@ -55,7 +66,7 @@ howl_start_program_init(PIO pio, uint sm, uint offset, uint pin, float freq)
     /*sm_config_set_fifo_join(&c, PIO_FIFO_JOIN_TX);*/
 
     /*Sample at 2 ms*/
-    int cycles_per_bit = 2;
+    int cycles_per_bit = 1;
     float div = clock_get_hz(clk_sys) / (freq * cycles_per_bit);
     sm_config_set_clkdiv(&c, div);
 
