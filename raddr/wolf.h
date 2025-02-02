@@ -5,15 +5,13 @@
 #include <stdint.h>
 #include "output_timer.h"
 
-/* Time in uS */
-#define T0L 14
-#define T0H 27
-#define T1L T0H
-#define T1H T0L
-#define STFU T0H
-// if it is quit for longer than 4 bits consider it a reset
-//This is in ms!
-#define TRES (2) //(4*(T0L + T0H))
+/* Times in uS */
+#define TRESET 64 //Limit by the pico pi code.
+#define TTOTAL 20 //Total duration of every 'bit'
+#define T0H 6
+#define T1H 10
+#define T0L (TTOTAL - T0H)
+#define T1L (TTOTAL - T1H)
 
 #define K 1
 
@@ -33,31 +31,15 @@ enum states {
     S_BARK        //copy frame
 };
 
-extern void gpio_set(int);
-extern int gpio_get(void);
-extern void sleep_ns(int);
 extern bool K_BINARY_INPUTS[K];
-extern void update_input(void);
 
 /**
- * When using bark, at end of bit do not sleep. This is useful if passing
- * along messages from one RABI to another. At the end of forwarding the
- * bit we are ready to receive more data. Waiting the full bit length might
- * cause us to miss an event or act to late.
- */
-//static inline void bark(int bit)
-//{
-//    uint16_t tmo = bit ? us_to_timer_tick(T1H) : us_to_timer_tick(T0H);
-//    raddr_output_schedule(1, tmo);
-//}
-
-/**
- * like a bark but now wait for a full bit. This is useful when sending multiple
- * bits in a sequence.
+ * bark a full bit. This is useful for sending a single bit
  */
 static inline void bark_full(int bit)
 {
     uint16_t tmo;
+    //TODO should we use the bulk variant here?
     tmo = bit ? us_to_timer_tick(T1H) : us_to_timer_tick(T0H);
     raddr_output_schedule(1, tmo);
     tmo = bit ? us_to_timer_tick(T1L) : us_to_timer_tick(T0L);

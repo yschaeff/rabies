@@ -5,15 +5,16 @@
 #include <stdio.h>
 
 #include "wolf.h"
+#include "pack.h"
 
 #define DBG 0
 
-void join_cry(int bit, uint32_t elapsed)
+void join_cry(int bit, enum CryCommand cmd)
 {
     static int state = S_REST;
     static int bark_i = K;
 
-    if (elapsed > TRES) {
+    if (cmd == CRY_RESET) {
         state = S_REST;
     }
 
@@ -37,7 +38,7 @@ void join_cry(int bit, uint32_t elapsed)
                 break; //Wait for next bit
             }
             bark_full(BARK);
-            update_input();
+            //update_input();
             for (int k=0; k<K; k++) {
                 bark_full(K_BINARY_INPUTS[k]);
             }
@@ -67,17 +68,3 @@ void join_cry(int bit, uint32_t elapsed)
     }
 }
 
-/**
- * Initiate cry of the pack, To be used by Akela only
- */
-void rally_pack()
-{
-    // Call the statemachine with a GROWL, pick a large elapsed
-    // time so we know the statemachine is reset
-    join_cry(1, TRES*2);
-    //sleep_ns(T1L);
-    //Sleep some inter-bit time
-    sleep_ns(STFU);
-    //Actual elapsed time not important as long as it is < TRES
-    join_cry(1, 0);
-}

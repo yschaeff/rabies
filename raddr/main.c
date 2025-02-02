@@ -24,35 +24,14 @@
 #define KEY_OUT_PIN GPIO_PIN_4
 
 /**
- * These functions need to be implemented by us, They are called
+ * These need to be implemented by us, They are used
  * by the pack.c code
  */
-/* start */
-int gpio_get(void)
-{
-    return HAL_GPIO_ReadPin(GPIOA, KEY_IN_PIN);
-}
-
-void gpio_set(int bit)
-{
-    HAL_GPIO_WritePin(GPIOA, KEY_OUT_PIN, bit);
-}
-
-void sleep_ns(int delay_ns)
-{
-    HAL_Delay(delay_ns); //TODO these are ms
-}
-
 bool K_BINARY_INPUTS[K] = {0};
 
-void update_input(void)
-{
-    // We update the in the switch interrupt handler so this is a NO-OP
-}
-/* end */
 
 
-void cfg_pin(uint32_t pin, uint32_t mode, uint32_t pull)
+static void cfg_pin(uint32_t pin, uint32_t mode, uint32_t pull)
 {
     GPIO_InitTypeDef pin_cfg;
 
@@ -61,7 +40,7 @@ void cfg_pin(uint32_t pin, uint32_t mode, uint32_t pull)
     pin_cfg.Pull  = pull;
     pin_cfg.Speed = GPIO_SPEED_FREQ_HIGH;
     //MEGA HACK SMELLY CODE.
-    //We only specify Alternate Function for one pin. and so this works.
+    //We only specify mode = Alternate Function for one pin. and so this works.
     //Do not do try this at home.
     pin_cfg.Alternate = GPIO_AF13_TIM1;
     HAL_GPIO_Init(GPIOA, &pin_cfg);
@@ -112,62 +91,47 @@ int main(void)
     raddr_output_init();
     raddr_input_capture_init();
 
-
-    /*
-    // if switch pressed at boot become AKELA.
-    int akela = !HAL_GPIO_ReadPin(GPIOA, SWC_PIN);
-
-    if (akela) while (1) {
-        rally_pack(); //wakeup pack and bark own state
-        // Stop Yapping for a while
-#define W 9
-        sleep_ns((T1H+T1L+STFU)*(W*K+W+3) + 100);
-#undef W
-    }
-    */
-
     uint32_t t_bounce = 0;
+
+#ifdef WOUTER_DEBUG
+    /* Loop that assumes input is connected to the output and then
+     * print the difference with expected received value.
+     * For a whole range of timings */
     uint32_t t_last_tx = 0;
     uint32_t t_last_tx_duration = 1000;
     bool use_bulk = true;
+
+    /* Number of bits to measure */
     const int bits_to_send = 3;
+
     while (1) {
         uint32_t now = HAL_GetTick();
-
-        if (!receive_bits_available()) {
-            // if no data, take the time to update inputs
-            bool input = !HAL_GPIO_ReadPin(GPIOA, SWC_PIN);
-            // if input changed only set it when done bouncing
-            if (input^K_BINARY_INPUTS[0] && t_bounce < now) {
-                K_BINARY_INPUTS[0] = input;
-                t_bounce = now + 2; // only accept change in 2ms
+        /* Do test once every second */
+        if (now - t_last_tx > 1000) {
+            //uint32_t tmo = us_to_timer_tick(T1H);
+            //printf("\r\n====\r\nOutputting %ld\r\n", t_last_tx_duration);
+            t_last_tx_duration += 10;
+            if (t_last_tx_duration > 480) {
+                t_last_tx_duration = 240;
             }
-            if (now - t_last_tx > 1000) {
-                //uint32_t tmo = us_to_timer_tick(T1H);
-                //printf("\r\n====\r\nOutputting %ld\r\n", t_last_tx_duration);
-                t_last_tx_duration += 10;
-                if (t_last_tx_duration > 480) {
-                    t_last_tx_duration = 240;
+            if (use_bulk) {
+                raddr_output_bulk_begin();
+                for(int i = 0; i < bits_to_send; i++) {
+                    raddr_output_bulk_schedule(1, t_last_tx_duration);
+                    raddr_output_bulk_schedule(0, t_last_tx_duration);
                 }
-                if (use_bulk) {
-                    raddr_output_bulk_begin();
-                    for(int i = 0; i < bits_to_send; i++) {
-                        raddr_output_bulk_schedule(1, t_last_tx_duration);
-                        raddr_output_bulk_schedule(0, t_last_tx_duration);
-                    }
-                    raddr_output_bulk_end();
-                }
-                else {
-                    for(int i = 0; i < bits_to_send; i++) {
-                        raddr_output_schedule(1, t_last_tx_duration);
-                        raddr_output_schedule(0, t_last_tx_duration);
-                    }
-                }
-                t_last_tx = now;
+                raddr_output_bulk_end();
             }
-            continue;
+            else {
+                for(int i = 0; i < bits_to_send; i++) {
+                    raddr_output_schedule(1, t_last_tx_duration);
+                    raddr_output_schedule(0, t_last_tx_duration);
+                }
+            }
+            t_last_tx = now;
         }
 
+        /* Collect all the transmitted bits */
         int cnt = receive_bits_available();
         if (cnt != bits_to_send)
             continue;
@@ -182,16 +146,46 @@ int main(void)
             if (diff > 3)
                 printf("%ld - %ld = %d\r\n", t, t_last_tx_duration, diff);
         }
-        continue;
+    }
+#endif
+
+    /* Main loop */
+    while (1) {
+        uint32_t now = HAL_GetTick();
+
+        if (!receive_bits_available()) {
+            // if no data, take the time to update inputs
+            bool input = !HAL_GPIO_ReadPin(GPIOA, SWC_PIN);
+            // if input changed only set it when done bouncing
+            if (input^K_BINARY_INPUTS[0] && t_bounce < now) {
+                K_BINARY_INPUTS[0] = input;
+                t_bounce = now + 2; // only accept change in 2ms
+            }
+            continue;
+        }
 
         int bit = receive_bit();
 
-        if ( bit >= 0 ) {
-            join_cry(bit, 0);
-        } else {
-            /* The input capture got confused, or a forced reset is applied */
-            printf("Received RESET!\r\n");
-            join_cry(!GROWL, ~0);
+        switch(bit) {
+            case 0 ... 1:
+                join_cry(bit, CRY_OKAY);
+                break;
+            case -1:
+                //Reset
+                /* The input capture got confused, or a forced reset is applied */
+#if defined USE_SEMIHOSTING
+                //printf("Received RESET!\r\n");
+#endif
+                join_cry(!GROWL, CRY_RESET);
+                raddr_output_schedule(1, us_to_timer_tick(TRESET));
+                raddr_output_schedule(0, us_to_timer_tick(TRESET / 2));
+                break;
+
+            default:
+#if defined USE_SEMIHOSTING
+                printf("Received unknown bit!\r\n");
+#endif
+                break;
         }
     }
 }

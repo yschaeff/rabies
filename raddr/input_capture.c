@@ -8,7 +8,7 @@
 #define INPUT_TIMER_ACTUAL_TIME_PER_TICK (1.0 * INPUT_TIMER_DIVIDER / HSI_VALUE)
 #define us_to_tick(_us)   ((uint32_t)(_us * (1e-6 / INPUT_TIMER_ACTUAL_TIME_PER_TICK)))
 //Multiply by 1million to ensure we have enough range. HSI is normally 24Mhz.
-#define tick_to_ns(_ti)   ((1000 * _ti)/ (((HSI_VALUE) / INPUT_TIMER_DIVIDER) / 1000))
+#define tick_to_ns(_ti)   ((1000000 * _ti)/ (((HSI_VALUE) / INPUT_TIMER_DIVIDER) / 1000))
 
 #define TRESET_TICKS    us_to_tick(TRESET)
 #define T0H_TICKS       us_to_tick(T0H)
@@ -37,7 +37,8 @@ static bool fifo_is_full(void)
     return fifo.size >= FIFO_SIZE;
 }
 
-/* To be used by the main thread (or any other single thread) */
+/* To be used by the main thread (or any other single thread).
+ * Returns the number of bits received */
 uint32_t receive_bits_available(void)
 {
     return fifo.size;
@@ -60,46 +61,46 @@ uint32_t received_bits_read(void)
 
 
 /* Only to be called after receive_bits_available returned true!
- * Return <0 if the length of the receive pulse is not understood.
- * The received bit otherwise. */
+ * Returns:
+ *  -2 for error
+ *  -1 for reset
+ *   0 for a zero bit
+ *   1 for a one bit
+ */
 int receive_bit(void)
 {
     uint32_t d = received_bits_read();
-    uint16_t tmo = d & 0xFFFF;
+    uint16_t t = d & 0xFFFF;
 #if defined(RADDR_INPUT_DEBUG)
-    uint16_t status = (d >> 16) & 0xFFFF;
-    printf("tmo %d (%dnS) status %x "
-            "%ld %ld %ld %ld" "\r\n",
-            tmo, 1000 * tmo / 24, status,
-            LOWER_LIMIT,
-            UPPER_LIMIT,
+    printf("t %d (%ldnS) "
+            "%ld %ld %ld" "\r\n",
+            t, tick_to_ns(t),
             T1H_TICKS,
-            T0H_TICKS
+            T0H_TICKS,
+            TRESET_TICKS
             );
 #endif
 
-    /* TODO maybe we can use case '...' magic here to define the range */
-    //We distinguish a zero and one by the length of the pulse.
-    //Not a valid bit send reset?
-    if (tmo >= UPPER_LIMIT) {
-        //printf("TMO to large %d >= %ld", tmo, UPPER_LIMIT);
-        return -1; //error
+    /* TODO define a proper margin. 10 ticks seems to work, more is better I guess */
+    switch (t) {
+        /* TO*/
+        case T0H_TICKS - 10 ... T0H_TICKS + 10:
+            return 0;
+        case T1H_TICKS - 10 ... T1H_TICKS + 10:
+            return 1;
+        case TRESET_TICKS - 10 ... TRESET_TICKS + 10:
+            return -1; //Reset
+        default:
+#if defined(RADDR_INPUT_DEBUG)
+            printf("Unknown pulse length %d\r\n", t);
+#endif
+            return -2; //panic, unknown byte length?
+
     }
-    else if (tmo < LOWER_LIMIT) {
-        //printf("TMO to small %d < %ld", tmo, LOWER_LIMIT);
-        return -1; //error
-    }
-    else if (tmo >= T0H_TICKS) {
-        return 0;
-    } else if (tmo > T1H_TICKS) {
-        return 1;
-    }
-    //printf("Wouter je logica is beroerd!\r\n");
-    return -1; //error
 }
 
 /* Only to be used by the ISR! */
-static void fifo_write(uint32_t tmo)
+static inline void fifo_write(uint32_t tmo)
 {
     uint32_t idx = fifo.write;
     if (fifo_is_full()) {
@@ -117,15 +118,20 @@ static void fifo_write(uint32_t tmo)
 /* The ISR for TIM1 compare */
 void TIM1_CC_IRQHandler(void)
 {
-    uint16_t tmo = TIM1->CCR2;
-    uint16_t status = TIM1->SR;
+    uint32_t tmo = TIM1->CCR2;
 
     /* Clear/acknowledge pending interrupts */
     TIM1->SR = 0;
 
-    fifo_write(status << 16 | tmo);
+#if defined(RADDR_INPUT_DEBUG)
+    /* Add status for debug purpose */
+    uint32_t status = TIM1->SR;
+    tmo |= status << 16;
+#endif
+    fifo_write(tmo);
 
 #if 0 && defined(RADDR_INPUT_DEBUG)
+    /* Printing in an ISR is very bad idea! */
     printf(
             "CCR1: %ld \r\n"
             "CCR2: %d \r\n"
