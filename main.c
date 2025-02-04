@@ -210,7 +210,7 @@ int main()
             idle = true;
             (void)statemachine(0, true);
             t_watch_dog = t_now + WATCH_DOG_PATIENCE;
-            //printf("\nout of sync?");
+            printf("\nout of sync?");
         }
 
         // process events and initiate new howl
@@ -219,14 +219,15 @@ int main()
             flip();
             pio_sm_put_blocking(RB_PIO, RB_HOWL_SM, 1);
             t_watch_dog = t_now + WATCH_DOG_PATIENCE;
-            //printf("\nhowl ");
+            printf("\nhowl ");
         }
 
         if (!pio_sm_is_rx_fifo_empty(RB_PIO, RB_LISTEN_SM)) {
             uint32_t b = pio_sm_get(RB_PIO, RB_LISTEN_SM);
-            //printf("%d", b&1);
+            printf("%d", b&1);
             idle = statemachine(b&1, false);
             t_watch_dog = t_now + WATCH_DOG_PATIENCE;
+
         }
     }
 }
