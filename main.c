@@ -27,7 +27,7 @@
 #define K 1             /* Number if inputs per RABI */
 #define W 9             /* Number of RABIs */
 
-uint8_t key_mapping[W] = { HID_KEY_A, HID_KEY_B, HID_KEY_C, HID_KEY_D, HID_KEY_E, HID_KEY_F, HID_KEY_P, HID_KEY_I, HID_KEY_O };
+static const uint8_t key_mapping[W] = { HID_KEY_A, HID_KEY_B, HID_KEY_C, HID_KEY_D, HID_KEY_E, HID_KEY_F, HID_KEY_P, HID_KEY_I, HID_KEY_O };
 
 #define WATCH_DOG_PATIENCE 100000  /* uS after which the watchdog intervenes */
 
