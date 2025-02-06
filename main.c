@@ -25,9 +25,17 @@
 #define RB_HOWL_SM 1
 
 #define K 1             /* Number if inputs per RABI */
-#define W 9             /* Number of RABIs */
+#define W 25            /* Number of RABIs */
 
-static const uint8_t key_mapping[W] = { HID_KEY_A, HID_KEY_B, HID_KEY_C, HID_KEY_D, HID_KEY_E, HID_KEY_F, HID_KEY_P, HID_KEY_I, HID_KEY_O };
+#define KEYMAP_LEN 26
+static const uint8_t key_mapping[KEYMAP_LEN] = {
+    HID_KEY_A, HID_KEY_B, HID_KEY_C, HID_KEY_D, HID_KEY_E,
+    HID_KEY_F, HID_KEY_G, HID_KEY_H, HID_KEY_I, HID_KEY_J,
+    HID_KEY_K, HID_KEY_L, HID_KEY_L, HID_KEY_M, HID_KEY_N,
+    HID_KEY_O, HID_KEY_P, HID_KEY_Q, HID_KEY_S, HID_KEY_T,
+    HID_KEY_U, HID_KEY_V, HID_KEY_W, HID_KEY_X, HID_KEY_Y,
+    HID_KEY_Z
+};
 
 #define WATCH_DOG_PATIENCE 100000  /* uS after which the watchdog intervenes */
 
@@ -256,7 +264,7 @@ void hid_task(absolute_time_t t_now)
 
     for (int i = 0, j = 0; i < W; i++) {
         if (key_states_read[i]) {
-            pressed_keys[j++] = key_mapping[i];
+            pressed_keys[j++] = key_mapping[i%KEYMAP_LEN];
         }
         if (j >= 6) break;
     }
