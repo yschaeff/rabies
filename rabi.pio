@@ -20,10 +20,10 @@ start:
    wait 0 pin 0         ; wait for a 0
    wait 1 pin 0         ; wait for a 1, aka rising edge
 timer:
-   jmp y-- test;        ; decrement if > 0 goto test
+   jmp y-- test         ; decrement if > 0 goto test
    jmp timerstop        ; if y == 0 jump to timerstop (fail to detect falling. should not happen??)
 test:
-   jmp pin timer;       ; if pin is still high. jump back to timer
+   jmp pin timer        ; if pin is still high. jump back to timer
 timerstop:
    mov ISR ~y
    push noblock
@@ -31,14 +31,22 @@ timerstop:
 
 .program howl_start
 .wrap_target
-    pull
-    set pins, 1    [TRESET - 1] ; 
-    set pins, 1    [TRESET - 1] ; 
-    set pins, 0    [TRESET - 1] ; 
-    set pins, 1    [T1H - 1] ; 
-    set pins, 0    [T1L - 1] ;
-    set pins, 1    [T1H - 1] ;
-    set pins, 0    [T1L - 1] ;
+start:
+    pull block
+    out x 2
+    jmp x-- non_zero
+    set pins, 1    [T0H - 1]    ; Write 0
+    set pins, 0    [T0L - 1]
+    jmp start
+non_zero:
+    jmp x-- do_reset
+    set pins, 1    [T1H - 1]    ; Write 1
+    set pins, 0    [T1L - 1]
+    jmp start
+do_reset:
+    set pins, 1    [TRESET - 1] ; Write reset
+    set pins, 1    [TRESET - 1]
+    set pins, 0    [TRESET - 1]
 .wrap
 
 % c-sdk {

@@ -267,6 +267,7 @@ int main()
             idle = false;
             flip();
             pio_sm_put_blocking(RB_PIO, RB_HOWL_SM, 1);
+            pio_sm_put_blocking(RB_PIO, RB_HOWL_SM, 1);
             t_watch_dog = t_now + WATCH_DOG_PATIENCE;
             printf("\nhowl ");
         }
