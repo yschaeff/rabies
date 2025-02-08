@@ -37,7 +37,8 @@ static const uint8_t key_mapping[KEYMAP_LEN] = {
     HID_KEY_Z
 };
 
-#define WATCH_DOG_PATIENCE 100000  /* uS after which the watchdog intervenes */
+#define WATCH_DOG_PATIENCE (100 * 1000)  /* uS after which the watchdog intervenes */
+//#define WATCH_DOG_PATIENCE (1000 * 1000)  /* uS after which the watchdog intervenes */
 
 void hid_task(absolute_time_t t_now);
 
@@ -140,6 +141,10 @@ void flip()
     memset(key_states_write, 0, W);
 }
 
+/* Frequency of the input counter. Keep above 24Mhz to be on par with Rabi.
+ * Also keep an integer multiple of 125Mhz (FCPU) */
+#define FREQ_RB_COUNT   (25 * 1000 * 1000)
+
 static void setup()
 {
     stdio_init_all();
@@ -151,10 +156,10 @@ static void setup()
     ws2812_program_init(WS_PIO, WS_SM, ws_addr, LED_OUT_PIN, 800000, false);
 
     //PIO 1 handles the rabies
-    //statemachine 0 listen to howls and pushed to RX queue
-    uint rb_listen_addr = pio_add_program(RB_PIO, &howl_listen_program);
-    //1_000_000 Hz => 1uS
-    howl_listen_init(RB_PIO, RB_LISTEN_SM, rb_listen_addr, KEY_IN_PIN, 1000 * 1000);
+    //25_000_000 Hz => 40ns
+    uint rb_count_addr = pio_add_program(RB_PIO, &howl_count_program);
+    howl_count_init(RB_PIO, RB_LISTEN_SM, rb_count_addr, KEY_IN_PIN, FREQ_RB_COUNT);
+
     //statemachine 1 initiates cry when data in TX queue
     uint rb_howl_addr = pio_add_program(RB_PIO, &howl_start_program);
     howl_start_program_init(RB_PIO, RB_HOWL_SM, rb_howl_addr, KEY_OUT_PIN, 1000 * 1000);
@@ -191,6 +196,42 @@ bool statemachine(bool bit, bool reset)
         case 3:                     //end ow howl
             state = 0;
             return bit;
+    }
+}
+
+
+#define us_to_tick(_us)   ((uint32_t)(_us * (1e-6 / (2.0 / FREQ_RB_COUNT))))
+#define tick_to_ns(_ti)   ((uint32_t)(_ti * (2 * 1000 / ( FREQ_RB_COUNT / 1000000))))
+
+#define T1US_IN_TICKS   us_to_tick(1)
+#define TRESET_TICKS    us_to_tick(TRESET * 2)
+#define T0H_TICKS       us_to_tick(T0H)
+#define T0L_TICKS       us_to_tick(T0L)
+#define T1H_TICKS       us_to_tick(T1H)
+#define T1L_TICKS       us_to_tick(T1L)
+/* Only to be called after receive_bits_available returned true!
+ * Returns:
+ *  -2 for error
+ *  -1 for reset
+ *   0 for a zero bit
+ *   1 for a one bit
+ */
+static int timing_to_bit(uint32_t t)
+{
+    /* TODO define a proper margin. 10 ticks seems to work, more is better I guess */
+    printf("pulse length %d %d\r\n", t, tick_to_ns(t));
+    switch (t) {
+        /* TO*/
+        case T0H_TICKS - 10 ... T0H_TICKS + 10:
+            return 0;
+        case T1H_TICKS - 10 ... T1H_TICKS + 10:
+            return 1;
+        case (TRESET_TICKS - 3 * T1US_IN_TICKS ) ... (TRESET_TICKS + 3 * T1US_IN_TICKS):
+            return -1; //Reset
+        default:
+            printf("Unknown pulse length %d %d\r\n", t, tick_to_ns(t));
+            return -2; //panic, unknown byte length?
+
     }
 }
 
@@ -232,10 +273,10 @@ int main()
 
         if (!pio_sm_is_rx_fifo_empty(RB_PIO, RB_LISTEN_SM)) {
             uint32_t b = pio_sm_get(RB_PIO, RB_LISTEN_SM);
-            printf("%d", b&1);
-            idle = statemachine(b&1, false);
+            int res = timing_to_bit(b);
+            if (res >= 0)
+                idle = statemachine(res, false);
             t_watch_dog = t_now + WATCH_DOG_PATIENCE;
-
         }
     }
 }

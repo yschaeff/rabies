@@ -13,6 +13,22 @@
     wait 0 pin 0        ; Wait for state low. Then repeat.
 .wrap
 
+.program howl_count
+.wrap_target
+start:
+   mov y ~NULL          ; start with 0xFFFFFFFF         
+   wait 0 pin 0         ; wait for a 0
+   wait 1 pin 0         ; wait for a 1, aka rising edge
+timer:
+   jmp y-- test;        ; decrement if > 0 goto test
+   jmp timerstop        ; if y == 0 jump to timerstop (fail to detect falling. should not happen??)
+test:
+   jmp pin timer;       ; if pin is still high. jump back to timer
+timerstop:
+   mov ISR ~y
+   push noblock
+.wrap                    ; start again
+
 .program howl_start
 .wrap_target
     pull
@@ -42,9 +58,34 @@ howl_listen_init(PIO pio, uint sm, uint offset, uint inpin, float freq)
 
     sm_config_set_fifo_join(&c, PIO_FIFO_JOIN_RX);
 
-    /*Sample at 2 ms*/
+    /*Sample at 1 us */
     int cycles_per_bit = 1;
     float div = clock_get_hz(clk_sys) / (freq * cycles_per_bit);
+    sm_config_set_clkdiv(&c, div);
+
+    pio_sm_init(pio, sm, offset, &c);
+    pio_sm_set_enabled(pio, sm, true);
+}
+%}
+
+% c-sdk {
+#include "hardware/clocks.h"
+
+static inline void
+howl_count_init(PIO pio, uint sm, uint offset, uint inpin, float freq)
+{
+    pio_gpio_init(pio, inpin);
+
+    pio_sm_set_consecutive_pindirs(pio, sm, inpin, 1, false);
+
+    pio_sm_config c = howl_count_program_get_default_config(offset);
+
+    sm_config_set_in_pins(&c, inpin);
+    sm_config_set_jmp_pin(&c, inpin);
+
+    sm_config_set_fifo_join(&c, PIO_FIFO_JOIN_RX);
+
+    float div = clock_get_hz(clk_sys) / freq;
     sm_config_set_clkdiv(&c, div);
 
     pio_sm_init(pio, sm, offset, &c);
