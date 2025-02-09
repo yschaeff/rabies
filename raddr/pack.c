@@ -16,6 +16,7 @@ void join_cry(int bit, enum CryCommand cmd)
 
     if (cmd == CRY_RESET) {
         state = S_REST;
+        return;
     }
 
     switch (state) {
