@@ -10,6 +10,7 @@
 //Multiply by 1million to ensure we have enough range. HSI is normally 24Mhz.
 #define tick_to_ns(_ti)   ((1000000 * _ti)/ (((HSI_VALUE) / INPUT_TIMER_DIVIDER) / 1000))
 
+#define T1US_IN_TICKS   us_to_tick(1)
 #define TRESET_TICKS    us_to_tick(TRESET)
 #define T0H_TICKS       us_to_tick(T0H)
 #define T0L_TICKS       us_to_tick(T0L)
@@ -88,7 +89,7 @@ int receive_bit(void)
             return 0;
         case T1H_TICKS - 10 ... T1H_TICKS + 10:
             return 1;
-        case TRESET_TICKS - 10 ... TRESET_TICKS + 10:
+        case (TRESET_TICKS - 3 * T1US_IN_TICKS ) ... (TRESET_TICKS + 3 * T1US_IN_TICKS):
             return -1; //Reset
         default:
 #if defined(RADDR_INPUT_DEBUG)
