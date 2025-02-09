@@ -38,12 +38,25 @@ extern bool K_BINARY_INPUTS[K];
  */
 static inline void bark_full(int bit)
 {
-    uint16_t tmo;
-    //TODO should we use the bulk variant here?
-    tmo = bit ? us_to_timer_tick(T1H) : us_to_timer_tick(T0H);
-    raddr_output_schedule(1, tmo);
-    tmo = bit ? us_to_timer_tick(T1L) : us_to_timer_tick(T0L);
-    raddr_output_schedule(0, tmo);
+    if(bit) {
+        raddr_output_schedule(1, us_to_timer_tick(T1H));
+        raddr_output_schedule(0, us_to_timer_tick(T1L));
+    } else {
+        raddr_output_schedule(1, us_to_timer_tick(T0H));
+        raddr_output_schedule(0, us_to_timer_tick(T0L));
+    }
+}
+
+/**/
+static inline void bark_bulk(int bit)
+{
+    if(bit) {
+        raddr_output_bulk_schedule(1, us_to_timer_tick(T1H));
+        raddr_output_bulk_schedule(0, us_to_timer_tick(T1L));
+    } else {
+        raddr_output_bulk_schedule(1, us_to_timer_tick(T0H));
+        raddr_output_bulk_schedule(0, us_to_timer_tick(T0L));
+    }
 }
 
 #endif

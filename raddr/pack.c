@@ -38,10 +38,11 @@ void join_cry(int bit, enum CryCommand cmd)
                 state = S_BARK; //
                 break; //Wait for next bit
             }
-            bark_full(BARK);
+            raddr_output_bulk_begin();
+            bark_bulk(BARK);
             //update_input();
             for (int k=0; k<K; k++) {
-                bark_full(K_BINARY_INPUTS[k]);
+                bark_bulk(K_BINARY_INPUTS[k]);
             }
             if (DBG) printf("goto HOWL\r\n");
             state = S_HOWL; // not really needed
@@ -51,10 +52,11 @@ void join_cry(int bit, enum CryCommand cmd)
         case S_HOWL:
             if (DBG) printf("HOWL\r\n");
             //Maybe include parity bit?
-            bark_full(GROWL); //wake up next with growl
-            bark_full(HOWL); //Howl, so next will also go to S_HOWL
+            bark_bulk(GROWL); //wake up next with growl
+            bark_bulk(HOWL); //Howl, so next will also go to S_HOWL
             if (DBG) printf("goto REST\r\n");
             state = S_REST; //we are the last. Get some rest.
+            raddr_output_bulk_end();
             break; //Wait for next bit
         case S_BARK:
             if (DBG) printf("BARK\r\n");
