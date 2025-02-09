@@ -152,13 +152,13 @@ void flip()
 /* Frequency of the input counter. Keep above 24Mhz to be on par with Rabi.
  * Also keep an integer multiple of 125Mhz (FCPU) */
 //TODO WFP FIX THIS
-/*#define FREQ_RB_COUNT   (25 * 1000 * 1000)*/
+#define FREQ_RB_COUNT   (25 * 1000 * 1000)
 // WARNING //
     // Since we do our timing below in us the maximum frequency is bound to
     // the number of instructions per tick (2). If we want to speed up the
     // statemachine we should do arithmetic with either ticks on ns. Not us.
 // WARNING //
-#define FREQ_RB_COUNT   (2 * 1000 * 1000)
+/*#define FREQ_RB_COUNT   (2 * 1000 * 1000)*/
 
 static void setup()
 {
@@ -220,8 +220,7 @@ bool statemachine(bool bit, bool reset)
 
 
 #define OPS_PER_TICK 2 //depends on howl_count program
-                       //
-#define us_to_tick(_us)   ((uint32_t)(_us / (1000000.0 * OPS_PER_TICK / FREQ_RB_COUNT)))
+#define us_to_tick(_us)   ((uint32_t)(_us * (1e-6 / ((float)OPS_PER_TICK / FREQ_RB_COUNT))))
 #define tick_to_ns(_ti)   ((uint32_t)(_ti * (OPS_PER_TICK * 1000 / ( FREQ_RB_COUNT / 1000000))))
 
 #define T1US_IN_TICKS   us_to_tick(1)
