@@ -239,12 +239,12 @@ bool statemachine(bool bit, bool reset)
 static int timing_to_bit(uint32_t t)
 {
     /* TODO define a proper margin. 10 ticks seems to work, more is better I guess */
-    printf("pulse length %d %d\r\n", t, tick_to_ns(t));
+    //printf("pulse length %d %d\r\n", t, tick_to_ns(t));
     switch (t) {
         /* TO*/
         case T0H_TICKS - 10 ... T0H_TICKS + 10:
             return 0;
-        case T1H_TICKS - 10 ... T1H_TICKS + 10:
+        case T1H_TICKS - 10 ... T1H_TICKS + 3 * T1US_IN_TICKS:
             return 1;
         case (TRESET_TICKS - 3 * T1US_IN_TICKS ) ... (TRESET_TICKS + 3 * T1US_IN_TICKS):
             return -1; //Reset
@@ -289,6 +289,7 @@ int main()
 {
     enum states {STATE_GOOD, STATE_COOLDOWN, STATE_RESET};
     int state;
+    int good_cnt = 0;
     absolute_time_t t_watch_dog = 0;
     absolute_time_t t_led_task = 0;
 
@@ -312,6 +313,10 @@ int main()
                 if (data == RESET_MSG) GOTO_COOLDOWN();       //unsolicited reset, someone must have panicked
                 if (data == ERROR_MSG) GOTO_COOLDOWN();  //now I'm panicking!
 
+                good_cnt++;
+                if( good_cnt % 10000 == 0){
+                    printf("Happy for %d\n", good_cnt);
+                }
                 if (statemachine(data, false)) {          //feed it to our statemachine
                     flip();
                     tud_task();                         // tinyusb device task
@@ -329,6 +334,10 @@ int main()
             // activity at all for at least WDT. Then we reset everyone
             // so we are all on the same page.
             case STATE_COOLDOWN:
+                if(good_cnt > 0) {
+                    printf("Good count is %d\n", good_cnt);
+                    good_cnt = 0;
+                }
                 set_leds_yellow();
                 if (t_now_us > t_watch_dog) GOTO_RESET(); //No yapping heard. Good. Do reset.
                 if (!DATA_READY()) break;                 //Everyone is still silent. Good
