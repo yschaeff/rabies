@@ -184,8 +184,8 @@ static void setup()
 //return:
 //-1 error, reset me!
 // 0 still busy, expecting more data. Feed me!
-// n done. Seen n rabies
-int statemachine(bool bit, bool reset)
+// 1 done. Seen n rabies
+int statemachine(bool bit, bool reset, int *n_rabies)
 {
     static uint input_id, wolf_id, state = 0;
 
@@ -215,7 +215,8 @@ int statemachine(bool bit, bool reset)
         case 1:                     //recv next header
             if (bit) {
                 state = 0;
-                return wolf_id+1; //return number of rabies spotted
+                *n_rabies = wolf_id+1;
+                return 1; //return number of rabies spotted
             }
             state = 2;
             input_id = K;           //we expect to rcv K bits from neighbor
@@ -276,7 +277,7 @@ static int timing_to_bit(uint32_t t)
 #define DATA_READY()     !pio_sm_is_rx_fifo_empty(RB_PIO, RB_LISTEN_SM)
 #define READ()           timing_to_bit(pio_sm_get(RB_PIO, RB_LISTEN_SM))
 #define WRITE(_bit)      pio_sm_put_blocking(RB_PIO, RB_HOWL_SM, _bit)
-#define SEND_RESET()     pio_sm_put_blocking(RB_PIO, RB_HOWL_SM, -1)
+#define SEND_RESET()     pio_sm_put_blocking(RB_PIO, RB_HOWL_SM, -1); printf("RESET\n")
 #define RESET_MSG        (-1)
 #define ERROR_MSG        (-2)
 
@@ -297,7 +298,7 @@ static int timing_to_bit(uint32_t t)
     if (0) set_leds_green();\
     RESET_WATCHDOG();\
     state = STATE_GOOD;\
-    (void)statemachine(0, true);\
+    (void)statemachine(0, true, NULL);\
     WRITE(1);\
     WRITE(1);\
     break;\
@@ -331,12 +332,13 @@ int main()
                 if (data == RESET_MSG) GOTO_COOLDOWN();       //unsolicited reset, someone must have panicked
                 if (data == ERROR_MSG) GOTO_COOLDOWN();   //now I'm panicking!
 
+                int n;
+                int r = statemachine(data, false, &n);  //feed it to our statemachine
+                if (r==-1) GOTO_RESET();                //statemachine indicated it is confused.
                 good_cnt++;
                 if( good_cnt % 10000 == 0){
                     printf("Happy for %d\n", good_cnt);
                 }
-                int r = statemachine(data, false);      //feed it to our statemachine
-                if (r==-1) GOTO_RESET();                //statemachine indicated it is confused.
                 if (!r) {
                     RESET_WATCHDOG();                   //data received but not done yet, watchdog takes chillpill
                     break;
@@ -344,7 +346,7 @@ int main()
                 //We are done! we recvd a good cry. Now do other stuff.
                 //TODO we never get here...
                 //
-                printf("Seen %d rabies in transmission\n", r);
+                printf("Seen %d rabies in transmission\n", n);
                 flip();
                 /*hid_task(t_now_us);*/
                 if (t_now_us > t_led_task) {
