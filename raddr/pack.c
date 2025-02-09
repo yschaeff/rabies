@@ -52,7 +52,6 @@ void join_cry(int bit, enum CryCommand cmd)
         case S_HOWL:
             if (DBG) printf("HOWL\r\n");
             //Maybe include parity bit?
-            bark_bulk(GROWL); //wake up next with growl
             bark_bulk(HOWL); //Howl, so next will also go to S_HOWL
             if (DBG) printf("goto REST\r\n");
             state = S_REST; //we are the last. Get some rest.
