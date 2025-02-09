@@ -152,13 +152,13 @@ void flip()
 /* Frequency of the input counter. Keep above 24Mhz to be on par with Rabi.
  * Also keep an integer multiple of 125Mhz (FCPU) */
 //TODO WFP FIX THIS
-#define FREQ_RB_COUNT   (25 * 1000 * 1000)
+/*#define FREQ_RB_COUNT   (25 * 1000 * 1000)*/
 // WARNING //
     // Since we do our timing below in us the maximum frequency is bound to
     // the number of instructions per tick (2). If we want to speed up the
     // statemachine we should do arithmetic with either ticks on ns. Not us.
 // WARNING //
-/*#define FREQ_RB_COUNT   (2 * 1000 * 1000)*/
+#define FREQ_RB_COUNT   (2 * 1000 * 1000)
 
 static void setup()
 {
@@ -181,7 +181,11 @@ static void setup()
 
 }
 
-bool statemachine(bool bit, bool reset)
+//return:
+//-1 error, reset me!
+// 0 still busy, expecting more data. Feed me!
+// n done. Seen n rabies
+int statemachine(bool bit, bool reset)
 {
     static uint input_id, wolf_id, state = 0;
 
@@ -194,27 +198,38 @@ bool statemachine(bool bit, bool reset)
 
     if (reset) {
         state = 0;
-        return false;
+        return 0;
     }
 
     switch (state) {
         case 0:                     //wait for wakeup
             wolf_id = -1;
-            state = bit;
-            return false;
+            if (bit) {
+                state = 1;
+            } else {
+                //something wrong. we should reset.
+                state = 0;
+                return -1;
+            }
+            return 0;
         case 1:                     //recv next header
+            if (bit) {
+                state = 0;
+                return wolf_id+1; //return number of rabies spotted
+            }
+            state = 2;
             input_id = K;           //we expect to rcv K bits from neighbor
-            state = bit + 2;
             wolf_id++;
-            return false;
+            return 0;
         case 2:                     //read 1 of K bits
             key_states_write[wolf_id] <<= 1;
             key_states_write[wolf_id] |= bit;
-            state -= !--input_id;
-            return false;
-        case 3:                     //end ow howl
-            state = 0;
-            return bit;
+            if (--input_id) {
+                return 0; //stay in this state
+            } else {
+                state = 1; //go listen for next rabi
+                return 0;
+            }
     }
 }
 
@@ -242,9 +257,9 @@ static int timing_to_bit(uint32_t t)
     //printf("pulse length %d %d\r\n", t, tick_to_ns(t));
     switch (t) {
         /* TO*/
-        case T0H_TICKS - 10 ... T0H_TICKS + 10:
+        case T0H_TICKS - 1 ... T0H_TICKS + 1:
             return 0;
-        case T1H_TICKS - 10 ... T1H_TICKS + 3 * T1US_IN_TICKS:
+        case T1H_TICKS - 1 ... T1H_TICKS + 3 * T1US_IN_TICKS:
             return 1;
         case (TRESET_TICKS - 3 * T1US_IN_TICKS ) ... (TRESET_TICKS + 3 * T1US_IN_TICKS):
             return -1; //Reset
@@ -266,20 +281,23 @@ static int timing_to_bit(uint32_t t)
 #define ERROR_MSG        (-2)
 
 #define GOTO_RESET() {\
+    if (0) set_leds_red();\
     RESET_WATCHDOG();\
-    (void)statemachine(0, true);\
     state = STATE_RESET;\
     SEND_RESET();\
     break;\
 }
 #define GOTO_COOLDOWN() {\
+    if (0) set_leds_yellow();\
     RESET_WATCHDOG();\
     state = STATE_COOLDOWN;\
     break;\
 }
 #define GOTO_GOOD() {\
+    if (0) set_leds_green();\
     RESET_WATCHDOG();\
     state = STATE_GOOD;\
+    (void)statemachine(0, true);\
     WRITE(1);\
     WRITE(1);\
     break;\
@@ -298,6 +316,7 @@ int main()
     state = STATE_COOLDOWN;
 
     while (1) {
+        tud_task(); // tinyusb device task, do always. otherwise we do not have serial debug
         absolute_time_t t_now_us = get_absolute_time(); //us
 
         switch (state) {
@@ -307,28 +326,38 @@ int main()
             case STATE_GOOD:
                 if (t_now_us > t_watch_dog) GOTO_RESET(); //we expect data, but got silence. Do reset.
                 if (!DATA_READY()) break;                 //still waiting for data
-                RESET_WATCHDOG();                         //data received, watchdog takes chillpill
 
                 uint32_t data = READ();                   //
                 if (data == RESET_MSG) GOTO_COOLDOWN();       //unsolicited reset, someone must have panicked
-                if (data == ERROR_MSG) GOTO_COOLDOWN();  //now I'm panicking!
+                if (data == ERROR_MSG) GOTO_COOLDOWN();   //now I'm panicking!
 
                 good_cnt++;
                 if( good_cnt % 10000 == 0){
                     printf("Happy for %d\n", good_cnt);
                 }
-                if (statemachine(data, false)) {          //feed it to our statemachine
-                    flip();
-                    tud_task();                         // tinyusb device task
-                    /*hid_task(t_now_us);*/
-                    if (t_now_us > t_led_task) {
-                        t_led_task = t_now_us + 50000;
-                        update_leds(5, t_now_us);
-                    }
-                    /*set_leds_green();*/
-                    GOTO_GOOD();                        //everybody agrees!
+                int r = statemachine(data, false);      //feed it to our statemachine
+                if (r==-1) GOTO_RESET();                //statemachine indicated it is confused.
+                if (!r) {
+                    RESET_WATCHDOG();                   //data received but not done yet, watchdog takes chillpill
+                    break;
                 }
-                break;
+                //We are done! we recvd a good cry. Now do other stuff.
+                //TODO we never get here...
+                //
+                printf("Seen %d rabies in transmission\n", r);
+                flip();
+                /*hid_task(t_now_us);*/
+                if (t_now_us > t_led_task) {
+                    t_led_task = t_now_us + 50000;
+                    update_leds(5, t_now_us);
+                }
+                //Now we have done stuff do a sanity check and check we
+                //did not received any data in the mean time.
+                if (DATA_READY()) {
+                    GOTO_RESET();                   //shit, something is wrong
+                } else {
+                    GOTO_GOOD();                    //everybody agrees!
+                }
 
             // Shit has gone sour. Lets wait until we see no more
             // activity at all for at least WDT. Then we reset everyone
@@ -338,7 +367,6 @@ int main()
                     printf("Good count is %d\n", good_cnt);
                     good_cnt = 0;
                 }
-                set_leds_yellow();
                 if (t_now_us > t_watch_dog) GOTO_RESET(); //No yapping heard. Good. Do reset.
                 if (!DATA_READY()) break;                 //Everyone is still silent. Good
                 (void)READ();                             //Hush!
@@ -347,7 +375,6 @@ int main()
             // We've send a RESET_MSG. Now listen for a RESET_MSG.
             // If we hear something else we go back to the cooldown.
             case STATE_RESET:
-                set_leds_red();
                 if (t_now_us > t_watch_dog) GOTO_RESET(); //RESET_MSG not recieved in time, send another
                 if (!DATA_READY()) break;                 //I guess we have to wait
                 if (READ() != RESET_MSG) GOTO_COOLDOWN();     //Some rabi is still yapping, send him to the icebox!
