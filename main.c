@@ -37,10 +37,7 @@ static const uint8_t key_mapping[KEYMAP_LEN] = {
     HID_KEY_Z
 };
 
-#define WATCH_DOG_PATIENCE (100 * 1000)  /* uS after which the watchdog intervenes */
-//#define WATCH_DOG_PATIENCE (1000 * 1000)  /* uS after which the watchdog intervenes */
-
-void hid_task(absolute_time_t t_now);
+void hid_task(absolute_time_t t_now_us);
 
 uint8_t led_states[W];
 
@@ -111,7 +108,7 @@ void update_leds(uint n, absolute_time_t now)
         uint8_t g = 0;
         uint8_t b = 0;
 
-        if (caps_lock) {
+        if (!caps_lock) {
             r = knight_rider(i, n, now);
             g = 5;
         } else {
@@ -124,6 +121,17 @@ void update_leds(uint n, absolute_time_t now)
         pio_sm_put_blocking(WS_PIO, WS_SM, grba);
     }
 }
+
+void set_leds_uniform(uint32_t grba)
+{
+    for (uint i = 0; i < W; ++i) {
+        pio_sm_put_blocking(WS_PIO, WS_SM, grba);
+    }
+}
+void set_leds_red()   { set_leds_uniform(0x00FF0000); }
+void set_leds_blue()  { set_leds_uniform(0x0000FF00); }
+void set_leds_green() { set_leds_uniform(0xFF000000); }
+void set_leds_yellow(){ set_leds_uniform(0xFF00FF00); }
 
 // Flip read and write buffer
 void flip()
@@ -143,7 +151,14 @@ void flip()
 
 /* Frequency of the input counter. Keep above 24Mhz to be on par with Rabi.
  * Also keep an integer multiple of 125Mhz (FCPU) */
-#define FREQ_RB_COUNT   (25 * 1000 * 1000)
+//TODO WFP FIX THIS
+/*#define FREQ_RB_COUNT   (25 * 1000 * 1000)*/
+// WARNING //
+    // Since we do our timing below in us the maximum frequency is bound to
+    // the number of instructions per tick (2). If we want to speed up the
+    // statemachine we should do arithmetic with either ticks on ns. Not us.
+// WARNING //
+#define FREQ_RB_COUNT   (2 * 1000 * 1000)
 
 static void setup()
 {
@@ -177,7 +192,11 @@ bool statemachine(bool bit, bool reset)
                                                -- Brian Kernighan
     */
 
-    if (reset) state = 0;
+    if (reset) {
+        state = 0;
+        return false;
+    }
+
     switch (state) {
         case 0:                     //wait for wakeup
             wolf_id = -1;
@@ -200,8 +219,10 @@ bool statemachine(bool bit, bool reset)
 }
 
 
-#define us_to_tick(_us)   ((uint32_t)(_us * (1e-6 / (2.0 / FREQ_RB_COUNT))))
-#define tick_to_ns(_ti)   ((uint32_t)(_ti * (2 * 1000 / ( FREQ_RB_COUNT / 1000000))))
+#define OPS_PER_TICK 2 //depends on howl_count program
+                       //
+#define us_to_tick(_us)   ((uint32_t)(_us / (1000000.0 * OPS_PER_TICK / FREQ_RB_COUNT)))
+#define tick_to_ns(_ti)   ((uint32_t)(_ti * (OPS_PER_TICK * 1000 / ( FREQ_RB_COUNT / 1000000))))
 
 #define T1US_IN_TICKS   us_to_tick(1)
 #define TRESET_TICKS    us_to_tick(TRESET * 2)
@@ -222,9 +243,9 @@ static int timing_to_bit(uint32_t t)
     printf("pulse length %d %d\r\n", t, tick_to_ns(t));
     switch (t) {
         /* TO*/
-        case T0H_TICKS - 10 ... T0H_TICKS + 10:
+        case T0H_TICKS - 1 ... T0H_TICKS + 1:
             return 0;
-        case T1H_TICKS - 10 ... T1H_TICKS + 10:
+        case T1H_TICKS - 1 ... T1H_TICKS + 1:
             return 1;
         case (TRESET_TICKS - 3 * T1US_IN_TICKS ) ... (TRESET_TICKS + 3 * T1US_IN_TICKS):
             return -1; //Reset
@@ -235,49 +256,94 @@ static int timing_to_bit(uint32_t t)
     }
 }
 
+#define WATCHDOG_TIMEOUT (100 * 1000)  /* uS after which the watchdog intervenes */
+
+#define RESET_WATCHDOG() t_watch_dog = t_now_us + WATCHDOG_TIMEOUT
+#define DATA_READY()     !pio_sm_is_rx_fifo_empty(RB_PIO, RB_LISTEN_SM)
+#define READ()           timing_to_bit(pio_sm_get(RB_PIO, RB_LISTEN_SM))
+#define WRITE(_bit)      pio_sm_put_blocking(RB_PIO, RB_HOWL_SM, _bit)
+#define SEND_RESET()     pio_sm_put_blocking(RB_PIO, RB_HOWL_SM, -1)
+#define RESET_MSG        (-1)
+#define ERROR_MSG        (-2)
+
+#define GOTO_RESET() {\
+    RESET_WATCHDOG();\
+    (void)statemachine(0, true);\
+    state = STATE_RESET;\
+    SEND_RESET();\
+    break;\
+}
+#define GOTO_COOLDOWN() {\
+    RESET_WATCHDOG();\
+    state = STATE_COOLDOWN;\
+    break;\
+}
+#define GOTO_GOOD() {\
+    RESET_WATCHDOG();\
+    state = STATE_GOOD;\
+    WRITE(1);\
+    WRITE(1);\
+    break;\
+}
+
 int main()
 {
-    absolute_time_t t_next_led = 0;
+    enum states {STATE_GOOD, STATE_COOLDOWN, STATE_RESET};
+    int state;
     absolute_time_t t_watch_dog = 0;
-    bool idle = true;
+    absolute_time_t t_led_task = 0;
 
     setup();
 
+    state = STATE_COOLDOWN;
+
     while (1) {
-        absolute_time_t t_now = get_absolute_time();
+        absolute_time_t t_now_us = get_absolute_time(); //us
 
-        tud_task(); // tinyusb device task
-        hid_task(t_now);
+        switch (state) {
+            // In the GOOD state we are happy.
+            // We initiated a new transmission
+            // and are now waiting for all data.
+            case STATE_GOOD:
+                if (t_now_us > t_watch_dog) GOTO_RESET(); //we expect data, but got silence. Do reset.
+                if (!DATA_READY()) break;                 //still waiting for data
+                RESET_WATCHDOG();                         //data received, watchdog takes chillpill
 
-        if (t_next_led < t_now) {
-            t_next_led = t_now + 50000;
-            update_leds(W, t_now);
-        }
-        if (!idle && t_now > t_watch_dog) {
-            // 100ms passed but we are still not done. We are probably
-            // terribly confused. Lets reset the statemachine and try again.
-            idle = true;
-            (void)statemachine(0, true);
-            t_watch_dog = t_now + WATCH_DOG_PATIENCE;
-            printf("\nout of sync?");
-        }
+                uint32_t data = READ();                   //
+                if (data == RESET_MSG) GOTO_COOLDOWN();       //unsolicited reset, someone must have panicked
+                if (data == ERROR_MSG) GOTO_COOLDOWN();  //now I'm panicking!
 
-        // process events and initiate new howl
-        if (idle) {
-            idle = false;
-            flip();
-            pio_sm_put_blocking(RB_PIO, RB_HOWL_SM, 1);
-            pio_sm_put_blocking(RB_PIO, RB_HOWL_SM, 1);
-            t_watch_dog = t_now + WATCH_DOG_PATIENCE;
-            printf("\nhowl ");
-        }
+                if (statemachine(data, false)) {          //feed it to our statemachine
+                    flip();
+                    tud_task();                         // tinyusb device task
+                    /*hid_task(t_now_us);*/
+                    if (t_now_us > t_led_task) {
+                        t_led_task = t_now_us + 50000;
+                        update_leds(5, t_now_us);
+                    }
+                    /*set_leds_green();*/
+                    GOTO_GOOD();                        //everybody agrees!
+                }
+                break;
 
-        if (!pio_sm_is_rx_fifo_empty(RB_PIO, RB_LISTEN_SM)) {
-            uint32_t b = pio_sm_get(RB_PIO, RB_LISTEN_SM);
-            int res = timing_to_bit(b);
-            if (res >= 0)
-                idle = statemachine(res, false);
-            t_watch_dog = t_now + WATCH_DOG_PATIENCE;
+            // Shit has gone sour. Lets wait until we see no more
+            // activity at all for at least WDT. Then we reset everyone
+            // so we are all on the same page.
+            case STATE_COOLDOWN:
+                set_leds_yellow();
+                if (t_now_us > t_watch_dog) GOTO_RESET(); //No yapping heard. Good. Do reset.
+                if (!DATA_READY()) break;                 //Everyone is still silent. Good
+                (void)READ();                             //Hush!
+                GOTO_COOLDOWN();                          //Someone ruined it, now we all need to wait again.
+
+            // We've send a RESET_MSG. Now listen for a RESET_MSG.
+            // If we hear something else we go back to the cooldown.
+            case STATE_RESET:
+                set_leds_red();
+                if (t_now_us > t_watch_dog) GOTO_RESET(); //RESET_MSG not recieved in time, send another
+                if (!DATA_READY()) break;                 //I guess we have to wait
+                if (READ() != RESET_MSG) GOTO_COOLDOWN();     //Some rabi is still yapping, send him to the icebox!
+                GOTO_GOOD();                              //All aboard!
         }
     }
 }
@@ -294,11 +360,11 @@ void tud_suspend_cb(bool remote_wakeup_en) { }
 void tud_resume_cb(void) { }
 
 
-void hid_task(absolute_time_t t_now)
+void hid_task(absolute_time_t t_now_us)
 {
     static absolute_time_t t_next = 0;
-    if ( t_now < t_next) return;
-    t_next = t_now + 10;
+    if ( t_now_us < t_next) return;
+    t_next = t_now_us + 10000; //every 10 ms
 
     if ( !tud_hid_ready() ) return;
 
