@@ -8,9 +8,7 @@ build/firmware.uf2: build main.c ws2812.pio rabi.pio
 	$(MAKE) -C build/
 
 flash: build/firmware.uf2
-	pmount /dev/sda1
-	cp build/firmware.uf2 /media/sda1
-	pumount /dev/sda1
+	./flash $^
 
 clean:
 	rm -rf build generated

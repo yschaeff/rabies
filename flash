@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+DEV=$(ls /dev/sd?1 | fzf -1 --header "Which device?")
+
+set -x
+
+pmount $DEV akela
+cp $@ /media/akela
+pumount $DEV
