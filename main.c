@@ -242,9 +242,9 @@ static int timing_to_bit(uint32_t t)
     printf("pulse length %d %d\r\n", t, tick_to_ns(t));
     switch (t) {
         /* TO*/
-        case T0H_TICKS - 1 ... T0H_TICKS + 1:
+        case T0H_TICKS - 10... T0H_TICKS + 10
             return 0;
-        case T1H_TICKS - 1 ... T1H_TICKS + 1:
+        case T1H_TICKS - 10... T1H_TICKS + 10
             return 1;
         case (TRESET_TICKS - 3 * T1US_IN_TICKS ) ... (TRESET_TICKS + 3 * T1US_IN_TICKS):
             return -1; //Reset
