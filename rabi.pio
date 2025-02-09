@@ -6,17 +6,10 @@
 .define public T0L (TTOTAL - T0H)
 .define public T1L (TTOTAL - T1H)
 
-.program howl_listen
-.wrap_target
-    wait 1 pin 0    [(T0H + T0L) / 2]; wait for state high then delay for sampletime
-    in pins, 1          ; shift 1 pinstate in ISR, autopush will put it in the fifo
-    wait 0 pin 0        ; Wait for state low. Then repeat.
-.wrap
-
 .program howl_count
 .wrap_target
 start:
-   mov y ~NULL          ; start with 0xFFFFFFFF         
+   mov y ~NULL          ; start with 0xFFFFFFFF
    wait 0 pin 0         ; wait for a 0
    wait 1 pin 0         ; wait for a 1, aka rising edge
 timer:
@@ -48,33 +41,6 @@ do_reset:
     set pins, 1    [TRESET - 1]
     set pins, 0    [TRESET - 1]
 .wrap
-
-% c-sdk {
-#include "hardware/clocks.h"
-
-static inline void
-howl_listen_init(PIO pio, uint sm, uint offset, uint inpin, float freq)
-{
-    pio_gpio_init(pio, inpin);
-
-    pio_sm_set_consecutive_pindirs(pio, sm, inpin, 1, false);
-
-    pio_sm_config c = howl_listen_program_get_default_config(offset);
-
-    sm_config_set_in_pins(&c, inpin);
-    sm_config_set_in_shift(&c, false, true, 1);
-
-    sm_config_set_fifo_join(&c, PIO_FIFO_JOIN_RX);
-
-    /*Sample at 1 us */
-    int cycles_per_bit = 1;
-    float div = clock_get_hz(clk_sys) / (freq * cycles_per_bit);
-    sm_config_set_clkdiv(&c, div);
-
-    pio_sm_init(pio, sm, offset, &c);
-    pio_sm_set_enabled(pio, sm, true);
-}
-%}
 
 % c-sdk {
 #include "hardware/clocks.h"
