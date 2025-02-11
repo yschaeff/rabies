@@ -151,14 +151,7 @@ void flip()
 
 /* Frequency of the input counter. Keep above 24Mhz to be on par with Rabi.
  * Also keep an integer multiple of 125Mhz (FCPU) */
-//TODO WFP FIX THIS
-/*#define FREQ_RB_COUNT   (25 * 1000 * 1000)*/
-// WARNING //
-    // Since we do our timing below in us the maximum frequency is bound to
-    // the number of instructions per tick (2). If we want to speed up the
-    // statemachine we should do arithmetic with either ticks on ns. Not us.
-// WARNING //
-#define FREQ_RB_COUNT   (2 * 1000 * 1000)
+#define FREQ_RB_COUNT   (25 * 1000 * 1000)
 
 static void setup()
 {
@@ -277,7 +270,7 @@ static int timing_to_bit(uint32_t t)
 #define DATA_READY()     !pio_sm_is_rx_fifo_empty(RB_PIO, RB_LISTEN_SM)
 #define READ()           timing_to_bit(pio_sm_get(RB_PIO, RB_LISTEN_SM))
 #define WRITE(_bit)      pio_sm_put_blocking(RB_PIO, RB_HOWL_SM, _bit)
-#define SEND_RESET()     pio_sm_put_blocking(RB_PIO, RB_HOWL_SM, -1); printf("RESET\n")
+#define SEND_RESET()     pio_sm_put_blocking(RB_PIO, RB_HOWL_SM, -1); if (0) printf("RESET\n")
 #define RESET_MSG        (-1)
 #define ERROR_MSG        (-2)
 
@@ -346,12 +339,12 @@ int main()
                 //We are done! we recvd a good cry. Now do other stuff.
                 //TODO we never get here...
                 //
-                printf("Seen %d rabies in transmission\n", n);
+                /*printf("Seen %d rabies in transmission\n", n);*/
                 flip();
-                /*hid_task(t_now_us);*/
+                hid_task(t_now_us);
                 if (t_now_us > t_led_task) {
-                    t_led_task = t_now_us + 50000;
-                    update_leds(5, t_now_us);
+                    t_led_task = t_now_us + 20000;
+                    update_leds(25, t_now_us);
                 }
                 //Now we have done stuff do a sanity check and check we
                 //did not received any data in the mean time.
