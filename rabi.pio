@@ -1,8 +1,8 @@
 ;All timing is in us for now
 .define public TRESET (64/2)
-.define public TTOTAL 20
-.define public T0H 6
-.define public T1H 10
+.define public TTOTAL 40
+.define public T0H 10
+.define public T1H 25
 .define public T0L (TTOTAL - T0H)
 .define public T1L (TTOTAL - T1H)
 
