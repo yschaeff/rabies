@@ -152,7 +152,7 @@ void TIM16_IRQHandler(void)
         bit = !!(t & 1u<<31);
     }
 
-    uint32_t tmo = t; //MEGA hack, just write all 32 bit to ARR.
+    uint32_t tmo = t & 0xFFFF; //Mask out bit, We only use 16 LSBs.
 
     /* Second part is writing the GPIO */
 
