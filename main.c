@@ -96,11 +96,14 @@ uint8_t pulse(uint8_t i, uint8_t n, absolute_time_t now)
 // Do full brightness on key down. Fade out on key up.
 void update_leds(uint n, absolute_time_t now)
 {
+    const int dec = 10;
     for (uint i = 0; i < n; ++i) {
         if (key_states_read[i]) {
             led_states[i] = 0xFF;
+        } else if (led_states[i] > dec) {
+            led_states[i] -= dec;
         } else {
-            led_states[i] >>= 1;
+            led_states[i] = 0;
         }
     }
     for (uint i = 0; i < n; ++i) {
@@ -116,8 +119,12 @@ void update_leds(uint n, absolute_time_t now)
             g = pulse(i, n, now+1333);
         }
         b = led_states[i];
-
-        uint32_t grba = (r<<16) | (g<<24) | (b<<8);
+        uint32_t grba;
+        if (b) {
+            grba = (0<<16) | (0<<24) | (b<<8);
+        } else {
+            grba = (r<<16) | (g<<24) | (b<<8);
+        }
         pio_sm_put_blocking(WS_PIO, WS_SM, grba);
     }
 }
