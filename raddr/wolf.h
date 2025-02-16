@@ -7,9 +7,9 @@
 
 /* Times in uS */
 #define TRESET 64 //Limit by the pico pi code.
-#define TTOTAL 20 //Total duration of every 'bit'
-#define T0H 6
-#define T1H 10
+#define TTOTAL 40 //Total duration of every 'bit'
+#define T0H 10
+#define T1H 25
 #define T0L (TTOTAL - T0H)
 #define T1L (TTOTAL - T1H)
 
