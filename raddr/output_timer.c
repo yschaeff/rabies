@@ -110,10 +110,13 @@ void raddr_output_schedule(bool bit, uint16_t tmo)
     /* Incrementing the fifo must be atomic against the TIM16 ISR.
      * Since Cortex-M0 does not have STREX/LDREX nor SWP instruction we need to rely on libatomic.
      * Which for reasons beyond me is not implemented for arm-gcc-none-eabi and friends.
-     * So lets stick to disabling the TIM16 interrupt for now */
-    NVIC_DisableIRQ(TIM16_IRQn);
+     * So we tried disabling the TIM16 interrupt.
+     * that make it atomic, but also sometime runs other ISR, delaying our precious TIM16_IRQn.
+     * That gives ~3.5uS of extra latency.
+     * So now we are at good old disable EVERY interrupt to make it fast. */
+    __disable_irq();
     fifo.size++;
-    NVIC_EnableIRQ(TIM16_IRQn);
+    __enable_irq();
 
     /* If ISR not enabled the ISR is not running. Start it */
     if (!(TIM16->DIER & TIM_DIER_UIE)) {
