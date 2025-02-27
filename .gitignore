@@ -1,7 +1,13 @@
-.*~
-.*.swp
 build/
 .vscode/
 /Build*
 /Temp*
 tags
+
+#kicad
+fp-info-cache
+raddr-backups
+
+#vim droppings
+*~
+*.swp
