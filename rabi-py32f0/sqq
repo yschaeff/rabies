@@ -1,0 +1,2037 @@
+[33mcommit 05128e57a1cecc7c07e485be9916dac5456d67a1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Wouter van Gulik <wouter.van.gulik@mep-info.com>
+Date:   Mon Feb 17 15:47:02 2025 +0100
+
+    Yuri mode: Tonight I had a bright idea. This-Works-Without-Testing.
+    
+    Disable the interrupts instead of just the one we need to protect
+    against. If other interrupts occur during our disable we give our self
+    extra latency. Not good. This probably solves our +3.5us timing issue.
+
+[33mcommit 8ed96b9e674b702587feae02905e28485c1e0812[m
+Author: Yuri Schaeffer <yuri@schaeffer.tk>
+Date:   Sun Feb 16 22:08:58 2025 +0100
+
+    Explicitly exclude value of bit from timing value.
+    
+    Only the lowest 16 bits are used so this mask is probably not necessary.
+    But we are hunting for some ghost timing thingy. Better be safe.
+
+[33mcommit c0b16f3926542f55de64189952a18599a9e20506[m
+Author: Yuri Schaeffer <yuri@schaeffer.tk>
+Date:   Sun Feb 16 16:26:14 2025 +0100
+
+    It works now!
+
+[33mcommit 347238c740b5125ab5944ba7a42e7c0ab2ed24cd[m
+Author: Yuri Schaeffer <yuri@schaeffer.tk>
+Date:   Sun Feb 9 22:39:58 2025 +0100
+
+    Fix error of to much messages on button press.
+    
+    The downstream RABI need not to be woken up. It is already on alert!
+
+[33mcommit 904db1ae650e36eb3e22cf33c4f16af0b5f02bc1[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Sun Feb 9 09:07:55 2025 +0100
+
+    Add and use bark_bulk as fix for wonky timing
+
+[33mcommit 02ab3db10c73e21a3716cad075837cc75461e0d3[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Sun Feb 9 09:07:25 2025 +0100
+
+    input_capture: Add 3us margin around reset pulse.
+
+[33mcommit b3e55cfe91440e35d3a597e96d91e55f48da85a5[m
+Author: Yuri Schaeffer <yuri@schaeffer.tk>
+Date:   Sun Feb 9 01:35:02 2025 +0100
+
+    Don't tempt the statemachine to process the bit when resetting.
+    
+    The statemachine will change in the near future.
+
+[33mcommit b0aec1e4d0ef2103706834ff2f8e862f87921992[m[33m ([m[1;31morigin/feature/timer_based_output[m[33m)[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Sun Feb 2 22:34:35 2025 +0100
+
+    Rework timing, add reset command.
+    
+    Drop now unneeded function etc.
+
+[33mcommit ad7bd69dd12254818da695839b757c791f299a0e[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Sun Feb 2 22:31:51 2025 +0100
+
+    timers: Make enabling debug uniform.
+
+[33mcommit 3e5abb226d02a1ffd6b22deb14c621f0cfa100c9[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Sun Feb 2 22:26:35 2025 +0100
+
+    output_timer.c: LED_PIN -> KEY_DATA_OUT_PIN
+
+[33mcommit 60c3318d36a98280a4967e0f83110360adce5302[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Mon Dec 30 16:22:11 2024 +0100
+
+    setup_gdb.sh: Add howto start pyocd for GDB +output to console.
+
+[33mcommit f27ac8e7ad1aa251ed34a6414d73da466df76c45[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Fri Jan 3 22:33:31 2025 +0100
+
+    raddr: WIP Change the statemachine to use new input/output.
+    
+    For now main still runs my debug code (linking out to in and measuring
+    the difference)
+
+[33mcommit 4e11e5eada15b1815dd6ab4688b0870674bc4d9e[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Fri Jan 3 22:20:39 2025 +0100
+
+    input_capture: Fix loads of bugs and make it useable.
+
+[33mcommit 3f60c03d52fafc06c97271b0fc51799497642598[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Fri Jan 3 22:19:00 2025 +0100
+
+    uid.c: Fix warning on signed/unsigned
+
+[33mcommit a3fa7845a4adcded0d01c8b54f42f6eafa3cb197[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Fri Jan 3 22:18:36 2025 +0100
+
+    ouput_timer.c: Add bulk capability, drop commented code.
+
+[33mcommit f318cc732297aabbdbb3546c79b294215ff752d2[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Mon Dec 30 16:19:57 2024 +0100
+
+    WIP: wolf.h: Update timing and writing of bits.
+
+[33mcommit 4b304bba1c595b91e055817b67c7a061d368ba89[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Mon Dec 30 19:05:51 2024 +0100
+
+    WIP main.c: Add input_capture init and some debug code.
+
+[33mcommit 82c10c7267aaa0d3d52bd45e2385d57d28e0fb3c[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Mon Dec 30 16:17:35 2024 +0100
+
+    output_timer: For now set to slower speed to ease testing.
+
+[33mcommit 6ecf73037e9ac51689f56e5bd4b614079c17491a[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Mon Dec 30 16:16:39 2024 +0100
+
+    Add input_capture.[ch]
+
+[33mcommit 0255759784703a2a9c93e9ec496f63cabcea3d60[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Mon Dec 30 16:12:25 2024 +0100
+
+    main.c: Make data input connect to the TIM channel
+
+[33mcommit 5a88743b7b314854e7b859257cf84f1fe0c91ccc[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Fri Dec 13 21:40:47 2024 +0100
+
+    main.c: Document alternate function with the pins
+
+[33mcommit f2a9004b0b3f40e16a0b69ad135b542f78d95176[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Thu Nov 28 22:28:42 2024 +0100
+
+    output_timer: Cleanup a bit more
+
+[33mcommit 036202c8c3456ceb1b0827e092b5e92fc3ddbc84[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Sun Nov 24 11:49:47 2024 +0100
+
+    Add output timer
+
+[33mcommit 3940b63e53a6152408c7765774f0cc89148c04ce[m
+Author: Wouter van Gulik <wouter.van.gulik@mep-info.com>
+Date:   Wed Nov 27 14:17:26 2024 +0100
+
+    main.c Update doc on the pins and their options
+
+[33mcommit b135bf52f3e77ca5363e5b178f7c4401a672127a[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Sun Nov 24 11:50:26 2024 +0100
+
+    py32f0xx_hal_conf.h: We run the HSI OSC at 24Mhz not 8Mhz
+
+[33mcommit bb2445330934a3415007516375f26c149b6186ec[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Sun Nov 24 11:50:05 2024 +0100
+
+    cscope: Remove duplicate. -s is ignored if files are given.
+
+[33mcommit 51c3faa76971bce6683ac245dd37fd55ba1c110a[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Sun Nov 24 11:51:30 2024 +0100
+
+    Add setup_gdb.sh
+
+[33mcommit 00cd7ff70379c26bea4fd1665d7a2a2f9d784f69[m
+Author: Yuri Schaeffer <yuri@schaeffer.tk>
+Date:   Wed Dec 4 09:15:23 2024 +0100
+
+    Those Rabied bitches always be bouncin'
+
+[33mcommit 4215ddfd1dedffa7cdfafebd620071894100a497[m
+Author: Yuri Schaeffer <yuri@schaeffer.tk>
+Date:   Wed Dec 4 08:26:55 2024 +0100
+
+    More to ignore.
+
+[33mcommit ccf9bb204150b04d587cd36c6054ec980641fe1d[m
+Author: Yuri Schaeffer <yuri@schaeffer.tk>
+Date:   Wed Dec 4 08:25:09 2024 +0100
+
+    Disable code to become akela on boot. We have a proper RP2040 akela now.
+
+[33mcommit a34ec093685b7f5d0338f22582c6a1cfe43b16fa[m
+Author: Yuri Schaeffer <yuri@schaeffer.tk>
+Date:   Thu Nov 21 21:25:50 2024 +0100
+
+    Now four times faster!
+
+[33mcommit c246fd1486ce293ac21486f72d8f37fcf8f0ed27[m
+Author: Yuri Schaeffer <yuri@schaeffer.tk>
+Date:   Thu Nov 21 21:25:03 2024 +0100
+
+    Decide to become Akela on boot instead of compile time.
+
+[33mcommit a1b8ffad2a4f9ff3e4910899bafcfd19dbce1264[m
+Author: Yuri Schaeffer <yuri@schaeffer.tk>
+Date:   Thu Nov 21 20:50:39 2024 +0100
+
+    Tweak timing
+
+[33mcommit 0b2aa57bcf58e01f00b72ce64e128ef1584d59ae[m
+Author: Yuri Schaeffer <yuri@schaeffer.tk>
+Date:   Thu Nov 21 20:20:58 2024 +0100
+
+    Make sure gcc pick up on the AKELA flag
+
+[33mcommit 3fc5f5fbd52a4b82f7f4beb119252706b2e202f1[m
+Author: Yuri Schaeffer <yuri@schaeffer.tk>
+Date:   Thu Nov 21 09:58:03 2024 +0100
+
+    Rename input array
+
+[33mcommit 8a6aa9f252dd27045d65e8e176880318043d7172[m
+Author: Yuri Schaeffer <yuri@schaeffer.tk>
+Date:   Thu Nov 21 09:56:48 2024 +0100
+
+    Just to be sure don't do anything before sleep to get the timing just
+    right.
+
+[33mcommit c082a017ec2ac2ba03a024d2efc567e50e54b728[m
+Author: Yuri Schaeffer <yuri@schaeffer.tk>
+Date:   Thu Nov 21 09:37:19 2024 +0100
+
+    Shuffle some code. UNTESTED.
+
+[33mcommit f9027841f22769dbe0b086e85f1c9b54f95f6183[m
+Author: Yuri Schaeffer <yuri@schaeffer.tk>
+Date:   Wed Nov 20 23:25:47 2024 +0100
+
+    Make sure there is some time between bits. So we do not miss anything
+    while copying.
+
+[33mcommit 38f3ba0bf3a9ab6aaa9dff5f7ea228c37e43069a[m
+Author: Yuri Schaeffer <yuri@schaeffer.tk>
+Date:   Wed Nov 20 22:56:15 2024 +0100
+
+    make sure we have some time between bits
+    also make sure we synchronize if we see a long silee
+
+[33mcommit 242a45abda00e87d5b693219b794bde0463627db[m
+Author: Yuri Schaeffer <yuri@schaeffer.tk>
+Date:   Wed Nov 20 09:24:10 2024 +0100
+
+    Call statemachine out of irq
+
+[33mcommit 902b73f1df2d1099ecfa3b015e75b545d15688be[m
+Author: Yuri Schaeffer <yuri@schaeffer.tk>
+Date:   Tue Nov 19 23:10:09 2024 +0100
+
+    Almost working
+    
+    Problem: we can't sleep in an interrupt. Therefore we must either handle
+    sending bits out of band or we must call the statemachine out of the
+    interrupt.
+
+[33mcommit 21570495f40d56027583c4b2d0f7be40b69b1194[m
+Author: Yuri Schaeffer <yuri@schaeffer.tk>
+Date:   Thu Nov 21 10:04:02 2024 +0100
+
+    Build instructions
+
+[33mcommit 5b67fc415fe4a5e740e1ec016f6b4f21b32029b3[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Fri Nov 22 22:54:43 2024 +0100
+
+    main.c: Do clock init before HAL_init and do both early
+
+[33mcommit 0203dc84d7c562e53588f059d32886035a7afea1[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Fri Nov 22 22:53:26 2024 +0100
+
+    main.c: Print UID on bootup
+
+[33mcommit dc4dc9c408338ff6adfedd9d5aec0e7ce40fdaf5[m
+Author: Wouter van Gulik <wouter.van.gulik@mep-info.com>
+Date:   Thu Nov 21 11:22:55 2024 +0100
+
+    Add uid.c
+
+[33mcommit 0df6d280e2efafb731a22cac7eab1b6ec9db2207[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Mon Nov 18 22:53:05 2024 +0100
+
+    Add semihosting printf support; USE_SEMIHOSTING
+    
+    Drop BSP code, it hijacks the _write function makeing it impossible to use semihosted printf.
+    Since BSP code provided clock config I pulled in the clock config to our project
+    Disabled UART code in py32f0xx_hal_conf.h since we do not use it anymore.
+    Update rules.mk to have correct .specs file.
+
+[33mcommit f1863992daeff64f98036e9d0772a452e84ab498[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Sat Nov 16 17:25:03 2024 +0100
+
+    Add pyocd.yaml which set correct target and probe UID
+    
+    This helps when manually invoking pyocd
+
+[33mcommit 067a56f24d1f2ab6d72db1b0d596d38627ea7247[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Sat Nov 16 17:24:29 2024 +0100
+
+    Makefile: switch raddr as directory instead of User
+
+[33mcommit 8754f7c1ae45d71d5bb6006a917fdd9a9d1bc728[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Sat Nov 16 17:20:17 2024 +0100
+
+    Makefile: Set the correct CPU type
+
+[33mcommit 125b47de59665d3e983cbca2a99b0606cb859bf8[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Sat Nov 16 17:24:20 2024 +0100
+
+    Add raddr folder
+
+[33mcommit 418f166f4024d73e1fda26d7158a08d6ad026726[m
+Author: Wouter van Gulik <wouter.van.gulik@mep-info.com>
+Date:   Tue Nov 19 18:55:18 2024 +0100
+
+    rules.mk: Add cscope action
+    
+    This takes all files and include directories. This is better then simply
+    everything since that contains alot of duplicate code.
+    Only remaining annoying thing is the duplicate code in the device header files.
+
+[33mcommit 289ffc80de237c46171635b0f03b76b1a7f765be[m
+Merge: 8b57ab7 2f7ee23
+Author: IOsetting <65589019+IOsetting@users.noreply.github.com>
+Date:   Fri Jan 3 10:33:32 2025 +0800
+
+    Merge pull request #54 from wutje/fixes/improve_makefile
+    
+    Fixes/improve makefile
+
+[33mcommit 2f7ee23e481b724792a6442241a69a04d3df644f[m[33m ([m[1;31morigin/fixes/improve_makefile[m[33m)[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Mon Dec 30 21:28:35 2024 +0100
+
+    rules.mk: align TGT_xxFLAGS
+
+[33mcommit 56257d60c55cedc17c69b8790f83e66d5c7dbeba[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Mon Dec 30 21:28:33 2024 +0100
+
+    rules.mk: Switch to c17 standard (c99 is old)
+
+[33mcommit 6185939c3f389ea1b0c8eaf3545d155e5a4ce714[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Mon Dec 30 21:28:32 2024 +0100
+
+    rules.mk: Drop pointless -thumb. Not needed for GCC anymore
+
+[33mcommit eb6c564c319fb9d7291ed537c11dcef4d0a42124[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Mon Dec 30 21:28:31 2024 +0100
+
+    rules.mk: 'flash' command now builds the required .elf file
+    
+    Pyocd is able to flash .elf files use that to flash
+    Running 'make clean && make flash' now works as expected
+    
+    Only tested the .elf file for pyocd for now.
+    Jlink command does not directly reference .elf/.bin/.hex. If it needs .elf, this works for both, otherwises it remains the same for Jlink
+
+[33mcommit af4dc7ef8c498e0cdd0c9809233d25e621c23db3[m
+Author: Wouter van Gulik <pa3wle@gmail.com>
+Date:   Mon Dec 30 21:28:29 2024 +0100
+
+    Makefile: Add CDIRS instead of hardcoded User
+
+[33mcommit 8b57ab76a3bbf9d489c065b3b7735dd1e523abe6[m
+Merge: 8cd26bf 1b07624
+Author: IOsetting <65589019+IOsetting@users.noreply.github.com>
+Date:   Mon Dec 30 19:08:22 2024 +0800
+
+    Merge pull request #53 from sw/assembly
+    
+    Generate assembly listing
+
+[33mcommit 8cd26bf8c7e958af60644c4549b0ef609357a6bd[m
+Merge: 3a6e73f a32f6ff
+Author: IOsetting <65589019+IOsetting@users.noreply.github.com>
+Date:   Mon Dec 30 19:07:25 2024 +0800
+
+    Merge pull request #52 from sw/toochain
+    
+    Clean up ARM_TOOLCHAIN
+
+[33mcommit 1b0762495c42fc3f0d5cf5db84fe22cc4a368534[m
+Author: Stephan Walter <stephan@walter.name>
+Date:   Fri Dec 27 22:01:32 2024 +0100
+
+    Generate assembly listing
+    
+    Create an .lst file with the assembly listing (and source code lines).
+    Helpful for knowing what is actually done on the target.
+
+[33mcommit a32f6ffb0035abf4af609d290157db8e01cfb744[m
+Author: Stephan Walter <stephan@walter.name>
+Date:   Fri Dec 27 21:20:45 2024 +0100
+
+    Clean up ARM_TOOLCHAIN
+    
+    Rename `ARM_TOOCHAIN` to `ARM_TOOLCHAIN` and use a sensible default.
+    On Ubuntu (and possibly other Debian-like distros), the ARM toolchain
+    can be installed with the distro's package manager in `/usr/bin`,
+    so it makes more sense to use that as a default instead of some very
+    specific path name in `/opt`.
+
+[33mcommit 3a6e73f496e1112a2585eac682f66c7a08ac874e[m
+Merge: 72cbc93 90bcb12
+Author: IOsetting <65589019+IOsetting@users.noreply.github.com>
+Date:   Mon Dec 2 09:53:12 2024 +0800
+
+    Merge pull request #51 from deividAlfa/patch-1
+    
+    Fix LL_RCC_HSI_SetCalibFreq not updating SystemCoreClock variable when changing HSI frequency
+
+[33mcommit 90bcb1204359198e8d5a7ec25d902e60c01cbe40[m
+Author: deividAlfa <48562135+deividAlfa@users.noreply.github.com>
+Date:   Sat Nov 30 13:58:39 2024 +0100
+
+    Update SystemCoreClock variable when changing HSI frequency
+    
+    LL_RCC_HSI_SetCalibFreq would never update this value, so SystemCoreClock was left to 8MHz
+
+[33mcommit 9617cf6c24b1cbc5506a6b930ebce9f11c50114e[m
+Author: deividAlfa <48562135+deividAlfa@users.noreply.github.com>
+Date:   Sat Nov 30 13:51:55 2024 +0100
+
+    Update SystemCoreClock variable when changing HSI frequency
+    
+    LL_RCC_HSI_SetCalibFreq would never update this value, so whether it set 8, 16 or 24MHz, SystemCoreClock was always 8MHz.
+
+[33mcommit 72cbc9304c58272fbd941aa672a504942417b090[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Fri May 24 01:42:38 2024 +0800
+
+    feat: add f0xx hal stop mode example
+
+[33mcommit 11c1b9a9c13976702733567cc6f566129e9805c4[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun May 19 02:20:25 2024 +0800
+
+    feat: cpp example
+
+[33mcommit 5f721f91336e761c18f7ba150807460c9cd6516e[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun May 19 02:13:00 2024 +0800
+
+    feat: add cpp support
+
+[33mcommit 205fcff1c5b732afdf68f76c2815ac66f9924105[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Fri May 17 23:32:56 2024 +0800
+
+    feat: add f0xx stop mode example
+
+[33mcommit 57e2f1ddf12413d15d4215b0d26be4e8893012cb[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Fri May 17 22:20:05 2024 +0800
+
+    fix: change f002a adc irq handler name to avoid confusion
+
+[33mcommit b921cc16c0f659ebcf3f2b10efe889ac8a121733[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat May 4 01:45:33 2024 +0800
+
+    docs: remove docs from repo. move datasheets to github wiki
+
+[33mcommit d0eb7a94a2eef93d53a707e2632e281d8a270bae[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat May 4 01:43:53 2024 +0800
+
+    chore: new jlink devices py32f403
+
+[33mcommit fd01c37b4e10cd24b2965635036241353cbfcca7[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu May 2 03:50:41 2024 +0800
+
+    docs: 002b add comments in lsi lptim deep stop mode wakeup
+
+[33mcommit fc4fcceafa4287fa4dc3fec5402231554fb551cd[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu May 2 03:33:55 2024 +0800
+
+    feat: 002b deep stop mode wakeup examples
+
+[33mcommit fd1a91af116b41bd7585d34190955c9742d9dd9f[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu May 2 01:45:30 2024 +0800
+
+    fix: turn lse off to avoid current leakage
+
+[33mcommit 1a348007b23995709fbb27dcd989cb75ab4d0f4f[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu May 2 00:48:42 2024 +0800
+
+    feat: 002b add rcc lsi lse config methods
+
+[33mcommit 59429bcbfd27b7328749ce5f677e0eb148c6277d[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu May 2 00:32:30 2024 +0800
+
+    feat: 002b lsi and lse current test
+
+[33mcommit 5c1daace9a4df6c4746b79a22fddb798b97d881e[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Wed May 1 02:22:01 2024 +0800
+
+    feat: lsi current test #38
+
+[33mcommit b369b4c340a0d323ba1825db7eb93635d04a2355[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Tue Apr 30 01:00:42 2024 +0800
+
+    feat: 002b deep stop mode example
+
+[33mcommit 070a804b3de7f8978f123754a34e07772d245b53[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Tue Apr 30 01:00:18 2024 +0800
+
+    feat: 002b add deep stop mode support
+
+[33mcommit 946623a6c82d448c2584e8a0445803cc5c46021f[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Tue Apr 30 00:20:03 2024 +0800
+
+    feat: 002b stop mode example
+
+[33mcommit 2d13ff9f5a0d90ef11de90bd7367093f79dfc82e[m
+Merge: 9d25819 a3cc502
+Author: IOsetting <65589019+IOsetting@users.noreply.github.com>
+Date:   Fri Apr 12 14:11:54 2024 +0800
+
+    Merge pull request #39 from thonyek/add_PY32F0003x4_ld_script
+    
+    Add py32f003x4 ld script
+
+[33mcommit a3cc5024b9f38d7162968417749cd3fcd2b7abd8[m
+Author: tek <thonyek@live.com.au>
+Date:   Tue Apr 9 22:45:24 2024 +1000
+
+    fix: ld script description
+
+[33mcommit 739cdcd02b85318c3123cc39806bfa85d642d56e[m
+Author: tek <thonyek@live.com.au>
+Date:   Tue Apr 9 22:38:43 2024 +1000
+
+    feat: add ld script for PY32F0003x4 variant with 16K flash and 2K ram
+    
+    -reduced  _Min_Heap_Size and _Min_Stack_Size to fit with default makefile build
+    -modified RAM and FLASH according to datasheet spec
+    -add PY32F0003x4 option to Makefile
+
+[33mcommit 9d258192415e0525b09633e45d1df7013fd91aaa[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Mar 3 18:06:52 2024 +0800
+
+    docs: update puya product page link
+
+[33mcommit a0424a7e4bbafcca86d0e95108a44e5e3ee945f5[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Tue Feb 20 00:01:27 2024 +0800
+
+    refactor: lt8910 demo, more register definition
+
+[33mcommit db7c4273c0430d362f4453acbdd31956dfa3ef7b[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Feb 19 23:42:26 2024 +0800
+
+    refactor: update lt8910/lt8920 demo
+
+[33mcommit 199d738f4c872aa51930593505c53f7027bb0323[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Feb 19 22:43:02 2024 +0800
+
+    refactor: update lt8910/lt8920 demo
+
+[33mcommit 0783d120a37f6f29d75c17b183fcf2344fbca787[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Feb 19 04:09:41 2024 +0800
+
+    feat: lt8910 2.4g wireless tx rx demo
+
+[33mcommit 0fba69b60c08a7b28ae2a96cf5a9e9fa803661ec[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Feb 17 23:08:36 2024 +0800
+
+    feat: 002b lt8960l(nst80) 2.4g wireless tx rx demo
+
+[33mcommit 4662e45432bad9060e0adaa81459c7d84e1cd4a9[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Feb 17 19:05:15 2024 +0800
+
+    docs: update readme
+
+[33mcommit da4a5e7ddd525880a1a8e7fab9d7386889b67da3[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Feb 17 19:03:31 2024 +0800
+
+    fix: change default opt level to Og
+
+[33mcommit d92e2ee6f22056d03c5958a8ebd8c66ed90239ea[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Jan 14 03:24:09 2024 +0800
+
+    refactor: optimize code
+
+[33mcommit 3c75097be74c30189b1364b2cffcb3ee1f4a9de7[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Jan 14 02:56:07 2024 +0800
+
+    refactor: rewrite i2c methods
+
+[33mcommit c6ae102129e786104ed93742be92233b59a73672[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Jan 6 21:38:35 2024 +0800
+
+    feat: flash write and read example
+
+[33mcommit 6cae6fa0251977bb476502e6fa8e35df509a6493[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Jan 6 21:38:10 2024 +0800
+
+    refactor: rename option byte examples
+
+[33mcommit ed73325554ee18ebe3bc43ed76f70c51c7cbc621[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Fri Jan 5 01:54:08 2024 +0800
+
+    fix: typo
+
+[33mcommit f47a4be4e6e24f60a055c480ab2d41d2d50e79bf[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Fri Jan 5 01:51:52 2024 +0800
+
+    feat: xl2422(py32f002b+xl2400p) wireless demo
+
+[33mcommit 4e1b92d48a7ac4a580e6f2ca8442de70e31a26e2[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Dec 30 01:51:37 2023 +0800
+
+    feat: 002b reconfig swd port to gpio
+
+[33mcommit 40726853332e4863661d3e4f67304e1dc5001ebb[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Dec 30 01:34:50 2023 +0800
+
+    feat: 002b tim14 update interrupt demo
+
+[33mcommit d3cebae560e598114573c6f0906a7ace0c5d5cdb[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Dec 30 01:29:23 2023 +0800
+
+    feat: 002b tim1 update interrupt demo
+
+[33mcommit 0ea044e7bb2b228d6e2c677f0e903b1e3ad9c4da[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Dec 30 01:01:43 2023 +0800
+
+    feat: 002b option byte demo
+
+[33mcommit 502fe60eea749cdf4454918b1b57fe8da95ef07f[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Dec 30 01:01:24 2023 +0800
+
+    feat: 002b add ll flash lib (migrate from hal)
+
+[33mcommit 5e0f5f898e84f38acc617439368a63346b56323a[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Fri Dec 29 23:13:24 2023 +0800
+
+    fix: 002b uid is 128-bit instead of 128-byte
+
+[33mcommit 1515bb8b5005be614a5c3d2189bca9f61239937e[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Fri Dec 29 22:58:59 2023 +0800
+
+    feat: 002b read uid
+
+[33mcommit b0eb3a29a487edfd8fa4bb6b0d2340da2e95beed[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Fri Dec 29 08:49:11 2023 +0800
+
+    feat: 002b jlink rtt printf
+
+[33mcommit 6735848bd647fbab5050b663bf9ae180add02ac4[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Dec 28 08:19:32 2023 +0800
+
+    feat: 002b i2c l3g4200d demo
+
+[33mcommit f879b6a866f67a2558631846eeb52e2a7326eb1e[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Dec 28 08:00:16 2023 +0800
+
+    fix: typo
+
+[33mcommit 963fd045fa0234e9201e8568607210bb99447be7[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Dec 28 08:00:05 2023 +0800
+
+    feat: 002b adc internal temperature
+
+[33mcommit b0770ff2152adaab99dcb35dce89bd405d93d21c[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Dec 28 01:10:21 2023 +0800
+
+    feat: 002b adc demo
+
+[33mcommit 2cb2e9e4c7a0c81826cd13a90fa9489665cfe48d[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Dec 28 00:27:08 2023 +0800
+
+    feat: 002b gpio exti toggle demo
+
+[33mcommit 0936ce10665466dd05f051dac91e43fdd5e394fd[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Dec 28 00:05:48 2023 +0800
+
+    feat: 002b tim1 pwm demo
+
+[33mcommit c03928b9703ea39b5b8dd65d50ee9fe83f334064[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Wed Dec 27 23:22:27 2023 +0800
+
+    feat: 002b uart printf demo
+
+[33mcommit 75182c36de54cccb9c1b12545df26706273e2195[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Wed Dec 27 23:21:55 2023 +0800
+
+    feat: 002b bsp - 48mhz hsi
+
+[33mcommit a142ee6616e3172a127203dd638b91df1f90948b[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Wed Dec 27 22:49:30 2023 +0800
+
+    feat: 002b bsp - 24mhz hsi
+
+[33mcommit 3993f764b75242f3d0c6fec86c3cd4b205f212a2[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Wed Dec 27 22:48:53 2023 +0800
+
+    fix: 002b bsp uart not working
+
+[33mcommit d80a8f2dc680aa38342c60ade9ed42629e0ad083[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Dec 24 22:08:53 2023 +0800
+
+    feat: i2c ina219 demo
+
+[33mcommit db362ff3f8d2c2ccac6d18316a83c1f30202a72a[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Dec 24 15:24:09 2023 +0800
+
+    feat: i2c bmp180 demo
+
+[33mcommit 4555d5078b3f6862d03033f2c9375fd281d2a232[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Dec 24 15:00:00 2023 +0800
+
+    feat: i2c bmp280 demo
+
+[33mcommit 95e1ae18eaad88d9b8b85ecb913f9819ea6d335a[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Dec 24 14:19:18 2023 +0800
+
+    feat: i2c qmc5883l demo
+
+[33mcommit 74c45b0ac5f3a86414564c2f6b6af8c5c07c1565[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Dec 24 11:35:03 2023 +0800
+
+    feat: i2c bmi160 demo
+
+[33mcommit 4c9fafe527a9f4aa3e630502d3302a7b3dc4540e[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Dec 24 01:15:38 2023 +0800
+
+    docs: update readme
+
+[33mcommit 0353f10ef1826f30d782c2021422e4c1d3e65b33[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Dec 24 01:11:25 2023 +0800
+
+    refactor: l3g4200d demo, add burst read
+
+[33mcommit 5d557ecedec6a57b0a44f6af7befcc43e6218421[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Dec 23 23:47:50 2023 +0800
+
+    feat: i2c l3g4200d demo
+
+[33mcommit 49a7529197d5a3a7a3e876d215e21e4ea117212c[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Dec 23 12:43:25 2023 +0800
+
+    fix: adxl345 halts when speed is 100khz
+
+[33mcommit 184dcd3a6e646ac18d07241a2927e00e011e4f0f[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Dec 23 12:32:23 2023 +0800
+
+    refactor: adxl345 demo - update i2c methods
+
+[33mcommit 79e451fdbe9fd7953d82f81f9a5153f1cf8cf8bc[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Dec 23 02:52:17 2023 +0800
+
+    feat: i2c adxl345 demo
+
+[33mcommit dc277a6df4ce74697c4dc4b6a77b89d3105c5f59[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Dec 23 01:10:01 2023 +0800
+
+    refactor: update adxl345 demo
+
+[33mcommit 62bb26803c3bbff44896b84e80504448e32b734e[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Fri Dec 22 01:02:15 2023 +0800
+
+    feat: spi adxl345 3-axis accelerometer demo
+
+[33mcommit 46e7d87b55f8191565b16403ada92e9201cbba4d[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Dec 21 00:09:45 2023 +0800
+
+    feat: i2c mpu6050 3-axis gyroscope + 3-axis accelerometer demo
+
+[33mcommit 83a309329a2d8610f7896fc3898d6aceae689c0e[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Wed Dec 20 01:11:31 2023 +0800
+
+    feat: xl2400 spi example - add support for xl2400p
+
+[33mcommit a0c88417d3dad717c3a839d6cc9aa91855768b8c[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Tue Dec 19 08:40:51 2023 +0800
+
+    refactor: update xl2400 example
+
+[33mcommit 3e18509e54282ca662f6af92522b512022c59c03[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Tue Dec 19 00:54:06 2023 +0800
+
+    feat: xl2400 example - add support for xl2400p
+
+[33mcommit 1e9ada59794af5dd7a87d2812467c6515ae0bfc0[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Dec 16 01:35:06 2023 +0800
+
+    feat: f0xx example - read mcu uid
+
+[33mcommit 74477557b5b8b0ff4011d6c1ee88c8a0a5af5498[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Dec 10 13:10:52 2023 +0800
+
+    feat: 0xx spi example - ws2812(b) led
+
+[33mcommit 9ca8ae1ca2d270407f9ecfba7d293bba91546b69[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Dec 10 13:10:21 2023 +0800
+
+    fix: typo
+
+[33mcommit 5969c6184503f11cf4b1b697f0eaad567da950d8[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Dec 10 12:07:07 2023 +0800
+
+    feat: 07x bsp pll clock methods
+
+[33mcommit c911f9beac2046402324ac878323f1c79528c225[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Dec 10 11:19:36 2023 +0800
+
+    feat: 07x spi example - ws2812(b) led
+
+[33mcommit 8656e416557f54699ac26bd9a936db2474ec41b6[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Dec 10 11:18:19 2023 +0800
+
+    feat: 07x bsp hsi 24mhz
+
+[33mcommit 881e2ab6622da2a7ff954bc18580d33d3e87854c[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Dec 10 02:58:39 2023 +0800
+
+    feat: 07x can interrupt example
+
+[33mcommit 8c62df99a1760c541d3b965df1e71a9c95f47bea[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Dec 10 02:42:27 2023 +0800
+
+    fix: incorrect mask
+
+[33mcommit c4790c0823825cfbd67b6c20b6c2226b97926058[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Dec 10 01:04:22 2023 +0800
+
+    feat: 07x can extended id example
+
+[33mcommit f32503c5b6f690ca48c3b05d69a3cb01bfd89cdc[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Dec 10 01:03:21 2023 +0800
+
+    fix: typo
+
+[33mcommit 9230547ad0055ce45c2449b8c5e9c460069c284b[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Dec 10 00:34:29 2023 +0800
+
+    feat: 07x can example
+
+[33mcommit abf0ca1ae05d85961566e93ec8900342176232db[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Dec 10 00:19:33 2023 +0800
+
+    feat: 07x bsp rcc clock methods
+
+[33mcommit 3437537e5f0e32ffbad33d3ae0e77b84ed22ab48[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Dec 10 00:17:47 2023 +0800
+
+    refactor: typos and formats
+
+[33mcommit 5c544bad760337c9b3c9fe12dfa31925d2a18ebd[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Nov 9 08:40:21 2023 +0800
+
+    fix: ll_gpio_setpinmode doesn't support combined arg
+
+[33mcommit 0c56fc4a9cadb425610f87b1cf3cd89d20dadbdf[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Oct 28 23:52:12 2023 +0800
+
+    feat: 74hc595 pwm demo
+
+[33mcommit cb1c7b17b5b5acd949950df078f5bcefe7ee2884[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Fri Oct 27 01:41:04 2023 +0800
+
+    fix: typo
+
+[33mcommit b5af4f70a3daf0097d7547b8c0732a8ab9134ffe[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Fri Oct 27 01:39:30 2023 +0800
+
+    feat: 74hc595 demo
+
+[33mcommit 30493f3e9a5e42b120226c8f5abfe6e1066c9e09[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Oct 21 00:47:13 2023 +0800
+
+    style: code format
+
+[33mcommit 440e374994535168a6b866c3597d0bec75d6e986[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Oct 21 00:45:04 2023 +0800
+
+    feat: 74hc165 demo
+
+[33mcommit 163f270291269ddec160dab4791e5aded32eae91[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Oct 19 22:44:59 2023 +0800
+
+    feat: f0xx demo, multiple channel adc with dma
+
+[33mcommit 1b0a50466548fd9a81af04f351e11c2435fc9ab4[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Oct 16 22:52:07 2023 +0800
+
+    fix: ci24r1 demo ack doesn't work
+
+[33mcommit 7d18a7fc4d81e5738337338fd2ccfc1de4ec2546[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Oct 14 13:43:48 2023 +0800
+
+    feat: f07x freertos tasks demo
+
+[33mcommit 714489ddd28290e3b1f68bbed4cc78ce05dc56af[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Oct 14 13:43:05 2023 +0800
+
+    refactor: update freertos tasks demo
+
+[33mcommit e898291d2a1c67f3d99b5feb6087667a3b7622b6[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Oct 14 11:03:20 2023 +0800
+
+    refactor: update xn297l demo
+
+[33mcommit 2739e180981824c278a347ad4b9e29fea6b29ff4[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Oct 12 23:11:36 2023 +0800
+
+    feat: xn297l demo, add tx fast mode
+
+[33mcommit 0ffcbabf7f02e7d5fffc59fda8da410d2cba9dbe[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Oct 12 22:49:37 2023 +0800
+
+    feat: xn297lbw spi demo
+
+[33mcommit 1f4450f75f6f8b9b29ef25c2625a938801891b48[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Oct 12 22:02:46 2023 +0800
+
+    refactor: update xn297l demo
+
+[33mcommit 5457d628e6c2bc1ec032125fe3f39822a5900d52[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Oct 12 13:55:24 2023 +0800
+
+    refactor: update xn297l demo
+
+[33mcommit c1bb22bb2081b71bc4a28e25bc51c38fe7bf43d0[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Oct 12 02:04:49 2023 +0800
+
+    fix: xn297lbw demo, incorrect counter number, change to ack mode
+
+[33mcommit bf6c0b929f0285a92d7ab613439c2d6b0f03a4e2[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Oct 12 01:37:53 2023 +0800
+
+    feat: xn297lbw demo
+
+[33mcommit 887b5a8cd6d15d03c5fd15a383399e056f25e5ea[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Oct 12 01:37:04 2023 +0800
+
+    docs: comments
+
+[33mcommit 169c34200d01324d9388aaf0810e3f725e8b4602[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Oct 8 03:32:37 2023 +0800
+
+    feat: demo of ci24r1 wireless
+
+[33mcommit e1a77a6b0c1bf09f624f99664e88e4a0c82d4020[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Fri Oct 6 20:19:53 2023 +0800
+
+    feat: xl2400 demo, add tx fast mode
+
+[33mcommit de58b249c246bb985fb90a6dc923682645d0c690[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Fri Oct 6 14:49:15 2023 +0800
+
+    refactor: xl2400 demo, minor enhancements
+
+[33mcommit 5a8e0bbd20b4dfcb01f141003f854878c2091b85[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Fri Oct 6 11:12:11 2023 +0800
+
+    feat: demo of xl2400 wireless
+
+[33mcommit 56ba227d67d3b4f81941b01b2185acf33901ff96[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Oct 2 02:00:14 2023 +0800
+
+    feat: 07x rtc example
+
+[33mcommit fc6dbbbdcfd8eaae669836759ffd3871b888579a[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Oct 1 21:57:00 2023 +0800
+
+    feat: usart examples
+
+[33mcommit bf52563c08828bddc98a1acc4ec535bc5dccaf2d[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Oct 1 17:01:43 2023 +0800
+
+    feat: 07x pwm example
+
+[33mcommit a1f05c86f644dac3eea64c2309fa0ce7df725f54[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Wed Sep 27 22:43:07 2023 +0800
+
+    docs: update readme. move ds&rm to wiki
+
+[33mcommit 4f20ce6ee6ee5340ff00c2d5416516f23ad4d50f[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Wed Sep 27 20:29:05 2023 +0800
+
+    style: code format
+
+[33mcommit 97476cd1cf050a6db03077b412a4aa07a6d9c34b[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Wed Sep 27 20:27:40 2023 +0800
+
+    feat: example - 07x tim1 autoreload
+
+[33mcommit 91e3fc45b623be50ccdb35f8293822c0deb11492[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Wed Sep 27 20:01:11 2023 +0800
+
+    fix: file attributes, 072 vector table and build flags
+
+[33mcommit 8bb13f51f24a97aaafd695fbdcb2adbe681f5753[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Tue Sep 26 00:43:23 2023 +0800
+
+    docs: update readme
+
+[33mcommit f3abb5a39c281c646738f031eb8b7799e4383af8[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Tue Sep 26 00:16:43 2023 +0800
+
+    docs: update readme
+
+[33mcommit e9ea18390a9dfbc4f4c6702ad467796c5e9de3f7[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Tue Sep 26 00:09:11 2023 +0800
+
+    feat: add py32f002b
+
+[33mcommit 6483cc55440a1fd59e8e50a9f997a4fa5d1e1aba[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Sep 25 03:04:45 2023 +0800
+
+    docs: update readme
+
+[33mcommit 09ed3b3f3220990b7d76b09156dfc6ce6805550c[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Sep 25 02:46:48 2023 +0800
+
+    feat: add py32f07x(py32f04x)
+
+[33mcommit 6c4078f35266522cf4cf7e4b79dcc343823dee61[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Sep 24 23:01:45 2023 +0800
+
+    feat: update flash files for 002b and 071/072
+
+[33mcommit ccf2945eba8872d9df46bae336e622665c701459[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Sep 9 18:36:10 2023 +0800
+
+    chore: bump dfp pack to 1.1.7
+
+[33mcommit 8efdc9423c1a08c5a52fe584739177cf8a2ea2c6[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Sep 9 17:44:43 2023 +0800
+
+    fix: fix #29
+
+[33mcommit 2b7b475194dee50c44484b73c27d6bf9ee0a4476[m
+Merge: d2b9f80 c02adc4
+Author: IOsetting <65589019+IOsetting@users.noreply.github.com>
+Date:   Mon Aug 28 11:39:47 2023 +0800
+
+    Merge pull request #24 from deividAlfa/main
+    
+    Update system_py32f0xx.c
+
+[33mcommit c02adc4cf544877cee7bff8cd7aecfb3bf5e97dd[m
+Author: deividAlfa <48562135+deividAlfa@users.noreply.github.com>
+Date:   Sun Aug 27 19:15:36 2023 +0200
+
+    Update system_py32f0xx.c
+    
+    FORBID_VECT_TAB_MIGRATION was enabled, should be disabled by default!
+
+[33mcommit a37c9dc55271a44e8cd78ab8aa39fb41c6e84130[m
+Author: deividAlfa <48562135+deividAlfa@users.noreply.github.com>
+Date:   Sun Aug 27 12:52:16 2023 +0200
+
+    Update system_py32f0xx.c
+    
+    Automatically detect GCC compiler, only apply the code when detected.
+    Add warning message explaining why NVIC table is placed in SRAM by default.
+    Properly explain what FORBID_VECT_TAB_MIGRATION does.
+    Remove VECT_TAB_SRAM symbol as it was useless, it wasn't doing anything.
+
+[33mcommit d2b9f80248d9c210990c51df3107a3eb41716583[m
+Merge: dda4d78 681735a
+Author: IOsetting <65589019+IOsetting@users.noreply.github.com>
+Date:   Sun Aug 27 16:09:21 2023 +0800
+
+    Merge pull request #23 from deividAlfa/main
+    
+    Add support for SRAM vectors
+
+[33mcommit 681735ac7e0ee23e89e569e1ac6e326f8e44ba07[m
+Author: deividAlfa <48562135+deividAlfa@users.noreply.github.com>
+Date:   Mon Aug 21 19:45:23 2023 +0200
+
+    Add support for SRAM vectors
+    
+    If VECT_TAB_SRAM defined, declare SRAM vector table and copy values from flash
+
+[33mcommit ae690bfffce6724c1bf98390e8a737d2f8ee3008[m
+Author: deividAlfa <48562135+deividAlfa@users.noreply.github.com>
+Date:   Mon Aug 21 19:43:10 2023 +0200
+
+    Update py32f030x8.ld
+    
+    Add sram vector section
+
+[33mcommit 59fd8c447ee87843b955ac679ffcb0d06ad11194[m
+Author: deividAlfa <48562135+deividAlfa@users.noreply.github.com>
+Date:   Mon Aug 21 19:42:57 2023 +0200
+
+    Update py32f030x6.ld
+    
+    Add sram vector section
+
+[33mcommit 98fa93b51112baccf7a94202d2cb08bd40861683[m
+Author: deividAlfa <48562135+deividAlfa@users.noreply.github.com>
+Date:   Mon Aug 21 19:42:44 2023 +0200
+
+    Update py32f003x8.ld
+    
+    Add sram vector section
+
+[33mcommit cfc3f097439ccb4d09c7376073607a3776a7a643[m
+Author: deividAlfa <48562135+deividAlfa@users.noreply.github.com>
+Date:   Mon Aug 21 19:42:32 2023 +0200
+
+    Update py32f003x6.ld
+    
+    Add sram vector section
+
+[33mcommit c3c676df1ff2f94403f7dda853ec846ebce23a0a[m
+Author: deividAlfa <48562135+deividAlfa@users.noreply.github.com>
+Date:   Mon Aug 21 19:42:18 2023 +0200
+
+    Update py32f002ax5.ld
+    
+    Add sram vector section
+
+[33mcommit dda4d784979f68c9f84c6085735b3258570ff0f4[m
+Merge: 1d15784 cf4c2d6
+Author: IOsetting <65589019+IOsetting@users.noreply.github.com>
+Date:   Tue Jul 11 09:25:49 2023 +0800
+
+    Merge pull request #18 from kholia/nRF24L01_Wireless_F003_SOP16
+    
+    feat: add nRF24L01_Wireless_F003_SOP16 TX example
+
+[33mcommit cf4c2d6bdad7c40e2bae2ff220e23bd5947c1919[m
+Author: Dhiru Kholia <dhiru.kholia@gmail.com>
+Date:   Tue Jul 4 21:50:49 2023 +0530
+
+    feat: add nRF24L01_Wireless_F003_SOP16 TX example
+
+[33mcommit 1d15784a010732787968d5546879aaa39addd88e[m
+Merge: 35401a6 1bbc702
+Author: IOsetting <65589019+IOsetting@users.noreply.github.com>
+Date:   Sun Jun 25 13:23:36 2023 +0800
+
+    Merge pull request #14 from kholia/Support-for-Si5351A
+    
+    feat: HAL example for Si5351A clock generator chip
+
+[33mcommit 1bbc702025ec417dec108c01bbb9a13eb993ec71[m
+Author: Dhiru Kholia <dhiru.kholia@gmail.com>
+Date:   Sat Jun 24 15:08:45 2023 +0530
+
+    feat: HAL example for Si5351A clock generator chip
+
+[33mcommit 35401a6b95d98c4f794b0302beacc82146e2f227[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Jun 3 18:25:40 2023 +0800
+
+    docs: update readme
+
+[33mcommit 8439e77e82d2b4202d64f8655ca56800c022cc9a[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Jun 3 17:50:03 2023 +0800
+
+    refactor: remove unnecessary include
+
+[33mcommit e1a0e1c55687e9542f67c41d858e6e502d840f46[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Jun 3 17:33:39 2023 +0800
+
+    fix: usart rx demo doesn't work
+
+[33mcommit 4c9de4301e8855ad575ab923f9e03dfb076ebd0a[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon May 1 00:58:05 2023 +0800
+
+    feat: example code of adc triggered by tim1
+
+[33mcommit 91b976a88b4911f23c249c519d46c0f377da9bb7[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon May 1 00:57:39 2023 +0800
+
+    docs: comment
+
+[33mcommit 748c83eac4c475762fa9836d77c32a8ba8ea2bf7[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon May 1 00:57:19 2023 +0800
+
+    refactor: replace with bsp clock function
+
+[33mcommit 5f3be03480967060ed0762fd2b4d7d54846e5ac2[m
+Merge: 46288c9 ac2db18
+Author: IOsetting <65589019+IOsetting@users.noreply.github.com>
+Date:   Thu Apr 6 12:18:24 2023 +0800
+
+    Merge pull request #7 from kholia/better-init-for-displays
+    
+    Add more robust init for 16x2 I2C LCD displays
+
+[33mcommit ac2db183aab5b1c1d83fa7d71f38a8a0a5c605c0[m
+Author: Dhiru Kholia <dhiru.kholia@gmail.com>
+Date:   Wed Apr 5 13:26:35 2023 +0530
+
+    Add more robust init for 16x2 I2C LCD displays
+
+[33mcommit 46288c97e1a2de2a012d1df3dbc05caf278d3818[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Wed Apr 5 09:44:24 2023 +0800
+
+    refactor: remove py32f002x
+
+[33mcommit caa0f4e96bb29037c59841db5d1a99a8fa60adfa[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Wed Apr 5 09:36:08 2023 +0800
+
+    feat: add separate pwm examples for py32f002a
+
+[33mcommit a69d66b08ecb710932a2cd05acbc787dc0eebb58[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Apr 1 00:41:17 2023 +0800
+
+    feat: i2c pin multiplexing example for py32f003w
+
+[33mcommit 6ea6ee1918820fc8abf39a480d87f4e6a60a378d[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Wed Mar 29 00:50:54 2023 +0800
+
+    fix: lower down the ferquency for stability
+
+[33mcommit cc03e09ad7853e2d09c67f203985070c1937c445[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Wed Mar 29 00:50:18 2023 +0800
+
+    feat: demo of changing option bytes
+
+[33mcommit a4d988ebcf19480ce640c7d08f08d0d666757efc[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Wed Mar 29 00:49:33 2023 +0800
+
+    fix: typo
+
+[33mcommit 15dc8d6b894a3aa3d0d81abc0347d447492bcd5d[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Wed Mar 22 01:52:50 2023 +0800
+
+    feat: ll 1602lcd example for py32f003w
+
+[33mcommit 504c1dde99feeb9726afbc187647cfaecaef8850[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Mar 18 00:52:20 2023 +0800
+
+    refactor: st7567 demo, change pins to port a
+
+[33mcommit 4c651bfc34d71dbbc301290da716efdaa6440c86[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Mar 12 14:59:09 2023 +0800
+
+    refactor: update epd lib & example
+
+[33mcommit 512ff5e4dcbe75b90bb0f56b0b48c7dc4f994c4b[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Mar 12 14:57:07 2023 +0800
+
+    refactor: update clock bsp lib
+
+[33mcommit 287cb3400c3aee133bb2771bf6a2ab776120a52f[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Mar 12 13:54:51 2023 +0800
+
+    refactor: update default app
+
+[33mcommit 8813b261fae8b2a6d0e6de1276e3702bcad52973[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Mar 12 13:54:01 2023 +0800
+
+    refactor: update bsp for compatible with f002a
+
+[33mcommit d7cbc1a53ae24cb865e2a6bcc6904d354d745caa[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Mar 12 13:52:58 2023 +0800
+
+    refactor: remove button bsp lib
+
+[33mcommit 7b640ce6157d76262a9aafa835de88772b202846[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Mar 12 13:32:13 2023 +0800
+
+    refactor: update bsp for compatible with f002a
+
+[33mcommit e4ace192b2be8e42b526dd8b4fdd7850784b0dcd[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Mar 12 02:47:21 2023 +0800
+
+    refactor: epd lib enhancements
+
+[33mcommit aa804d5ac60a29acdb864645c0cff7ee953c9cec[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Mar 12 02:36:33 2023 +0800
+
+    refactor: epd lib enhancements
+
+[33mcommit 5070ff46339be6e28c59229598b3930ce8e284a8[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Mar 12 02:06:17 2023 +0800
+
+    fix: add delay to ensure command completion; shorten test time
+
+[33mcommit 9b6f1f66706473f069d2fd99a6fe12d686c54291[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Mar 12 01:10:43 2023 +0800
+
+    refactor: shorten epd debug output
+
+[33mcommit cad864cf0e5525a8e4a5f3ce8793600dd2a5949d[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Mar 12 01:09:56 2023 +0800
+
+    feat: hal spi example - waveshare 1.54 e-paper demo
+
+[33mcommit d2c9a35c85c0efc8847ce051d561f01d8211a4e2[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Fri Mar 10 02:22:44 2023 +0800
+
+    fix: exclude e-paper lib by default
+
+[33mcommit 3cc21611338083eea37a3cf1b92dbc1cfb1c42e7[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Fri Mar 10 02:20:48 2023 +0800
+
+    feat: update makefile
+
+[33mcommit f879eebe17cbf3bfa1acb03d22f3e153b601b5ca[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Fri Mar 10 02:20:01 2023 +0800
+
+    feat: lib and demo of waveshare e-paper
+
+[33mcommit 806035f63278af3a9dd17a7a9cb7a1ba63da85ac[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Mar 4 11:38:35 2023 +0800
+
+    fix: ll 1602 lcd, improve the init procedures
+
+[33mcommit 103d647e7b1f41cc0c123d4ff64776d4e03bb8ed[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Mar 4 01:30:29 2023 +0800
+
+    fix: misorder on some module
+
+[33mcommit 983ff1cbc6ce5c52bcf2428be75c8c2f67084a12[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Mar 4 00:51:09 2023 +0800
+
+    feat: ll 1602 lcd example
+
+[33mcommit 624e8514763e081211664081e3ae57555ac868e8[m
+Merge: 18cd0c0 204f04c
+Author: IOsetting <65589019+IOsetting@users.noreply.github.com>
+Date:   Fri Mar 3 17:22:09 2023 +0800
+
+    Merge pull request #5 from kholia/TIM_ENCODER_EXAMPLE
+    
+    feat: hal tim encoder example
+
+[33mcommit 204f04c6f3efb85f337e572065aa0d0035002369[m
+Author: Dhiru Kholia <dhiru.kholia@gmail.com>
+Date:   Fri Mar 3 12:22:47 2023 +0530
+
+    feat: hal tim encoder example
+
+[33mcommit 18cd0c0aec2580097921f94c9c0fb21e8853b81b[m
+Merge: 40841e5 246f353
+Author: IOsetting <65589019+IOsetting@users.noreply.github.com>
+Date:   Thu Mar 2 17:02:00 2023 +0800
+
+    Merge pull request #4 from kholia/PCF8574-I2C-LED
+    
+    feat: hal i2c pcf8574 lcd demos
+
+[33mcommit 246f3532ffdad80df03d8997abd49e655b8f173d[m
+Author: Dhiru Kholia <dhiru.kholia@gmail.com>
+Date:   Thu Mar 2 12:18:10 2023 +0530
+
+    feat: hal i2c pcf8574 lcd demos
+
+[33mcommit 40841e5a2402a7a64ee632fc04fb3bc77955430a[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Mar 2 11:01:51 2023 +0800
+
+    feat: hal i2c ssd1306 oled demo
+
+[33mcommit 04b228c9694b87fcf8fb1e9869715da743a208c3[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Mar 2 10:17:11 2023 +0800
+
+    fix: comments
+
+[33mcommit d25d9de0d87d69cd9d5991c0094e408c5ee99b8c[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Mar 2 10:10:21 2023 +0800
+
+    fix: gitignore
+
+[33mcommit c716d1f0199d6292b949980b607117aadcbe6749[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Mar 2 10:09:51 2023 +0800
+
+    refactor: minor code changes
+
+[33mcommit a5862acacee1eeadef80fc2cd11f2c1a7195ce62[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Mar 2 09:43:37 2023 +0800
+
+    docs: update readme
+
+[33mcommit 9f06aad6f54def35140b7a4e9bc3f763b4ef0347[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Mar 2 09:42:17 2023 +0800
+
+    refactor: ll remove unused button bsp functions
+
+[33mcommit 41fb001c30c4c2f0173119a205a0fb54a9a26d66[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Tue Feb 28 00:56:37 2023 +0800
+
+    docs: add notes to internal temp sensor example
+
+[33mcommit acd0745d371a5b27647ffe4f950c1119cedd69c2[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Fri Feb 24 00:30:16 2023 +0800
+
+    feat: ll uart rx interrupts demo
+
+[33mcommit f980fdb64123c55919d5942e271eb0536e05da5c[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Feb 19 00:44:44 2023 +0800
+
+    feat: ll wwdg example
+
+[33mcommit 60d9d871f5ddc182a6cfbad171f4f562f44cc9c4[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Feb 18 22:10:50 2023 +0800
+
+    feat: ll iwdg example
+
+[33mcommit 5b58664bafb3228c8a50ae26988d3b4cf84d8f02[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Feb 18 21:28:33 2023 +0800
+
+    feat: ll pvd example
+
+[33mcommit 994d851c82b2919b8ed51f68ad7006ecd12bd56b[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Feb 18 15:49:16 2023 +0800
+
+    feat: ll lptim wakeup example
+
+[33mcommit 8126b008387d475003f719f61d0efb1418583454[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Feb 18 15:36:56 2023 +0800
+
+    feat: ll lptim example
+
+[33mcommit 37afb31856bbc53df951c2abf286da1c82d2b2ad[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Feb 18 15:25:20 2023 +0800
+
+    feat: ll rtc alarm wakeup
+
+[33mcommit b8043bd5d82d2e1aa1b251486b7cc58066199c69[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Feb 18 11:46:33 2023 +0800
+
+    feat: ll rtc alarm example
+
+[33mcommit a00b738a90c4303231eaf4cfaf60250577e5f9e3[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Feb 18 02:46:30 2023 +0800
+
+    feat: ll flash read&write example
+
+[33mcommit 545789ba114ef104589a2683b992dcced4d15c45[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Feb 18 02:46:05 2023 +0800
+
+    refactor: ll bsp clock minor changes
+
+[33mcommit 20e4363001564ffd0f9f5b0107beaa1fda3256ab[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Feb 18 02:44:36 2023 +0800
+
+    feat: ll flash peripheral lib(migrate from hal)
+
+[33mcommit 64ef86eaf647af7f4d9dfc96ac3f93e633662036[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Feb 18 01:14:14 2023 +0800
+
+    feat: hal flash read&write example
+
+[33mcommit ab5eaec2df95fe90c307e9322d72c4b8e1a042e2[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Fri Feb 17 23:56:44 2023 +0800
+
+    feat: ll crc example
+
+[33mcommit 64a8c2a28f4d6f539a8aeb4e0a4abfa8407aaeee[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Fri Feb 17 01:28:28 2023 +0800
+
+    feat: ll example - adc read internal temperature
+
+[33mcommit 2d498d808b93af7475debe3d636e80c03f441763[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Feb 16 22:27:03 2023 +0800
+
+    feat: add hse/hsi init functions to bsp
+
+[33mcommit f2634a8d7134b40b73531ca159c6ed4a08eb2a70[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Feb 16 22:11:01 2023 +0800
+
+    refactor: rewrite adc dma example
+
+[33mcommit 7ed199ed0543f6d9043e323d9e09c41882c1fb6a[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Feb 11 14:43:41 2023 +0800
+
+    feat: segger rtt printf example
+
+[33mcommit 6b7ec31d737889ce2f385dce40ed3a9876148c59[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Feb 11 14:21:11 2023 +0800
+
+    feat: rcc examples
+
+[33mcommit 0543e52d593daefe98c80e45b4d97be50412cf78[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Fri Feb 10 23:07:54 2023 +0800
+
+    chore: jlink 7.70 -> 7.84, update readme
+
+[33mcommit 3bd91cb818168902aeb2f983a0634509f920650a[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Feb 5 00:38:20 2023 +0800
+
+    refactor: nrf24l01 example, dynamic payload width
+
+[33mcommit 818cf638618147264e3e98de7cb31f79d0f336ee[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Feb 4 12:51:49 2023 +0800
+
+    refactor: update freertosconfig.h
+
+[33mcommit 3dceece9bb2c463b10094ff4faed268b8f552b20[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Feb 4 12:20:34 2023 +0800
+
+    refactor: nrf24l01 example fast tx mode
+
+[33mcommit 8d60209268eebd3cdbc262f60414d386ac333ec3[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Feb 4 03:02:45 2023 +0800
+
+    refactor: nrf24l01 example, rx interrupt
+
+[33mcommit d430e05ff40327d7169700803f9e70f3c40eb687[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Feb 4 01:58:40 2023 +0800
+
+    feat: spi example - nrf24l01
+
+[33mcommit 339590ec377f6858bddd8ce440a1df2c11a79849[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Fri Feb 3 23:00:55 2023 +0800
+
+    feat: exti trigger example
+
+[33mcommit 86cd14a1f6ede4514affb70127bf9d09b2c48127[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Wed Jan 25 15:39:31 2023 +0800
+
+    feat: ll freertos semaphore examples
+
+[33mcommit d1220b2f582ee21e5668be778520ded04260e50a[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Tue Jan 24 21:03:41 2023 +0800
+
+    feat: ll i2c ds3231 example
+
+[33mcommit 694ef95bcae006544a8eed06f64b2a9321c24663[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Tue Jan 24 14:55:30 2023 +0800
+
+    feat: ll i2c at24c32 example
+
+[33mcommit 7d81f18376507e5906713aba158ee874129a7d31[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Tue Jan 24 14:54:35 2023 +0800
+
+    fix: rcc hsi example, re-init systick
+
+[33mcommit bc8c26a7a664e601b6885881b1d127e093d4c05b[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Tue Jan 24 14:53:24 2023 +0800
+
+    fix: avoid printf io buffer
+
+[33mcommit d3f3e6a738b03560e96ce30239ad789399f7c421[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Tue Jan 24 03:34:42 2023 +0800
+
+    docs: update readme
+
+[33mcommit 68c2ee2385607882b2aea4c48b9bb897abbfdbf2[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Tue Jan 24 03:14:20 2023 +0800
+
+    docs: tested with pf0&pf1 on py32f002a
+
+[33mcommit 11d233867d137cee35cbdf867294e6094a7a8e85[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Tue Jan 24 02:44:12 2023 +0800
+
+    refactor: remove irrelevant code
+
+[33mcommit d5a4d84afa48199a2a7f1b380172538651fc3d19[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Tue Jan 24 02:41:53 2023 +0800
+
+    docs: remove irrelevant comments
+
+[33mcommit 8c3c597d98aa0905bcd74b068ea1fb5bd9117945[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Tue Jan 24 02:31:59 2023 +0800
+
+    feat: ll i2c ssd1306 oled example
+
+[33mcommit 4785f647da4e2328d886509ccb598479c5452113[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Tue Jan 24 02:31:30 2023 +0800
+
+    refactor: remove redundant code
+
+[33mcommit 4aefda2594806f675f38ca8c2ad18db94e43b59f[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Jan 23 23:28:56 2023 +0800
+
+    fix: ll st7567, reverse display
+
+[33mcommit a03fef4b4be21ab967692359beaa252a36a39048[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Jan 23 22:25:27 2023 +0800
+
+    fix: typo
+
+[33mcommit cfc47773fd803682e74a24065f22a40962c9cb0e[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Jan 23 22:23:16 2023 +0800
+
+    feat: ll spi st7567 lcd example
+
+[33mcommit 1e288f9486e512fcebf51f5bb8cfc36853d12035[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Jan 23 20:16:01 2023 +0800
+
+    feat: ll spi max7219 example
+
+[33mcommit a640594c648a3c240b64092c14bdcdb7b697cdab[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Jan 23 18:12:42 2023 +0800
+
+    feat: ll tim1 pwm complementary, dma burst example
+
+[33mcommit d823c548b7c9ba360581a54a9e9ae712c9abb7c2[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Jan 23 16:08:34 2023 +0800
+
+    fix: remove redundant code
+
+[33mcommit edf46c13d3d798d0decbebacedb9627bb9ade7ce[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Jan 23 13:53:44 2023 +0800
+
+    fix: typo, update gitignore
+
+[33mcommit 77212d8eec160b77012340f2ff13869214de1e55[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Jan 23 13:50:56 2023 +0800
+
+    feat: ll tim examples
+
+[33mcommit 3565b1f27e7bbeed82a2fe73d807f9c5cd2df151[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Jan 23 02:42:37 2023 +0800
+
+    feat: ll freertos example
+
+[33mcommit d15c89b1540a84c92bcd420873c00167ae97eb34[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Jan 23 02:02:22 2023 +0800
+
+    feat: ll adc analog watchdog example
+
+[33mcommit 3edc23761e0c2c4020250ca4b44d62ccef3b56b7[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Jan 22 14:22:12 2023 +0800
+
+    feat: ll adc dma example
+
+[33mcommit 3da26d4f62b78ee442919c850cddc095cb795d55[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Jan 22 13:42:05 2023 +0800
+
+    refactor: ll rcc pll example minor changes
+
+[33mcommit 671d555f3ee04eeffe825feae798b3c59abccbdd[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Jan 22 12:59:38 2023 +0800
+
+    feat: ll rcc hsi pll examples
+
+[33mcommit 94d53dbcbaca7a6aa6a3d30b22b776b655a26905[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Jan 22 12:58:18 2023 +0800
+
+    fix: typo
+
+[33mcommit 2baadadbf4398d21f573b5b7a0d6024fe6455e17[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Jan 22 02:37:25 2023 +0800
+
+    fix: syntax typo
+
+[33mcommit 495564c085418220672e6f4da97962e4d5ff89d5[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Jan 22 02:35:06 2023 +0800
+
+    docs: update readme
+
+[33mcommit 98ead6d41ac4fd6cbfca660a9989b019a87ea112[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Jan 22 01:58:23 2023 +0800
+
+    fix: suppress firmware update dialog
+
+[33mcommit a8e40581ac4d159f04ccf5c2f575c1509ea7bd3a[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Fri Jan 20 00:03:43 2023 +0800
+
+    refactor: rename example folders
+
+[33mcommit 7d51b453e6e10dabcd2bf3ffc3537da08580bcc2[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Jan 19 23:53:38 2023 +0800
+
+    refactor: set py32f030 as default part
+
+[33mcommit 9b1847fe097661b9e63378af80a4e3ed4db000c7[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Jan 19 23:36:06 2023 +0800
+
+    feat: add freertos v202210.01-lts
+
+[33mcommit e19b6df4e3bf66fa43aed7904cc513d5581e86fc[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Jan 19 22:45:57 2023 +0800
+
+    fix: incorrect file attributes
+
+[33mcommit 16dba9136d7655a117104ad2b444d4b139e2a2b9[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Jan 19 22:42:37 2023 +0800
+
+    chore: bump cmsis to v5.9.0
+
+[33mcommit 2056c386b632bdd8f406c00a77b8496b201abc12[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Jan 15 11:01:59 2023 +0800
+
+    feat: py32f002a resources test
+
+[33mcommit e63905627e74999529699f8938c12d02b583759c[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Jan 14 16:43:28 2023 +0800
+
+    docs: update readme
+
+[33mcommit 20a7665bbe4089242930de4b68ab8c39e1e1a7cc[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sat Jan 14 00:37:11 2023 +0800
+
+    fix: build and flash options
+
+[33mcommit 01f3b5e0838388f1c3e3bc82cf67f6c00d19b168[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Jan 12 00:50:57 2023 +0800
+
+    feat: ld file for 002
+
+[33mcommit c46103e815717a5d73d8afed2d7d94bf44a5a472[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Thu Jan 12 00:22:09 2023 +0800
+
+    feat: startup files for 002 and 072
+
+[33mcommit 7ed18cc848f7ea127c16856821bf17967d675054[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Wed Jan 11 23:51:30 2023 +0800
+
+    fix: incorrect file attributes
+
+[33mcommit feb38b5b41f55da04673e6dd8193f0c14cb0fb73[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Wed Jan 11 23:45:54 2023 +0800
+
+    chore: bump to dfp.1.1.3
+
+[33mcommit 3be44a9ba6085ef4ea1a3c53f88a55bfdd242527[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Tue Jan 10 00:43:03 2023 +0800
+
+    docs: datasheets and user manuals
+
+[33mcommit b9ee789f78e934b84f8c50ac6478e6779115a9b0[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Tue Jan 10 00:34:07 2023 +0800
+
+    refactor: update gpio examples
+
+[33mcommit c920de408e9ecfa4d6c5bba4e9fc07fa03fda908[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Tue Jan 10 00:24:03 2023 +0800
+
+    refactor: update adc dma example
+
+[33mcommit 7fcfcdbb2fa6f4892989dc2b1a2248ad271fb4ed[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Jan 9 23:45:43 2023 +0800
+
+    feat: adc dma example
+
+[33mcommit 83ac486170c53d7fda6d4512a9e9d798f1f9bb32[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Jan 9 22:59:15 2023 +0800
+
+    feat: hse rcc examples
+
+[33mcommit 1266ecf181fb83b13da0c8dc899209739fe3c546[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Jan 9 01:50:20 2023 +0800
+
+    feat: adc example
+
+[33mcommit 812f2bf8109fc2ca92e97ed7933ca9893194ecb9[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Jan 9 00:41:14 2023 +0800
+
+    feat: rcc examples
+
+[33mcommit 2c7a8b8eaa3cfc49026c86bd4d77a65ac0d78558[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Jan 8 23:34:28 2023 +0800
+
+    refactor: unify bsp libs
+
+[33mcommit fb85d299d3df10b10547a42984717d42ca12a464[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Dec 25 11:50:36 2022 +0800
+
+    docs: add readme
+
+[33mcommit 4c758347e492cc50e293306b21199d4c98c8cd47[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Dec 12 23:25:01 2022 +0800
+
+    refactor: split ll bsp into separate files
+
+[33mcommit dafe61f45e176302ddd79c3dd14fd8545dce26dc[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Dec 12 23:07:35 2022 +0800
+
+    feat: ll lib option
+
+[33mcommit 061ec26799ae5af5b4a0dbad96ce09e0a801e283[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Dec 12 22:15:20 2022 +0800
+
+    feat: dsp functions
+
+[33mcommit 4de05b7e25c45c34c3682b8489b9ba901f84587b[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Dec 12 21:13:02 2022 +0800
+
+    feat: improve make rule
+
+[33mcommit 8b7da6d0c66346f5bface4c046bc471c7d718f59[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Dec 12 02:41:49 2022 +0800
+
+    refactor: bsp functions
+
+[33mcommit 688ba2b4f23fb2d6a6cdc9574d357e96d4ca5556[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Mon Dec 12 01:58:38 2022 +0800
+
+    fix: wrong types in comments
+
+[33mcommit 76f4a683aa21b02bd5ec859206e64ae99a5913db[m
+Author: IOsetting <iosetting@outlook.com>
+Date:   Sun Dec 11 20:42:18 2022 +0800
+
+    first commit

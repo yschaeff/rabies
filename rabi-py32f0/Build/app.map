@@ -1,0 +1,1817 @@
+Archive member included to satisfy reference by file (symbol)
+
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-init.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o (__libc_init_array)
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-memset.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o (memset)
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-exit.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o (exit)
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-atexit.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o (atexit)
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fini.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o (__libc_fini_array)
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-exit.o) (__stdio_exit_handler)
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fflush.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o) (_fflush_r)
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o) (_malloc_r)
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-freer.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fflush.o) (_free_r)
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fwalk.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o) (_fwalk_sglue)
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__atexit.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-atexit.o) (__register_exitproc)
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-impure.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fflush.o) (_impure_ptr)
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mlock.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o) (__malloc_lock)
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-sbrkr.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o) (_sbrk_r)
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o) (__sread)
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-readr.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o) (_read_r)
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-writer.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o) (_write_r)
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-closer.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o) (_close_r)
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lseekr.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o) (_lseek_r)
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__call_atexit.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__atexit.o) (__call_exitprocs)
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-reent.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-sbrkr.o) (errno)
+/usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_thumb1_case_uqi.o)
+                              ./Build/raddr/pack.o (__gnu_thumb1_case_uqi)
+/usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_udivsi3.o)
+                              ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o (__aeabi_uidiv)
+/usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_udivsi3.o) (__aeabi_idiv0)
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(close.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-closer.o) (_close)
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(lseek.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lseekr.o) (_lseek)
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(read.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-readr.o) (_read)
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(sbrk.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-sbrkr.o) (_sbrk)
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(write.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-writer.o) (_write)
+/usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(_exit.o)
+                              /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-exit.o) (_exit)
+
+Discarded input sections
+
+ .text          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crti.o
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crti.o
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crti.o
+ .data          0x00000000        0x4 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtbegin.o
+ .rodata        0x00000000       0x24 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtbegin.o
+ .text          0x00000000       0x74 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o
+ .ARM.extab     0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o
+ .ARM.exidx     0x00000000       0x10 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o
+ .debug_line    0x00000000       0x7a /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o
+ .debug_line_str
+                0x00000000       0x82 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o
+ .debug_info    0x00000000       0x24 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o
+ .debug_abbrev  0x00000000       0x14 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o
+ .debug_str     0x00000000       0x91 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o
+ .ARM.attributes
+                0x00000000       0x1b /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-init.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-init.o)
+ .text          0x00000000       0xa8 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-memset.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-memset.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-memset.o)
+ .debug_info    0x00000000      0x135 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-memset.o)
+ .debug_abbrev  0x00000000       0xb7 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-memset.o)
+ .debug_loclists
+                0x00000000      0x1c6 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-memset.o)
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-memset.o)
+ .debug_line    0x00000000      0x1c1 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-memset.o)
+ .debug_str     0x00000000      0x1aa /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-memset.o)
+ .comment       0x00000000       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-memset.o)
+ .debug_frame   0x00000000       0x30 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-memset.o)
+ .ARM.attributes
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-memset.o)
+ .text          0x00000000       0x28 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-exit.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-exit.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-exit.o)
+ .debug_info    0x00000000      0x11b /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-exit.o)
+ .debug_abbrev  0x00000000       0xd8 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-exit.o)
+ .debug_loclists
+                0x00000000       0x1b /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-exit.o)
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-exit.o)
+ .debug_line    0x00000000      0x133 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-exit.o)
+ .debug_str     0x00000000      0x1bc /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-exit.o)
+ .comment       0x00000000       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-exit.o)
+ .debug_frame   0x00000000       0x28 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-exit.o)
+ .ARM.attributes
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-exit.o)
+ .text          0x00000000       0x10 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-atexit.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-atexit.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-atexit.o)
+ .debug_info    0x00000000      0x11e /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-atexit.o)
+ .debug_abbrev  0x00000000       0xbe /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-atexit.o)
+ .debug_loclists
+                0x00000000       0x2b /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-atexit.o)
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-atexit.o)
+ .debug_line    0x00000000       0xca /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-atexit.o)
+ .debug_str     0x00000000      0x1d3 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-atexit.o)
+ .comment       0x00000000       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-atexit.o)
+ .debug_frame   0x00000000       0x28 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-atexit.o)
+ .ARM.attributes
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-atexit.o)
+ .text          0x00000000       0x28 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fini.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fini.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fini.o)
+ .debug_info    0x00000000       0xf7 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fini.o)
+ .debug_abbrev  0x00000000       0xc9 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fini.o)
+ .debug_loclists
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fini.o)
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fini.o)
+ .debug_line    0x00000000       0xd1 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fini.o)
+ .debug_str     0x00000000      0x1cd /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fini.o)
+ .comment       0x00000000       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fini.o)
+ .debug_frame   0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fini.o)
+ .ARM.attributes
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fini.o)
+ .text          0x00000000      0x258 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .data          0x00000000        0xc /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .bss           0x00000000      0x13c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .debug_info    0x00000000      0xe8d /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .debug_abbrev  0x00000000      0x3f2 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .debug_loclists
+                0x00000000      0x1dd /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .debug_rnglists
+                0x00000000       0x6d /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .debug_line    0x00000000      0x592 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .debug_str     0x00000000      0x6bc /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .comment       0x00000000       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .debug_frame   0x00000000      0x110 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .ARM.attributes
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-findfp.o)
+ .text          0x00000000      0x1a8 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fflush.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fflush.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fflush.o)
+ .debug_info    0x00000000      0xa46 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fflush.o)
+ .debug_abbrev  0x00000000      0x2d1 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fflush.o)
+ .debug_loclists
+                0x00000000      0x2a4 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fflush.o)
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fflush.o)
+ .debug_rnglists
+                0x00000000       0x4a /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fflush.o)
+ .debug_line    0x00000000      0x472 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fflush.o)
+ .debug_str     0x00000000      0x540 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fflush.o)
+ .comment       0x00000000       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fflush.o)
+ .debug_frame   0x00000000       0x6c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fflush.o)
+ .ARM.attributes
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fflush.o)
+ .text          0x00000000      0x158 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o)
+ .bss           0x00000000        0x8 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o)
+ .debug_info    0x00000000      0x9bb /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o)
+ .debug_abbrev  0x00000000      0x241 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o)
+ .debug_loclists
+                0x00000000      0x2a9 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o)
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o)
+ .debug_rnglists
+                0x00000000       0x1f /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o)
+ .debug_line    0x00000000      0x462 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o)
+ .debug_str     0x00000000      0x59a /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o)
+ .comment       0x00000000       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o)
+ .debug_frame   0x00000000       0x54 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o)
+ .ARM.attributes
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mallocr.o)
+ .text          0x00000000       0xb8 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-freer.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-freer.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-freer.o)
+ .debug_info    0x00000000      0x86a /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-freer.o)
+ .debug_abbrev  0x00000000      0x238 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-freer.o)
+ .debug_loclists
+                0x00000000      0x11a /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-freer.o)
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-freer.o)
+ .debug_rnglists
+                0x00000000       0x13 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-freer.o)
+ .debug_line    0x00000000      0x2e1 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-freer.o)
+ .debug_str     0x00000000      0x539 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-freer.o)
+ .comment       0x00000000       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-freer.o)
+ .debug_frame   0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-freer.o)
+ .ARM.attributes
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-freer.o)
+ .text          0x00000000       0x44 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fwalk.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fwalk.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fwalk.o)
+ .debug_info    0x00000000      0x7c8 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fwalk.o)
+ .debug_abbrev  0x00000000      0x19b /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fwalk.o)
+ .debug_loclists
+                0x00000000       0xa0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fwalk.o)
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fwalk.o)
+ .debug_line    0x00000000      0x1ba /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fwalk.o)
+ .debug_str     0x00000000      0x4c9 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fwalk.o)
+ .comment       0x00000000       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fwalk.o)
+ .debug_frame   0x00000000       0x38 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fwalk.o)
+ .ARM.attributes
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-fwalk.o)
+ .text          0x00000000       0xc4 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__atexit.o)
+ .data          0x00000000        0x4 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__atexit.o)
+ .bss           0x00000000       0x8c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__atexit.o)
+ .debug_info    0x00000000      0x284 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__atexit.o)
+ .debug_abbrev  0x00000000      0x1d4 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__atexit.o)
+ .debug_loclists
+                0x00000000      0x147 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__atexit.o)
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__atexit.o)
+ .debug_line    0x00000000      0x24b /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__atexit.o)
+ .debug_str     0x00000000      0x28d /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__atexit.o)
+ .comment       0x00000000       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__atexit.o)
+ .debug_frame   0x00000000       0x38 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__atexit.o)
+ .ARM.attributes
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__atexit.o)
+ .text          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-impure.o)
+ .data          0x00000000       0x50 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-impure.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-impure.o)
+ .debug_info    0x00000000      0x70b /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-impure.o)
+ .debug_abbrev  0x00000000      0x149 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-impure.o)
+ .debug_aranges
+                0x00000000       0x18 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-impure.o)
+ .debug_line    0x00000000       0xeb /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-impure.o)
+ .debug_str     0x00000000      0x4b9 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-impure.o)
+ .comment       0x00000000       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-impure.o)
+ .ARM.attributes
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-impure.o)
+ .text          0x00000000        0x8 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mlock.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mlock.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mlock.o)
+ .debug_info    0x00000000      0x71c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mlock.o)
+ .debug_abbrev  0x00000000      0x192 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mlock.o)
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mlock.o)
+ .debug_line    0x00000000      0x15b /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mlock.o)
+ .debug_str     0x00000000      0x4d7 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mlock.o)
+ .comment       0x00000000       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mlock.o)
+ .debug_frame   0x00000000       0x30 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mlock.o)
+ .ARM.attributes
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-mlock.o)
+ .text          0x00000000       0x24 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-sbrkr.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-sbrkr.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-sbrkr.o)
+ .debug_info    0x00000000      0x778 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-sbrkr.o)
+ .debug_abbrev  0x00000000      0x1da /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-sbrkr.o)
+ .debug_loclists
+                0x00000000       0x52 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-sbrkr.o)
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-sbrkr.o)
+ .debug_line    0x00000000      0x19b /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-sbrkr.o)
+ .debug_str     0x00000000      0x4c2 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-sbrkr.o)
+ .comment       0x00000000       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-sbrkr.o)
+ .debug_frame   0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-sbrkr.o)
+ .ARM.attributes
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-sbrkr.o)
+ .text          0x00000000       0xa8 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o)
+ .debug_info    0x00000000      0xa72 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o)
+ .debug_abbrev  0x00000000      0x206 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o)
+ .debug_loclists
+                0x00000000      0x292 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o)
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o)
+ .debug_line    0x00000000      0x240 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o)
+ .debug_str     0x00000000      0x526 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o)
+ .comment       0x00000000       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o)
+ .debug_frame   0x00000000       0x90 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o)
+ .ARM.attributes
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-stdio.o)
+ .text          0x00000000       0x28 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-readr.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-readr.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-readr.o)
+ .debug_info    0x00000000      0x7b5 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-readr.o)
+ .debug_abbrev  0x00000000      0x1b0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-readr.o)
+ .debug_loclists
+                0x00000000       0x97 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-readr.o)
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-readr.o)
+ .debug_line    0x00000000      0x195 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-readr.o)
+ .debug_str     0x00000000      0x4bd /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-readr.o)
+ .comment       0x00000000       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-readr.o)
+ .debug_frame   0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-readr.o)
+ .ARM.attributes
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-readr.o)
+ .text          0x00000000       0x28 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-writer.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-writer.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-writer.o)
+ .debug_info    0x00000000      0x7bb /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-writer.o)
+ .debug_abbrev  0x00000000      0x1b5 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-writer.o)
+ .debug_loclists
+                0x00000000       0x97 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-writer.o)
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-writer.o)
+ .debug_line    0x00000000      0x196 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-writer.o)
+ .debug_str     0x00000000      0x4bf /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-writer.o)
+ .comment       0x00000000       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-writer.o)
+ .debug_frame   0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-writer.o)
+ .ARM.attributes
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-writer.o)
+ .text          0x00000000       0x24 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-closer.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-closer.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-closer.o)
+ .debug_info    0x00000000      0x753 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-closer.o)
+ .debug_abbrev  0x00000000      0x1b0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-closer.o)
+ .debug_loclists
+                0x00000000       0x52 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-closer.o)
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-closer.o)
+ .debug_line    0x00000000      0x19b /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-closer.o)
+ .debug_str     0x00000000      0x4af /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-closer.o)
+ .comment       0x00000000       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-closer.o)
+ .debug_frame   0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-closer.o)
+ .ARM.attributes
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-closer.o)
+ .text          0x00000000       0x28 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lseekr.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lseekr.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lseekr.o)
+ .debug_info    0x00000000      0x79e /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lseekr.o)
+ .debug_abbrev  0x00000000      0x1c4 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lseekr.o)
+ .debug_loclists
+                0x00000000       0x97 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lseekr.o)
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lseekr.o)
+ .debug_line    0x00000000      0x196 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lseekr.o)
+ .debug_str     0x00000000      0x4bd /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lseekr.o)
+ .comment       0x00000000       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lseekr.o)
+ .debug_frame   0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lseekr.o)
+ .ARM.attributes
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-lseekr.o)
+ .text          0x00000000       0xc8 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__call_atexit.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__call_atexit.o)
+ .bss           0x00000000        0x4 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__call_atexit.o)
+ .debug_info    0x00000000      0x235 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__call_atexit.o)
+ .debug_abbrev  0x00000000      0x179 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__call_atexit.o)
+ .debug_loclists
+                0x00000000      0x106 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__call_atexit.o)
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__call_atexit.o)
+ .debug_rnglists
+                0x00000000       0x23 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__call_atexit.o)
+ .debug_line    0x00000000      0x20e /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__call_atexit.o)
+ .debug_str     0x00000000      0x23f /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__call_atexit.o)
+ .comment       0x00000000       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__call_atexit.o)
+ .debug_frame   0x00000000       0x3c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__call_atexit.o)
+ .ARM.attributes
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-__call_atexit.o)
+ .text          0x00000000       0xe4 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-reent.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-reent.o)
+ .bss           0x00000000        0x4 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-reent.o)
+ .debug_info    0x00000000      0x898 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-reent.o)
+ .debug_abbrev  0x00000000      0x1eb /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-reent.o)
+ .debug_loclists
+                0x00000000       0x6e /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-reent.o)
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-reent.o)
+ .debug_line    0x00000000      0x27b /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-reent.o)
+ .debug_str     0x00000000      0x4d8 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-reent.o)
+ .comment       0x00000000       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-reent.o)
+ .debug_frame   0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-reent.o)
+ .ARM.attributes
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-reent.o)
+ .text          0x00000000        0x0 ./Build/raddr/py32f0xx_it.o
+ .data          0x00000000        0x0 ./Build/raddr/py32f0xx_it.o
+ .bss           0x00000000        0x0 ./Build/raddr/py32f0xx_it.o
+ .text          0x00000000        0x0 ./Build/raddr/clk_config.o
+ .data          0x00000000        0x0 ./Build/raddr/clk_config.o
+ .bss           0x00000000        0x0 ./Build/raddr/clk_config.o
+ .text          0x00000000        0x0 ./Build/raddr/main.o
+ .data          0x00000000        0x0 ./Build/raddr/main.o
+ .bss           0x00000000        0x0 ./Build/raddr/main.o
+ .text.APP_ErrorHandler
+                0x00000000        0x2 ./Build/raddr/main.o
+ .text          0x00000000        0x0 ./Build/raddr/uid.o
+ .data          0x00000000        0x0 ./Build/raddr/uid.o
+ .bss           0x00000000        0x0 ./Build/raddr/uid.o
+ .text.uid_print
+                0x00000000        0x2 ./Build/raddr/uid.o
+ .debug_info    0x00000000       0x93 ./Build/raddr/uid.o
+ .debug_abbrev  0x00000000       0x46 ./Build/raddr/uid.o
+ .debug_aranges
+                0x00000000       0x20 ./Build/raddr/uid.o
+ .debug_ranges  0x00000000       0x10 ./Build/raddr/uid.o
+ .debug_line    0x00000000       0x40 ./Build/raddr/uid.o
+ .debug_str     0x00000000      0x15b ./Build/raddr/uid.o
+ .comment       0x00000000       0x27 ./Build/raddr/uid.o
+ .debug_frame   0x00000000       0x20 ./Build/raddr/uid.o
+ .ARM.attributes
+                0x00000000       0x2c ./Build/raddr/uid.o
+ .text          0x00000000        0x0 ./Build/raddr/pack.o
+ .data          0x00000000        0x0 ./Build/raddr/pack.o
+ .bss           0x00000000        0x0 ./Build/raddr/pack.o
+ .text          0x00000000        0x0 ./Build/raddr/input_capture.o
+ .data          0x00000000        0x0 ./Build/raddr/input_capture.o
+ .bss           0x00000000        0x0 ./Build/raddr/input_capture.o
+ .text          0x00000000        0x0 ./Build/raddr/output_timer.o
+ .data          0x00000000        0x0 ./Build/raddr/output_timer.o
+ .bss           0x00000000        0x0 ./Build/raddr/output_timer.o
+ .bss.huge_difference
+                0x00000000        0x1 ./Build/raddr/output_timer.o
+ .text          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.o
+ .data          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.o
+ .bss           0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.o
+ .debug_info    0x00000000       0x72 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.o
+ .debug_abbrev  0x00000000       0x26 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.o
+ .debug_aranges
+                0x00000000       0x18 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.o
+ .debug_line    0x00000000       0x55 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.o
+ .debug_str     0x00000000      0x17a ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.o
+ .comment       0x00000000       0x27 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.o
+ .ARM.attributes
+                0x00000000       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.o
+ .text          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.o
+ .data          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.o
+ .bss           0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.o
+ .debug_info    0x00000000       0x72 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.o
+ .debug_abbrev  0x00000000       0x26 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.o
+ .debug_aranges
+                0x00000000       0x18 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.o
+ .debug_line    0x00000000       0x58 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.o
+ .debug_str     0x00000000      0x17d ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.o
+ .comment       0x00000000       0x27 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.o
+ .ARM.attributes
+                0x00000000       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.o
+ .text          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.o
+ .data          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.o
+ .bss           0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.o
+ .debug_info    0x00000000       0x72 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.o
+ .debug_abbrev  0x00000000       0x26 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.o
+ .debug_aranges
+                0x00000000       0x18 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.o
+ .debug_line    0x00000000       0x56 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.o
+ .debug_str     0x00000000      0x17b ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.o
+ .comment       0x00000000       0x27 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.o
+ .ARM.attributes
+                0x00000000       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.o
+ .text          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.o
+ .data          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.o
+ .bss           0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.o
+ .text.HAL_NVIC_SystemReset
+                0x00000000       0x1c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.o
+ .text.HAL_NVIC_GetPriority
+                0x00000000       0x3c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.o
+ .text.HAL_NVIC_SetPendingIRQ
+                0x00000000       0x18 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.o
+ .text.HAL_NVIC_GetPendingIRQ
+                0x00000000       0x1c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.o
+ .text.HAL_NVIC_ClearPendingIRQ
+                0x00000000       0x1c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.o
+ .text.HAL_SYSTICK_CLKSourceConfig
+                0x00000000       0x1c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.o
+ .text.HAL_SYSTICK_Callback
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.o
+ .text.HAL_SYSTICK_IRQHandler
+                0x00000000        0x8 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.o
+ .text          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.o
+ .data          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.o
+ .bss           0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.o
+ .debug_info    0x00000000       0x72 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.o
+ .debug_abbrev  0x00000000       0x26 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.o
+ .debug_aranges
+                0x00000000       0x18 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.o
+ .debug_line    0x00000000       0x55 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.o
+ .debug_str     0x00000000      0x17a ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.o
+ .comment       0x00000000       0x27 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.o
+ .ARM.attributes
+                0x00000000       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.o
+ .text          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.o
+ .data          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.o
+ .bss           0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.o
+ .debug_info    0x00000000       0x72 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.o
+ .debug_abbrev  0x00000000       0x26 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.o
+ .debug_aranges
+                0x00000000       0x18 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.o
+ .debug_line    0x00000000       0x55 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.o
+ .debug_str     0x00000000      0x17a ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.o
+ .comment       0x00000000       0x27 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.o
+ .ARM.attributes
+                0x00000000       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.o
+ .text          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.o
+ .data          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.o
+ .bss           0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.o
+ .debug_info    0x00000000       0x72 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.o
+ .debug_abbrev  0x00000000       0x26 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.o
+ .debug_aranges
+                0x00000000       0x18 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.o
+ .debug_line    0x00000000       0x56 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.o
+ .debug_str     0x00000000      0x17b ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.o
+ .comment       0x00000000       0x27 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.o
+ .ARM.attributes
+                0x00000000       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.o
+ .text          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .data          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .bss           0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .text.FLASH_PageErase
+                0x00000000       0x20 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .RamFunc       0x00000000       0x3c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .text.HAL_FLASH_Unlock
+                0x00000000       0x24 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .text.HAL_FLASH_Lock
+                0x00000000       0x18 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .text.HAL_FLASH_OB_Unlock
+                0x00000000       0x28 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .text.HAL_FLASH_OB_Lock
+                0x00000000       0x1c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .text.HAL_FLASH_OB_Launch
+                0x00000000       0x14 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .text.HAL_FLASH_GetError
+                0x00000000        0xc ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .text.FLASH_WaitForLastOperation
+                0x00000000       0x34 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .text.HAL_FLASH_Erase
+                0x00000000      0x1c0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .text.HAL_FLASH_Erase_IT
+                0x00000000      0x14c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .text.HAL_FLASH_Program
+                0x00000000      0x114 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .text.HAL_FLASH_PageProgram
+                0x00000000        0xe ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .text.HAL_FLASH_Program_IT
+                0x00000000      0x110 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .text.HAL_FLASH_PageProgram_IT
+                0x00000000        0xe ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .text.HAL_FLASH_OB_RDP_LevelConfig
+                0x00000000       0x60 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .text.HAL_FLASH_OBProgram
+                0x00000000      0x170 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .text.HAL_FLASH_OBGetConfig
+                0x00000000       0x3c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .text.HAL_FLASH_EndOfOperationCallback
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .text.HAL_FLASH_OperationErrorCallback
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .text.HAL_FLASH_IRQHandler
+                0x00000000       0xb8 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .rodata._FlashTimmingParam
+                0x00000000       0x20 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .bss.pFlash    0x00000000       0x18 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .debug_info    0x00000000     0x10cc ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .debug_abbrev  0x00000000      0x3e8 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .debug_loc     0x00000000      0xb95 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .debug_aranges
+                0x00000000       0xc0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .debug_ranges  0x00000000      0x1a8 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .debug_line    0x00000000      0xe46 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .debug_str     0x00000000      0x758 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .comment       0x00000000       0x27 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .debug_frame   0x00000000      0x1fc ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .ARM.attributes
+                0x00000000       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+ .text          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.o
+ .data          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.o
+ .bss           0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.o
+ .text.HAL_GPIO_DeInit
+                0x00000000       0xcc ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.o
+ .text.HAL_GPIO_WritePin
+                0x00000000        0xc ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.o
+ .text.HAL_GPIO_TogglePin
+                0x00000000        0xe ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.o
+ .text.HAL_GPIO_LockPin
+                0x00000000       0x2e ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.o
+ .text.HAL_GPIO_EXTI_Callback
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.o
+ .text.HAL_GPIO_EXTI_IRQHandler
+                0x00000000       0x18 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.o
+ .text          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.o
+ .data          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.o
+ .bss           0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.o
+ .debug_info    0x00000000       0x72 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.o
+ .debug_abbrev  0x00000000       0x26 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.o
+ .debug_aranges
+                0x00000000       0x18 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.o
+ .debug_line    0x00000000       0x55 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.o
+ .debug_str     0x00000000      0x17a ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.o
+ .comment       0x00000000       0x27 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.o
+ .ARM.attributes
+                0x00000000       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.o
+ .text          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.o
+ .data          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.o
+ .bss           0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.o
+ .debug_info    0x00000000       0x72 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.o
+ .debug_abbrev  0x00000000       0x26 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.o
+ .debug_aranges
+                0x00000000       0x18 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.o
+ .debug_line    0x00000000       0x56 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.o
+ .debug_str     0x00000000      0x17b ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.o
+ .comment       0x00000000       0x27 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.o
+ .ARM.attributes
+                0x00000000       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.o
+ .text          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.o
+ .data          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.o
+ .bss           0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.o
+ .debug_info    0x00000000       0x72 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.o
+ .debug_abbrev  0x00000000       0x26 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.o
+ .debug_aranges
+                0x00000000       0x18 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.o
+ .debug_line    0x00000000       0x56 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.o
+ .debug_str     0x00000000      0x17b ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.o
+ .comment       0x00000000       0x27 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.o
+ .ARM.attributes
+                0x00000000       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.o
+ .text          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.o
+ .data          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.o
+ .bss           0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.o
+ .debug_info    0x00000000       0x72 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.o
+ .debug_abbrev  0x00000000       0x26 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.o
+ .debug_aranges
+                0x00000000       0x18 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.o
+ .debug_line    0x00000000       0x55 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.o
+ .debug_str     0x00000000      0x17a ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.o
+ .comment       0x00000000       0x27 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.o
+ .ARM.attributes
+                0x00000000       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.o
+ .text          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.o
+ .data          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.o
+ .bss           0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.o
+ .debug_info    0x00000000       0x72 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.o
+ .debug_abbrev  0x00000000       0x26 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.o
+ .debug_aranges
+                0x00000000       0x18 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.o
+ .debug_line    0x00000000       0x57 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.o
+ .debug_str     0x00000000      0x17c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.o
+ .comment       0x00000000       0x27 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.o
+ .ARM.attributes
+                0x00000000       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.o
+ .text          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.o
+ .data          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.o
+ .bss           0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.o
+ .text.HAL_PWR_DeInit
+                0x00000000       0x20 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.o
+ .text.HAL_PWR_EnableBkUpAccess
+                0x00000000       0x14 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.o
+ .text.HAL_PWR_DisableBkUpAccess
+                0x00000000       0x14 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.o
+ .text.HAL_PWR_ConfigStopMode
+                0x00000000       0x28 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.o
+ .text.HAL_PWR_ConfigBIAS
+                0x00000000       0x28 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.o
+ .text.HAL_PWR_EnterSLEEPMode
+                0x00000000       0x20 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.o
+ .text.HAL_PWR_EnterSTOPMode
+                0x00000000       0x48 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.o
+ .text.HAL_PWR_EnableSleepOnExit
+                0x00000000       0x10 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.o
+ .text.HAL_PWR_DisableSleepOnExit
+                0x00000000       0x10 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.o
+ .text.HAL_PWR_EnableSEVOnPend
+                0x00000000       0x10 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.o
+ .text.HAL_PWR_DisableSEVOnPend
+                0x00000000       0x10 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.o
+ .debug_info    0x00000000      0x53e ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.o
+ .debug_abbrev  0x00000000      0x173 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.o
+ .debug_loc     0x00000000       0xe9 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.o
+ .debug_aranges
+                0x00000000       0x70 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.o
+ .debug_ranges  0x00000000       0x60 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.o
+ .debug_line    0x00000000      0x311 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.o
+ .debug_str     0x00000000      0x476 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.o
+ .comment       0x00000000       0x27 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.o
+ .debug_frame   0x00000000       0xd0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.o
+ .ARM.attributes
+                0x00000000       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.o
+ .text          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+ .data          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+ .bss           0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+ .text.HAL_RCC_DeInit
+                0x00000000       0x94 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+ .text.HAL_RCC_MCOConfig
+                0x00000000       0xec ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+ .text.HAL_RCC_GetHCLKFreq
+                0x00000000        0xc ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+ .text.HAL_RCC_GetPCLK1Freq
+                0x00000000       0x28 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+ .text.HAL_RCC_GetOscConfig
+                0x00000000       0x4c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+ .text.HAL_RCC_GetClockConfig
+                0x00000000       0x38 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+ .text.HAL_RCC_EnableCSS
+                0x00000000       0x14 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+ .text.HAL_RCC_CSSCallback
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+ .text.HAL_RCC_NMI_IRQHandler
+                0x00000000       0x1c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+ .text          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.o
+ .data          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.o
+ .bss           0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.o
+ .text.HAL_RCCEx_PeriphCLKConfig
+                0x00000000       0x50 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.o
+ .text.HAL_RCCEx_GetPeriphCLKConfig
+                0x00000000       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.o
+ .text.HAL_RCCEx_GetPeriphCLKFreq
+                0x00000000       0x64 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.o
+ .text.HAL_RCCEx_EnableLSCO
+                0x00000000       0x5c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.o
+ .text.HAL_RCCEx_DisableLSCO
+                0x00000000       0x60 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.o
+ .debug_info    0x00000000      0x4d4 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.o
+ .debug_abbrev  0x00000000      0x1ee ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.o
+ .debug_loc     0x00000000      0x233 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.o
+ .debug_aranges
+                0x00000000       0x40 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.o
+ .debug_ranges  0x00000000       0x60 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.o
+ .debug_line    0x00000000      0x38d ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.o
+ .debug_str     0x00000000      0x400 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.o
+ .comment       0x00000000       0x27 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.o
+ .debug_frame   0x00000000       0x98 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.o
+ .ARM.attributes
+                0x00000000       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.o
+ .text          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.o
+ .data          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.o
+ .bss           0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.o
+ .debug_info    0x00000000       0x72 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.o
+ .debug_abbrev  0x00000000       0x26 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.o
+ .debug_aranges
+                0x00000000       0x18 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.o
+ .debug_line    0x00000000       0x55 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.o
+ .debug_str     0x00000000      0x17a ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.o
+ .comment       0x00000000       0x27 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.o
+ .ARM.attributes
+                0x00000000       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.o
+ .text          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.o
+ .data          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.o
+ .bss           0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.o
+ .debug_info    0x00000000       0x72 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.o
+ .debug_abbrev  0x00000000       0x26 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.o
+ .debug_aranges
+                0x00000000       0x18 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.o
+ .debug_line    0x00000000       0x58 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.o
+ .debug_str     0x00000000      0x17d ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.o
+ .comment       0x00000000       0x27 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.o
+ .ARM.attributes
+                0x00000000       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.o
+ .text          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.o
+ .data          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.o
+ .bss           0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.o
+ .debug_info    0x00000000       0x72 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.o
+ .debug_abbrev  0x00000000       0x26 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.o
+ .debug_aranges
+                0x00000000       0x18 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.o
+ .debug_line    0x00000000       0x55 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.o
+ .debug_str     0x00000000      0x17a ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.o
+ .comment       0x00000000       0x27 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.o
+ .ARM.attributes
+                0x00000000       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.o
+ .text          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .data          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .bss           0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.TIM_OC1_SetConfig
+                0x00000000       0x5c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.TIM_OC3_SetConfig
+                0x00000000       0x74 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.TIM_OC4_SetConfig
+                0x00000000       0x60 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_Base_MspInit
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_Base_MspDeInit
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_Base_DeInit
+                0x00000000       0x38 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_Base_Start
+                0x00000000       0x20 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_Base_Stop
+                0x00000000       0x30 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_Base_Start_IT
+                0x00000000       0x1e ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_Base_Stop_IT
+                0x00000000       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_OC_MspInit
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_OC_MspDeInit
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_OC_DeInit
+                0x00000000       0x38 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_PWM_MspInit
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_PWM_MspDeInit
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_PWM_DeInit
+                0x00000000       0x38 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_IC_MspInit
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_IC_MspDeInit
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_IC_DeInit
+                0x00000000       0x38 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_OnePulse_MspInit
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_OnePulse_MspDeInit
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_OnePulse_DeInit
+                0x00000000       0x38 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_OnePulse_Start
+                0x00000000       0x40 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_OnePulse_Stop
+                0x00000000       0x6c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_OnePulse_Start_IT
+                0x00000000       0x50 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_OnePulse_Stop_IT
+                0x00000000       0x7c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_Encoder_MspInit
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_Encoder_MspDeInit
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_Encoder_DeInit
+                0x00000000       0x38 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_Encoder_Start
+                0x00000000       0x36 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_Encoder_Stop
+                0x00000000       0x54 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_Encoder_Start_IT
+                0x00000000       0x6a ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_Encoder_Stop_IT
+                0x00000000       0x74 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_GenerateEvent
+                0x00000000       0x1e ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_ConfigTI1Input
+                0x00000000       0x10 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_ReadCapturedValue
+                0x00000000       0x2e ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_PeriodElapsedCallback
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_PeriodElapsedHalfCpltCallback
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_OC_DelayElapsedCallback
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_IC_CaptureCallback
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_IC_CaptureHalfCpltCallback
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_PWM_PulseFinishedCallback
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_PWM_PulseFinishedHalfCpltCallback
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_TriggerCallback
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_IRQHandler
+                0x00000000      0x148 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_TriggerHalfCpltCallback
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_ErrorCallback
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_Base_GetState
+                0x00000000        0x6 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_OC_GetState
+                0x00000000        0x6 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_PWM_GetState
+                0x00000000        0x6 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_IC_GetState
+                0x00000000        0x6 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_OnePulse_GetState
+                0x00000000        0x6 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_Encoder_GetState
+                0x00000000        0x6 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.TIM_Base_SetConfig
+                0x00000000       0x54 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_Base_Init
+                0x00000000       0x2e ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_OC_Init
+                0x00000000       0x2e ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_PWM_Init
+                0x00000000       0x2e ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_IC_Init
+                0x00000000       0x2e ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_OnePulse_Init
+                0x00000000       0x40 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_Encoder_Init
+                0x00000000       0x90 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.TIM_OC2_SetConfig
+                0x00000000       0x6c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_OC_ConfigChannel
+                0x00000000       0x4c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_PWM_ConfigChannel
+                0x00000000       0xc4 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.TIM_TI1_SetConfig
+                0x00000000       0x3c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_IC_ConfigChannel
+                0x00000000      0x130 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_OnePulse_ConfigChannel
+                0x00000000      0x108 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.TIM_ETR_SetConfig
+                0x00000000       0x18 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_ConfigOCrefClear
+                0x00000000       0xe8 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_ConfigClockSource
+                0x00000000      0x118 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.TIM_SlaveTimer_SetConfig.constprop.0
+                0x00000000       0xac ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_SlaveConfigSynchro_IT
+                0x00000000       0x36 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_SlaveConfigSynchro
+                0x00000000       0x36 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.TIM_CCxChannelCmd
+                0x00000000       0x1a ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_OC_Start
+                0x00000000       0x40 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_PWM_Start
+                0x00000000        0xa ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_OC_Stop
+                0x00000000       0x60 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_OC_Start_IT
+                0x00000000       0x68 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_PWM_Start_IT
+                0x00000000        0xa ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_OC_Stop_IT
+                0x00000000       0x88 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_PWM_Stop_IT
+                0x00000000        0xa ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_PWM_Stop
+                0x00000000       0x64 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_IC_Start
+                0x00000000       0x22 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_IC_Stop
+                0x00000000       0x30 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_IC_Start_IT
+                0x00000000       0x4a ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text.HAL_TIM_IC_Stop_IT
+                0x00000000       0x58 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .debug_info    0x00000000     0x2e42 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .debug_abbrev  0x00000000      0x342 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .debug_loc     0x00000000     0x2f1c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .debug_aranges
+                0x00000000      0x2c0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .debug_ranges  0x00000000      0x4f8 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .debug_line    0x00000000     0x2710 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .debug_str     0x00000000      0xfc5 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .comment       0x00000000       0x27 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .debug_frame   0x00000000      0x724 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .ARM.attributes
+                0x00000000       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+ .text          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .data          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .bss           0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.TIM_CCxNChannelCmd
+                0x00000000       0x1a ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_HallSensor_MspInit
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_HallSensor_Init
+                0x00000000       0xa2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_HallSensor_MspDeInit
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_HallSensor_DeInit
+                0x00000000       0x38 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_HallSensor_Start
+                0x00000000       0x26 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_HallSensor_Stop
+                0x00000000       0x34 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_HallSensor_Start_IT
+                0x00000000       0x2e ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_HallSensor_Stop_IT
+                0x00000000       0x3c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_OCN_Start
+                0x00000000       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_OCN_Stop
+                0x00000000       0x4c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_OCN_Start_IT
+                0x00000000       0x4e ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_OCN_Stop_IT
+                0x00000000       0x70 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_PWMN_Start
+                0x00000000        0xa ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_PWMN_Stop
+                0x00000000        0xa ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_PWMN_Start_IT
+                0x00000000        0xa ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_PWMN_Stop_IT
+                0x00000000        0xa ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_OnePulseN_Start
+                0x00000000       0x1a ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_OnePulseN_Stop
+                0x00000000        0xa ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_OnePulseN_Start_IT
+                0x00000000       0x28 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_OnePulseN_Stop_IT
+                0x00000000       0x5c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_ConfigCommutEvent
+                0x00000000       0x4e ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_ConfigCommutEvent_IT
+                0x00000000       0x4e ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_MasterConfigSynchronization
+                0x00000000       0x40 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_ConfigBreakDeadTime
+                0x00000000       0x60 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_CommutCallback
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_CommutHalfCpltCallback
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_BreakCallback
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text.HAL_TIMEx_HallSensor_GetState
+                0x00000000        0x6 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .debug_info    0x00000000      0xeba ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .debug_abbrev  0x00000000      0x271 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .debug_loc     0x00000000      0x8e4 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .debug_aranges
+                0x00000000      0x100 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .debug_ranges  0x00000000       0xf0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .debug_line    0x00000000      0x96b ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .debug_str     0x00000000      0x92c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .comment       0x00000000       0x27 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .debug_frame   0x00000000      0x2a4 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .ARM.attributes
+                0x00000000       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+ .text          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.o
+ .data          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.o
+ .bss           0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.o
+ .debug_info    0x00000000       0x72 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.o
+ .debug_abbrev  0x00000000       0x26 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.o
+ .debug_aranges
+                0x00000000       0x18 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.o
+ .debug_line    0x00000000       0x56 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.o
+ .debug_str     0x00000000      0x17b ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.o
+ .comment       0x00000000       0x27 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.o
+ .ARM.attributes
+                0x00000000       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.o
+ .text          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.o
+ .data          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.o
+ .bss           0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.o
+ .debug_info    0x00000000       0x72 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.o
+ .debug_abbrev  0x00000000       0x26 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.o
+ .debug_aranges
+                0x00000000       0x18 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.o
+ .debug_line    0x00000000       0x57 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.o
+ .debug_str     0x00000000      0x17c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.o
+ .comment       0x00000000       0x27 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.o
+ .ARM.attributes
+                0x00000000       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.o
+ .text          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.o
+ .data          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.o
+ .bss           0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.o
+ .debug_info    0x00000000       0x72 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.o
+ .debug_abbrev  0x00000000       0x26 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.o
+ .debug_aranges
+                0x00000000       0x18 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.o
+ .debug_line    0x00000000       0x56 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.o
+ .debug_str     0x00000000      0x17b ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.o
+ .comment       0x00000000       0x27 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.o
+ .ARM.attributes
+                0x00000000       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.o
+ .text          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .data          0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .bss           0x00000000        0x0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .text.HAL_MspDeInit
+                0x00000000        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .text.HAL_DeInit
+                0x00000000       0x28 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .text.HAL_GetTickPrio
+                0x00000000        0xc ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .text.HAL_SetTickFreq
+                0x00000000       0x28 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .text.HAL_GetTickFreq
+                0x00000000        0xc ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .text.HAL_Delay
+                0x00000000       0x24 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .text.HAL_SuspendTick
+                0x00000000       0x10 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .text.HAL_ResumeTick
+                0x00000000       0x10 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .text.HAL_GetHalVersion
+                0x00000000        0x8 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .text.HAL_GetREVID
+                0x00000000        0xc ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .text.HAL_GetDEVID
+                0x00000000       0x10 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .text.HAL_GetUIDw0
+                0x00000000        0xc ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .text.HAL_GetUIDw1
+                0x00000000        0xc ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .text.HAL_GetUIDw2
+                0x00000000        0xc ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .text.HAL_DBGMCU_EnableDBGMCUStopMode
+                0x00000000       0x10 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .text.HAL_DBGMCU_DisableDBGMCUStopMode
+                0x00000000       0x10 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .text          0x00000000        0x0 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.o
+ .data          0x00000000        0x0 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.o
+ .bss           0x00000000        0x0 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.o
+ .text.SystemCoreClockUpdate
+                0x00000000       0x5c ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.o
+ .rodata.HSIFreqTable
+                0x00000000       0x20 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.o
+ .rodata.APBPrescTable
+                0x00000000       0x20 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.o
+ .text          0x00000000       0x14 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f002a.o
+ .data          0x00000000        0x0 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f002a.o
+ .bss           0x00000000        0x0 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f002a.o
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_thumb1_case_uqi.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_thumb1_case_uqi.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_udivsi3.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_udivsi3.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
+ .text          0x00000000       0x10 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(close.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(close.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(close.o)
+ .gnu.warning._close
+                0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(close.o)
+ .debug_info    0x00000000       0xde /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(close.o)
+ .debug_abbrev  0x00000000       0x96 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(close.o)
+ .debug_loclists
+                0x00000000       0x24 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(close.o)
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(close.o)
+ .debug_line    0x00000000       0x7f /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(close.o)
+ .debug_str     0x00000000      0x195 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(close.o)
+ .comment       0x00000000       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(close.o)
+ .debug_frame   0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(close.o)
+ .ARM.attributes
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(close.o)
+ .text          0x00000000       0x10 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(lseek.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(lseek.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(lseek.o)
+ .gnu.warning._lseek
+                0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(lseek.o)
+ .debug_info    0x00000000      0x100 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(lseek.o)
+ .debug_abbrev  0x00000000       0xbb /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(lseek.o)
+ .debug_loclists
+                0x00000000       0x3c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(lseek.o)
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(lseek.o)
+ .debug_line    0x00000000       0x7f /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(lseek.o)
+ .debug_str     0x00000000      0x193 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(lseek.o)
+ .comment       0x00000000       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(lseek.o)
+ .debug_frame   0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(lseek.o)
+ .ARM.attributes
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(lseek.o)
+ .text          0x00000000       0x10 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(read.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(read.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(read.o)
+ .gnu.warning._read
+                0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(read.o)
+ .debug_info    0x00000000      0x106 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(read.o)
+ .debug_abbrev  0x00000000       0xc4 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(read.o)
+ .debug_loclists
+                0x00000000       0x3c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(read.o)
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(read.o)
+ .debug_line    0x00000000       0x7e /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(read.o)
+ .debug_str     0x00000000      0x190 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(read.o)
+ .comment       0x00000000       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(read.o)
+ .debug_frame   0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(read.o)
+ .ARM.attributes
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(read.o)
+ .text          0x00000000       0x1c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(sbrk.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(sbrk.o)
+ .bss           0x00000000        0x4 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(sbrk.o)
+ .debug_info    0x00000000       0xac /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(sbrk.o)
+ .debug_abbrev  0x00000000       0xa1 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(sbrk.o)
+ .debug_loclists
+                0x00000000       0x3e /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(sbrk.o)
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(sbrk.o)
+ .debug_line    0x00000000       0x83 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(sbrk.o)
+ .debug_str     0x00000000      0x11a /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(sbrk.o)
+ .comment       0x00000000       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(sbrk.o)
+ .debug_frame   0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(sbrk.o)
+ .ARM.attributes
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(sbrk.o)
+ .text          0x00000000       0x10 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(write.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(write.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(write.o)
+ .gnu.warning._write
+                0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(write.o)
+ .debug_info    0x00000000      0x106 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(write.o)
+ .debug_abbrev  0x00000000       0xc4 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(write.o)
+ .debug_loclists
+                0x00000000       0x3c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(write.o)
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(write.o)
+ .debug_line    0x00000000       0x7f /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(write.o)
+ .debug_str     0x00000000      0x193 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(write.o)
+ .comment       0x00000000       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(write.o)
+ .debug_frame   0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(write.o)
+ .ARM.attributes
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(write.o)
+ .text          0x00000000        0x4 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(_exit.o)
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(_exit.o)
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(_exit.o)
+ .debug_info    0x00000000       0xa4 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(_exit.o)
+ .debug_abbrev  0x00000000       0x69 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(_exit.o)
+ .debug_loclists
+                0x00000000       0x14 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(_exit.o)
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(_exit.o)
+ .debug_line    0x00000000       0x61 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(_exit.o)
+ .debug_str     0x00000000      0x166 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(_exit.o)
+ .comment       0x00000000       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(_exit.o)
+ .debug_frame   0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(_exit.o)
+ .ARM.attributes
+                0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a(_exit.o)
+ .text          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtend.o
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtend.o
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtend.o
+ .rodata        0x00000000       0x24 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtend.o
+ .eh_frame      0x00000000        0x4 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtend.o
+ .text          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtn.o
+ .data          0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtn.o
+ .bss           0x00000000        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtn.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+RAM              0x20000000         0x00000c00         xrw
+FLASH            0x08000000         0x00005000         xr
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crti.o
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtbegin.o
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/crt0.o
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libm.a
+LOAD ./Build/raddr/py32f0xx_it.o
+LOAD ./Build/raddr/clk_config.o
+LOAD ./Build/raddr/main.o
+LOAD ./Build/raddr/uid.o
+LOAD ./Build/raddr/pack.o
+LOAD ./Build/raddr/input_capture.o
+LOAD ./Build/raddr/output_timer.o
+LOAD ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.o
+LOAD ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.o
+LOAD ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.o
+LOAD ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.o
+LOAD ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.o
+LOAD ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.o
+LOAD ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.o
+LOAD ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.o
+LOAD ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.o
+LOAD ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.o
+LOAD ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.o
+LOAD ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.o
+LOAD ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.o
+LOAD ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.o
+LOAD ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.o
+LOAD ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+LOAD ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.o
+LOAD ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.o
+LOAD ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.o
+LOAD ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.o
+LOAD ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.o
+LOAD ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.o
+LOAD ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.o
+LOAD ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.o
+LOAD ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.o
+LOAD ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+LOAD ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.o
+LOAD ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f002a.o
+START GROUP
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a
+END GROUP
+START GROUP
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a
+END GROUP
+START GROUP
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libnosys.a
+END GROUP
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtend.o
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtn.o
+                0x20000c00                        _estack = (ORIGIN (RAM) + LENGTH (RAM))
+                0x00000100                        _Min_Heap_Size = 0x100
+                0x00000200                        _Min_Stack_Size = 0x200
+
+.ram_vector     0x20000000       0xc0
+ *(.ram_vector)
+ .ram_vector    0x20000000       0xc0 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.o
+
+.isr_vector     0x08000000       0xc0
+                0x08000000                        . = ALIGN (0x4)
+ *(.isr_vector)
+ .isr_vector    0x08000000       0xc0 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f002a.o
+                0x08000000                g_pfnVectors
+                0x080000c0                        . = ALIGN (0x4)
+
+.text           0x080000c0      0xdd8
+                0x080000c0                        . = ALIGN (0x4)
+ *(.text)
+ .text          0x080000c0       0x98 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtbegin.o
+ .text          0x08000158       0x48 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-init.o)
+                0x08000158                __libc_init_array
+ .text          0x080001a0       0x14 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_thumb1_case_uqi.o)
+                0x080001a0                __gnu_thumb1_case_uqi
+ .text          0x080001b4      0x114 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_udivsi3.o)
+                0x080001b4                __udivsi3
+                0x080001b4                __aeabi_uidiv
+                0x080002c0                __aeabi_uidivmod
+ .text          0x080002c8        0x4 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
+                0x080002c8                __aeabi_ldiv0
+                0x080002c8                __aeabi_idiv0
+ *(.text*)
+ .text.NMI_Handler
+                0x080002cc        0x2 ./Build/raddr/py32f0xx_it.o
+                0x080002cc                NMI_Handler
+ .text.HardFault_Handler
+                0x080002ce        0x2 ./Build/raddr/py32f0xx_it.o
+                0x080002ce                HardFault_Handler
+ .text.SVC_Handler
+                0x080002d0        0x2 ./Build/raddr/py32f0xx_it.o
+                0x080002d0                SVC_Handler
+ .text.PendSV_Handler
+                0x080002d2        0x2 ./Build/raddr/py32f0xx_it.o
+                0x080002d2                PendSV_Handler
+ .text.SysTick_Handler
+                0x080002d4        0x8 ./Build/raddr/py32f0xx_it.o
+                0x080002d4                SysTick_Handler
+ .text.BSP_HSI_24MHzClockConfig
+                0x080002dc       0x30 ./Build/raddr/clk_config.o
+                0x080002dc                BSP_HSI_24MHzClockConfig
+ .text.cfg_pin  0x0800030c       0x20 ./Build/raddr/main.o
+ .text.EXTI0_1_IRQHandler
+                0x0800032c       0x24 ./Build/raddr/main.o
+                0x0800032c                EXTI0_1_IRQHandler
+ .text.startup.main
+                0x08000350       0xc8 ./Build/raddr/main.o
+                0x08000350                main
+ .text.bark_bulk.part.0
+                0x08000418       0x1c ./Build/raddr/pack.o
+ .text.bark_full.part.0
+                0x08000434       0x1c ./Build/raddr/pack.o
+ .text.join_cry
+                0x08000450       0xc4 ./Build/raddr/pack.o
+                0x08000450                join_cry
+ .text.receive_bits_available
+                0x08000514        0xc ./Build/raddr/input_capture.o
+                0x08000514                receive_bits_available
+ .text.received_bits_read
+                0x08000520       0x30 ./Build/raddr/input_capture.o
+                0x08000520                received_bits_read
+ .text.receive_bit
+                0x08000550       0x38 ./Build/raddr/input_capture.o
+                0x08000550                receive_bit
+ .text.TIM1_CC_IRQHandler
+                0x08000588       0x30 ./Build/raddr/input_capture.o
+                0x08000588                TIM1_CC_IRQHandler
+ .text.raddr_input_capture_init
+                0x080005b8       0x68 ./Build/raddr/input_capture.o
+                0x080005b8                raddr_input_capture_init
+ .text.raddr_output_bulk_begin
+                0x08000620        0xc ./Build/raddr/output_timer.o
+                0x08000620                raddr_output_bulk_begin
+ .text.raddr_output_bulk_schedule
+                0x0800062c       0x2c ./Build/raddr/output_timer.o
+                0x0800062c                raddr_output_bulk_schedule
+ .text.raddr_output_bulk_end
+                0x08000658       0x44 ./Build/raddr/output_timer.o
+                0x08000658                raddr_output_bulk_end
+ .text.raddr_output_schedule
+                0x0800069c       0x44 ./Build/raddr/output_timer.o
+                0x0800069c                raddr_output_schedule
+ .text.TIM16_IRQHandler
+                0x080006e0       0x60 ./Build/raddr/output_timer.o
+                0x080006e0                TIM16_IRQHandler
+ .text.raddr_output_init
+                0x08000740       0x38 ./Build/raddr/output_timer.o
+                0x08000740                raddr_output_init
+ .text.HAL_NVIC_SetPriority
+                0x08000778       0x54 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.o
+                0x08000778                HAL_NVIC_SetPriority
+ .text.HAL_NVIC_EnableIRQ
+                0x080007cc       0x18 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.o
+                0x080007cc                HAL_NVIC_EnableIRQ
+ .text.HAL_NVIC_DisableIRQ
+                0x080007e4       0x20 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.o
+                0x080007e4                HAL_NVIC_DisableIRQ
+ .text.HAL_SYSTICK_Config
+                0x08000804       0x34 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.o
+                0x08000804                HAL_SYSTICK_Config
+ .text.HAL_GPIO_Init
+                0x08000838      0x138 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.o
+                0x08000838                HAL_GPIO_Init
+ .text.HAL_GPIO_ReadPin
+                0x08000970        0xc ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.o
+                0x08000970                HAL_GPIO_ReadPin
+ .text.HAL_RCC_GetSysClockFreq
+                0x0800097c       0x64 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+                0x0800097c                HAL_RCC_GetSysClockFreq
+ .text.HAL_RCC_OscConfig
+                0x080009e0      0x234 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+                0x080009e0                HAL_RCC_OscConfig
+ .text.HAL_RCC_ClockConfig
+                0x08000c14      0x140 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+                0x08000c14                HAL_RCC_ClockConfig
+ .text.HAL_MspInit
+                0x08000d54        0x2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+                0x08000d54                HAL_MspInit
+ *fill*         0x08000d56        0x2 
+ .text.HAL_InitTick
+                0x08000d58       0x50 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+                0x08000d58                HAL_InitTick
+ .text.HAL_Init
+                0x08000da8       0x18 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+                0x08000da8                HAL_Init
+ .text.HAL_IncTick
+                0x08000dc0       0x18 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+                0x08000dc0                HAL_IncTick
+ .text.HAL_GetTick
+                0x08000dd8        0xc ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+                0x08000dd8                HAL_GetTick
+ .text.SystemInit
+                0x08000de4       0x48 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.o
+                0x08000de4                SystemInit
+ .text.Reset_Handler
+                0x08000e2c       0x50 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f002a.o
+                0x08000e2c                Reset_Handler
+ .text.Default_Handler
+                0x08000e7c        0x2 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f002a.o
+                0x08000e7c                I2C1_IRQHandler
+                0x08000e7c                SPI1_IRQHandler
+                0x08000e7c                EXTI2_3_IRQHandler
+                0x08000e7c                EXTI4_15_IRQHandler
+                0x08000e7c                RCC_IRQHandler
+                0x08000e7c                Default_Handler
+                0x08000e7c                ADC_COMP_IRQHandler
+                0x08000e7c                FLASH_IRQHandler
+                0x08000e7c                USART1_IRQHandler
+                0x08000e7c                TIM1_BRK_UP_TRG_COM_IRQHandler
+                0x08000e7c                LPTIM1_IRQHandler
+ *(.glue_7)
+ .glue_7        0x08000e7e        0x0 linker stubs
+ *(.glue_7t)
+ .glue_7t       0x08000e7e        0x0 linker stubs
+ *(.eh_frame)
+ *fill*         0x08000e7e        0x2 
+ .eh_frame      0x08000e80        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtbegin.o
+ *(.init)
+ .init          0x08000e80        0x4 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crti.o
+                0x08000e80                _init
+ .init          0x08000e84        0x8 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtn.o
+ *(.fini)
+ .fini          0x08000e8c        0x4 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crti.o
+                0x08000e8c                _fini
+ .fini          0x08000e90        0x8 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtn.o
+                0x08000e98                        . = ALIGN (0x4)
+                0x08000e98                        _etext = .
+
+.vfp11_veneer   0x08000e98        0x0
+ .vfp11_veneer  0x08000e98        0x0 linker stubs
+
+.v4_bx          0x08000e98        0x0
+ .v4_bx         0x08000e98        0x0 linker stubs
+
+.iplt           0x08000e98        0x0
+ .iplt          0x08000e98        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtbegin.o
+
+.rodata         0x08000e98       0x54
+                0x08000e98                        . = ALIGN (0x4)
+ *(.rodata)
+ .rodata        0x08000e98       0x14 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+ *(.rodata*)
+ .rodata.AHBPrescTable
+                0x08000eac       0x40 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.o
+                0x08000eac                AHBPrescTable
+                0x08000eec                        . = ALIGN (0x4)
+
+.rel.dyn        0x08000eec        0x0
+ .rel.iplt      0x08000eec        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtbegin.o
+
+.ARM.extab
+ *(.ARM.extab* .gnu.linkonce.armextab.*)
+
+.ARM            0x08000eec        0x0
+                0x08000eec                        __exidx_start = .
+ *(.ARM.exidx*)
+                0x08000eec                        __exidx_end = .
+
+.preinit_array  0x08000eec        0x0
+                0x08000eec                        PROVIDE (__preinit_array_start = .)
+ *(.preinit_array*)
+                0x08000eec                        PROVIDE (__preinit_array_end = .)
+
+.init_array     0x08000eec        0x4
+                0x08000eec                        PROVIDE (__init_array_start = .)
+ *(SORT_BY_NAME(.init_array.*))
+ *(.init_array*)
+ .init_array    0x08000eec        0x4 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtbegin.o
+                0x08000ef0                        PROVIDE (__init_array_end = .)
+
+.fini_array     0x08000ef0        0x4
+                0x08000ef0                        PROVIDE (__fini_array_start = .)
+ *(SORT_BY_NAME(.fini_array.*))
+ *(.fini_array*)
+ .fini_array    0x08000ef0        0x4 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtbegin.o
+                0x08000ef4                        PROVIDE (__fini_array_end = .)
+                0x08000ef4                        _sidata = LOADADDR (.data)
+
+.data           0x200000c0       0x3c load address 0x08000ef4
+                0x200000c0                        . = ALIGN (0x4)
+                0x200000c0                        _sdata = .
+ *(.data)
+ *(.data*)
+ .data.RCC_ClkInitStruct
+                0x200000c0       0x10 ./Build/raddr/clk_config.o
+ .data.RCC_OscInitStruct
+                0x200000d0       0x1c ./Build/raddr/clk_config.o
+ .data.bark_i.0
+                0x200000ec        0x4 ./Build/raddr/pack.o
+ .data.uwTickFreq
+                0x200000f0        0x4 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+                0x200000f0                uwTickFreq
+ .data.uwTickPrio
+                0x200000f4        0x4 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+                0x200000f4                uwTickPrio
+ .data.SystemCoreClock
+                0x200000f8        0x4 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.o
+                0x200000f8                SystemCoreClock
+                0x200000fc                        . = ALIGN (0x4)
+                0x200000fc                        _edata = .
+
+.tm_clone_table
+                0x200000fc        0x0 load address 0x08000f30
+ .tm_clone_table
+                0x200000fc        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtbegin.o
+ .tm_clone_table
+                0x200000fc        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtend.o
+
+.igot.plt       0x200000fc        0x0 load address 0x08000f30
+ .igot.plt      0x200000fc        0x0 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtbegin.o
+                0x200000fc                        . = ALIGN (0x4)
+
+.bss            0x200000fc       0xbc load address 0x08000f30
+                0x200000fc                        _sbss = .
+                0x200000fc                        __bss_start__ = _sbss
+ *(.bss)
+ .bss           0x200000fc       0x1c /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtbegin.o
+ *(.bss*)
+ .bss.K_BINARY_INPUTS
+                0x20000118        0x1 ./Build/raddr/main.o
+                0x20000118                K_BINARY_INPUTS
+ *fill*         0x20000119        0x3 
+ .bss.state.1   0x2000011c        0x4 ./Build/raddr/pack.o
+ .bss.fifo      0x20000120       0x48 ./Build/raddr/input_capture.o
+ .bss.bulk_size
+                0x20000168        0x4 ./Build/raddr/output_timer.o
+ .bss.fifo      0x2000016c       0x48 ./Build/raddr/output_timer.o
+ .bss.uwTick    0x200001b4        0x4 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+                0x200001b4                uwTick
+ *(COMMON)
+                0x200001b8                        . = ALIGN (0x4)
+                0x200001b8                        _ebss = .
+                0x200001b8                        __bss_end__ = _ebss
+
+._user_heap_stack
+                0x200001b8      0x300 load address 0x08000f30
+                0x200001b8                        . = ALIGN (0x8)
+                0x200001b8                        PROVIDE (end = .)
+                [!provide]                        PROVIDE (_end = .)
+                0x200002b8                        . = (. + _Min_Heap_Size)
+ *fill*         0x200001b8      0x100 
+                0x200004b8                        . = (. + _Min_Stack_Size)
+ *fill*         0x200002b8      0x200 
+                0x200004b8                        . = ALIGN (0x8)
+
+/DISCARD/
+ libc.a(*)
+ libm.a(*)
+ libgcc.a(*)
+
+.ARM.attributes
+                0x00000000       0x28
+ *(.ARM.attributes)
+ .ARM.attributes
+                0x00000000       0x1e /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crti.o
+ .ARM.attributes
+                0x0000001e       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtbegin.o
+ .ARM.attributes
+                0x0000004a       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-init.o)
+ .ARM.attributes
+                0x00000076       0x2c ./Build/raddr/py32f0xx_it.o
+ .ARM.attributes
+                0x000000a2       0x2c ./Build/raddr/clk_config.o
+ .ARM.attributes
+                0x000000ce       0x2c ./Build/raddr/main.o
+ .ARM.attributes
+                0x000000fa       0x2c ./Build/raddr/pack.o
+ .ARM.attributes
+                0x00000126       0x2c ./Build/raddr/input_capture.o
+ .ARM.attributes
+                0x00000152       0x2c ./Build/raddr/output_timer.o
+ .ARM.attributes
+                0x0000017e       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.o
+ .ARM.attributes
+                0x000001aa       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.o
+ .ARM.attributes
+                0x000001d6       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+ .ARM.attributes
+                0x00000202       0x2c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .ARM.attributes
+                0x0000022e       0x2c ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.o
+ .ARM.attributes
+                0x0000025a       0x22 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f002a.o
+ .ARM.attributes
+                0x0000027c       0x1e /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_thumb1_case_uqi.o)
+ .ARM.attributes
+                0x0000029a       0x1e /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_udivsi3.o)
+ .ARM.attributes
+                0x000002b8       0x1e /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
+ .ARM.attributes
+                0x000002d6       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtend.o
+ .ARM.attributes
+                0x00000302       0x1e /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtn.o
+OUTPUT(Build/app.elf elf32-littlearm)
+LOAD linker stubs
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc.a
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libm.a
+LOAD /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a
+
+.comment        0x00000000       0x4c
+ .comment       0x00000000       0x4c /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtbegin.o
+                                 0x27 (size before relaxing)
+ .comment       0x0000004c       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-init.o)
+ .comment       0x0000004c       0x27 ./Build/raddr/py32f0xx_it.o
+ .comment       0x0000004c       0x27 ./Build/raddr/clk_config.o
+ .comment       0x0000004c       0x27 ./Build/raddr/main.o
+ .comment       0x0000004c       0x27 ./Build/raddr/pack.o
+ .comment       0x0000004c       0x27 ./Build/raddr/input_capture.o
+ .comment       0x0000004c       0x27 ./Build/raddr/output_timer.o
+ .comment       0x0000004c       0x27 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.o
+ .comment       0x0000004c       0x27 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.o
+ .comment       0x0000004c       0x27 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+ .comment       0x0000004c       0x27 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .comment       0x0000004c       0x27 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.o
+ .comment       0x0000004c       0x27 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/crtend.o
+
+.debug_info     0x00000000     0x47e3
+ .debug_info    0x00000000      0x10b /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-init.o)
+ .debug_info    0x0000010b       0xf0 ./Build/raddr/py32f0xx_it.o
+ .debug_info    0x000001fb      0x227 ./Build/raddr/clk_config.o
+ .debug_info    0x00000422      0x91a ./Build/raddr/main.o
+ .debug_info    0x00000d3c      0x4c4 ./Build/raddr/pack.o
+ .debug_info    0x00001200      0x666 ./Build/raddr/input_capture.o
+ .debug_info    0x00001866      0xa2d ./Build/raddr/output_timer.o
+ .debug_info    0x00002293      0x87b ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.o
+ .debug_info    0x00002b0e      0x581 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.o
+ .debug_info    0x0000308f      0xb02 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+ .debug_info    0x00003b91      0x780 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .debug_info    0x00004311      0x3f5 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.o
+ .debug_info    0x00004706       0x32 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f002a.o
+ .debug_info    0x00004738       0x31 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_thumb1_case_uqi.o)
+ .debug_info    0x00004769       0x3e /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_udivsi3.o)
+ .debug_info    0x000047a7       0x3c /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
+
+.debug_abbrev   0x00000000     0x188d
+ .debug_abbrev  0x00000000       0xc9 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-init.o)
+ .debug_abbrev  0x000000c9       0xb4 ./Build/raddr/py32f0xx_it.o
+ .debug_abbrev  0x0000017d       0xfc ./Build/raddr/clk_config.o
+ .debug_abbrev  0x00000279      0x316 ./Build/raddr/main.o
+ .debug_abbrev  0x0000058f      0x1ed ./Build/raddr/pack.o
+ .debug_abbrev  0x0000077c      0x241 ./Build/raddr/input_capture.o
+ .debug_abbrev  0x000009bd      0x33f ./Build/raddr/output_timer.o
+ .debug_abbrev  0x00000cfc      0x266 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.o
+ .debug_abbrev  0x00000f62      0x1ae ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.o
+ .debug_abbrev  0x00001110      0x2a5 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+ .debug_abbrev  0x000013b5      0x30b ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .debug_abbrev  0x000016c0      0x133 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.o
+ .debug_abbrev  0x000017f3       0x24 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f002a.o
+ .debug_abbrev  0x00001817       0x28 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_thumb1_case_uqi.o)
+ .debug_abbrev  0x0000183f       0x28 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_udivsi3.o)
+ .debug_abbrev  0x00001867       0x26 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
+
+.debug_loclists
+                0x00000000       0x5a
+ .debug_loclists
+                0x00000000       0x5a /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-init.o)
+
+.debug_aranges  0x00000000      0x428
+ .debug_aranges
+                0x00000000       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-init.o)
+ .debug_aranges
+                0x00000020       0x40 ./Build/raddr/py32f0xx_it.o
+ .debug_aranges
+                0x00000060       0x20 ./Build/raddr/clk_config.o
+ .debug_aranges
+                0x00000080       0x38 ./Build/raddr/main.o
+ .debug_aranges
+                0x000000b8       0x30 ./Build/raddr/pack.o
+ .debug_aranges
+                0x000000e8       0x40 ./Build/raddr/input_capture.o
+ .debug_aranges
+                0x00000128       0x48 ./Build/raddr/output_timer.o
+ .debug_aranges
+                0x00000170       0x78 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.o
+ .debug_aranges
+                0x000001e8       0x58 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.o
+ .debug_aranges
+                0x00000240       0x78 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+ .debug_aranges
+                0x000002b8       0xc0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .debug_aranges
+                0x00000378       0x28 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.o
+ .debug_aranges
+                0x000003a0       0x28 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f002a.o
+ .debug_aranges
+                0x000003c8       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_thumb1_case_uqi.o)
+ .debug_aranges
+                0x000003e8       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_udivsi3.o)
+ .debug_aranges
+                0x00000408       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
+
+.debug_line     0x00000000     0x2d7b
+ .debug_line    0x00000000      0x105 /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-init.o)
+ .debug_line    0x00000105       0xd6 ./Build/raddr/py32f0xx_it.o
+ .debug_line    0x000001db       0xef ./Build/raddr/clk_config.o
+ .debug_line    0x000002ca      0x2ca ./Build/raddr/main.o
+ .debug_line    0x00000594      0x27b ./Build/raddr/pack.o
+ .debug_line    0x0000080f      0x2be ./Build/raddr/input_capture.o
+ .debug_line    0x00000acd      0x460 ./Build/raddr/output_timer.o
+ .debug_line    0x00000f2d      0x4ce ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.o
+ .debug_line    0x000013fb      0x61a ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.o
+ .debug_line    0x00001a15      0xad5 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+ .debug_line    0x000024ea      0x4f3 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .debug_line    0x000029dd      0x20c ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.o
+ .debug_line    0x00002be9       0xa0 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f002a.o
+ .debug_line    0x00002c89       0x52 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_thumb1_case_uqi.o)
+ .debug_line    0x00002cdb       0x56 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_udivsi3.o)
+ .debug_line    0x00002d31       0x4a /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
+
+.debug_str      0x00000000     0x12be
+ .debug_str     0x00000000     0x12be /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-init.o)
+                                0x1f7 (size before relaxing)
+ .debug_str     0x000012be      0x1ae ./Build/raddr/py32f0xx_it.o
+ .debug_str     0x000012be      0x2a3 ./Build/raddr/clk_config.o
+ .debug_str     0x000012be      0x577 ./Build/raddr/main.o
+ .debug_str     0x000012be      0x256 ./Build/raddr/pack.o
+ .debug_str     0x000012be      0x42b ./Build/raddr/input_capture.o
+ .debug_str     0x000012be      0x51e ./Build/raddr/output_timer.o
+ .debug_str     0x000012be      0x51a ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.o
+ .debug_str     0x000012be      0x371 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.o
+ .debug_str     0x000012be      0x5de ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+ .debug_str     0x000012be      0x5ae ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .debug_str     0x000012be      0x2be ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.o
+ .debug_str     0x000012be       0x7c ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f002a.o
+ .debug_str     0x000012be       0xb5 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_thumb1_case_uqi.o)
+ .debug_str     0x000012be       0xba /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_udivsi3.o)
+ .debug_str     0x000012be       0xbb /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
+
+.debug_frame    0x00000000      0x764
+ .debug_frame   0x00000000       0x2c /usr/lib/gcc/arm-none-eabi/14.2.1/../../../arm-none-eabi/lib/thumb/v6-m/nofp/libc_nano.a(libc_a-init.o)
+ .debug_frame   0x0000002c       0x68 ./Build/raddr/py32f0xx_it.o
+ .debug_frame   0x00000094       0x28 ./Build/raddr/clk_config.o
+ .debug_frame   0x000000bc       0x7c ./Build/raddr/main.o
+ .debug_frame   0x00000138       0x5c ./Build/raddr/pack.o
+ .debug_frame   0x00000194       0x80 ./Build/raddr/input_capture.o
+ .debug_frame   0x00000214       0x94 ./Build/raddr/output_timer.o
+ .debug_frame   0x000002a8       0xe0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.o
+ .debug_frame   0x00000388       0xbc ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.o
+ .debug_frame   0x00000444      0x12c ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+ .debug_frame   0x00000570      0x194 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .debug_frame   0x00000704       0x40 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.o
+ .debug_frame   0x00000744       0x20 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_udivsi3.o)
+
+.debug_ranges   0x00000000      0x508
+ .debug_ranges  0x00000000       0x30 ./Build/raddr/py32f0xx_it.o
+ .debug_ranges  0x00000030       0x10 ./Build/raddr/clk_config.o
+ .debug_ranges  0x00000040       0x70 ./Build/raddr/main.o
+ .debug_ranges  0x000000b0       0x70 ./Build/raddr/pack.o
+ .debug_ranges  0x00000120       0x60 ./Build/raddr/input_capture.o
+ .debug_ranges  0x00000180       0xc0 ./Build/raddr/output_timer.o
+ .debug_ranges  0x00000240       0xd0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.o
+ .debug_ranges  0x00000310       0x48 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.o
+ .debug_ranges  0x00000358       0xb0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+ .debug_ranges  0x00000408       0xb0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .debug_ranges  0x000004b8       0x30 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.o
+ .debug_ranges  0x000004e8       0x20 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f002a.o
+
+.debug_loc      0x00000000     0x1a57
+ .debug_loc     0x00000000      0x127 ./Build/raddr/main.o
+ .debug_loc     0x00000127      0x212 ./Build/raddr/pack.o
+ .debug_loc     0x00000339      0x211 ./Build/raddr/input_capture.o
+ .debug_loc     0x0000054a      0x45b ./Build/raddr/output_timer.o
+ .debug_loc     0x000009a5      0x501 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.o
+ .debug_loc     0x00000ea6      0x3b0 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.o
+ .debug_loc     0x00001256      0x5b2 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.o
+ .debug_loc     0x00001808      0x1b6 ./Build/Libraries/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.o
+ .debug_loc     0x000019be       0x99 ./Build/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.o
+
+.debug_line_str
+                0x00000000       0x90
+ .debug_line_str
+                0x00000000       0x90 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_thumb1_case_uqi.o)
+ .debug_line_str
+                0x00000090       0x90 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_udivsi3.o)
+ .debug_line_str
+                0x00000090       0x90 /usr/lib/gcc/arm-none-eabi/14.2.1/thumb/v6-m/nofp/libgcc.a(_dvmd_tls.o)
