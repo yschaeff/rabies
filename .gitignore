@@ -1,3 +1,7 @@
 .*~
 .*.swp
 build/
+.vscode/
+/Build*
+/Temp*
+tags
