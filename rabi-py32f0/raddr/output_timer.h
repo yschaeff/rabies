@@ -31,16 +31,5 @@ void raddr_output_bulk_begin(void);
 void raddr_output_bulk_schedule(bool bit, uint16_t tmo);
 void raddr_output_bulk_end(void);
 
-static inline void raddr_output_debug(void)
-{
-#if defined(RADDR_OUTPUT_DEBUG)
-    HAL_Delay(1000);
-    uint16_t t = us_to_timer_tick(10);
-    for (int i = 0; i < 16/2; i++) //FIFO_SIZE / 2
-    {
-        raddr_output_schedule(1, t);
-        raddr_output_schedule(0, t);
-    }
-#endif
-}
+bool raddr_output_fifo_empty(void);
 

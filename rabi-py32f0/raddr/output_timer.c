@@ -32,7 +32,14 @@ static struct {
     uint8_t read;
     volatile uint32_t size;
     uint32_t buf[FIFO_SIZE];
+    uint8_t bulk_size;
 } fifo = {.size = 0};
+
+
+bool raddr_output_fifo_empty(void)
+{
+    return fifo.size == 0;
+}
 
 static bool fifo_is_full(void)
 {
@@ -47,6 +54,9 @@ static uint32_t fifo_read(void)
     return d;
 }
 
+ /*  The whole ISR routing adds about 72 cycles (~3uS on 24Mhz) extra.
+ *  Having >6us makes it work reliable: the fifo will not empty in between.
+ */
 static void fifo_write(bool bit, uint16_t tmo)
 {
     uint32_t isr_latency = FIXED_LATENCY; //Number of cpu cycles spend in ISR
@@ -56,16 +66,15 @@ static void fifo_write(bool bit, uint16_t tmo)
     fifo.write = (idx + 1) % FIFO_SIZE;
 }
 
-static int bulk_size;
 void raddr_output_bulk_begin(void)
 {
-    bulk_size = 0;
+    fifo.bulk_size = 0;
 }
 
 void raddr_output_bulk_schedule(bool bit, uint16_t tmo)
 {
     fifo_write(bit, tmo);
-    bulk_size++;
+    fifo.bulk_size++;
 }
 
 void raddr_output_bulk_end(void) {
@@ -74,7 +83,7 @@ void raddr_output_bulk_end(void) {
      * Which for reasons beyond me is not implemented for arm-gcc-none-eabi and friends.
      * So lets stick to disabling the TIM16 interrupt for now */
     NVIC_DisableIRQ(TIM16_IRQn);
-    fifo.size += bulk_size;
+    fifo.size += fifo.bulk_size;
     NVIC_EnableIRQ(TIM16_IRQn);
 
     /* If ISR not enabled the ISR is not running. Start it */
@@ -95,8 +104,6 @@ void raddr_output_bulk_end(void) {
  *  If queueing a very low tmo the ISR may finish before the next fifo write.
  *  If this happens there will be a low pulse!
  *
- *  The whole ISR routing adds about ~2.2us (56 cycles on 24Mhz) extra.
- *  Having >6us makes it work reliable: the fifo will not empty in between.
  * */
 void raddr_output_schedule(bool bit, uint16_t tmo)
 {
@@ -134,8 +141,8 @@ void debug_print(void)
 {
     printf("Cnt %d / %ld\r\n", cnt, TIM16->CNT);
 }
-#endif
 bool huge_difference = false;
+#endif
 
 void TIM16_IRQHandler(void)
 {
