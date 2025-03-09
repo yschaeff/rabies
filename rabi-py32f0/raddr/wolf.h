@@ -3,7 +3,7 @@
 
 #include <stdbool.h>
 #include <stdint.h>
-#include "output_timer.h"
+#include "input_output.h"
 
 /* Times in uS */
 #define TRESET 64 //Limit by the pico pi code.
@@ -39,11 +39,9 @@ extern bool K_BINARY_INPUTS[K];
 static inline void bark_full(int bit)
 {
     if(bit) {
-        raddr_output_schedule(1, us_to_timer_tick(T1H));
-        raddr_output_schedule(0, us_to_timer_tick(T1L));
+        raddr_output_schedule(us_to_tick(T1H), us_to_tick(T1L));
     } else {
-        raddr_output_schedule(1, us_to_timer_tick(T0H));
-        raddr_output_schedule(0, us_to_timer_tick(T0L));
+        raddr_output_schedule(us_to_tick(T0H), us_to_tick(T0L));
     }
 }
 
@@ -51,11 +49,9 @@ static inline void bark_full(int bit)
 static inline void bark_bulk(int bit)
 {
     if(bit) {
-        raddr_output_bulk_schedule(1, us_to_timer_tick(T1H));
-        raddr_output_bulk_schedule(0, us_to_timer_tick(T1L));
+        raddr_output_bulk_schedule(us_to_tick(T1H), us_to_tick(T1L));
     } else {
-        raddr_output_bulk_schedule(1, us_to_timer_tick(T0H));
-        raddr_output_bulk_schedule(0, us_to_timer_tick(T0L));
+        raddr_output_bulk_schedule(us_to_tick(T0H), us_to_tick(T0L));
     }
 }
 

@@ -2,8 +2,7 @@
 #include "clk_config.h"
 
 #include "uid.h"
-#include "output_timer.h"
-#include "input_capture.h"
+#include "input_output.h"
 #include "wolf.h"
 #include "pack.h"
 
@@ -23,7 +22,7 @@
 
 #define SWC_PIN     GPIO_PIN_1
 #define KEY_IN_PIN  GPIO_PIN_3
-#define KEY_OUT_PIN GPIO_PIN_4
+#define KEY_OUT_PIN GPIO_PIN_10
 
 /**
  * These need to be implemented by us, They are used
@@ -50,8 +49,7 @@ static void cfg_gpio(void)
     __HAL_RCC_GPIOA_CLK_ENABLE();
     cfg_pin(SWC_PIN,     GPIO_MODE_IT_RISING_FALLING, GPIO_PULLUP, 0);
     cfg_pin(KEY_IN_PIN,  GPIO_MODE_AF_OD, GPIO_PULLUP, GPIO_AF13_TIM1);
-    cfg_pin(KEY_OUT_PIN, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, 0);
-    //cfg_pin(KEY_OUT_PIN, GPIO_MODE_AF_PP, GPIO_PULLDOWN, GPIO_AF2_TIM1);
+    cfg_pin(KEY_OUT_PIN, GPIO_MODE_AF_PP, GPIO_PULLDOWN, GPIO_AF2_TIM1);
 
     /* EXTI interrupt init */
     HAL_NVIC_SetPriority(EXTI0_1_IRQn, PRIORITY_LOW, 0);
@@ -88,8 +86,7 @@ int main(void)
 #endif
 
     cfg_gpio();
-    raddr_output_init();
-    raddr_input_capture_init();
+    raddr_input_output_init();
 
     uint32_t t_bounce = 0;
 
@@ -125,8 +122,7 @@ int main(void)
                 //printf("Received RESET!\r\n");
 #endif
                 join_cry(!GROWL, CRY_RESET);
-                raddr_output_schedule(1, us_to_timer_tick(TRESET));
-                raddr_output_schedule(0, us_to_timer_tick(TRESET / 2));
+                raddr_output_schedule(us_to_tick(TRESET), us_to_tick(TRESET) / 2);
                 break;
 
             default:

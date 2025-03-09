@@ -1,6 +1,7 @@
 #pragma once
 
 #ifdef USE_SEMIHOSTING
-#define TIMING_DEBUG
+#undef TIMING_DEBUG
+extern uint8_t fixed_latency;
 void debug_find_lowest_values(void);
 #endif
