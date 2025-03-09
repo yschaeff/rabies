@@ -55,8 +55,8 @@ static void cfg_gpio(void)
     cfg_pin(KEY_IN_PIN,  GPIO_MODE_AF_OD, GPIO_PULLUP);
     cfg_pin(KEY_OUT_PIN, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL);
 
-    /* EXTI interrupt init*/
-    HAL_NVIC_SetPriority(EXTI0_1_IRQn, 2, 0);
+    /* EXTI interrupt init */
+    HAL_NVIC_SetPriority(EXTI0_1_IRQn, PRIORITY_LOW, 0);
     HAL_NVIC_EnableIRQ(EXTI0_1_IRQn);
 
 }
