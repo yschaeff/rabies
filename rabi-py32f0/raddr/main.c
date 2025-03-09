@@ -7,6 +7,8 @@
 #include "wolf.h"
 #include "pack.h"
 
+#include "timing_debug.h"
+
 /*  A wolf is:
  *  Pin     Port(s)         PCB function    SPI1        I2C     UART1       TIM1        Alternate functions
  *  Pin 8   GND             GND             -
@@ -93,60 +95,8 @@ int main(void)
 
     uint32_t t_bounce = 0;
 
-#ifdef WOUTER_DEBUG
-    /* Loop that assumes input is connected to the output and then
-     * print the difference with expected received value.
-     * For a whole range of timings */
-    uint32_t t_last_tx = 0;
-    uint32_t t_last_tx_duration = 1000;
-    bool use_bulk = true;
-
-    /* Number of bits to measure */
-    const int bits_to_send = 3;
-
-    while (1) {
-        uint32_t now = HAL_GetTick();
-        /* Do test once every second */
-        if (now - t_last_tx > 1000) {
-            //uint32_t tmo = us_to_timer_tick(T1H);
-            //printf("\r\n====\r\nOutputting %ld\r\n", t_last_tx_duration);
-            t_last_tx_duration += 10;
-            if (t_last_tx_duration > 480) {
-                t_last_tx_duration = 240;
-            }
-            if (use_bulk) {
-                raddr_output_bulk_begin();
-                for(int i = 0; i < bits_to_send; i++) {
-                    raddr_output_bulk_schedule(1, t_last_tx_duration);
-                    raddr_output_bulk_schedule(0, t_last_tx_duration);
-                }
-                raddr_output_bulk_end();
-            }
-            else {
-                for(int i = 0; i < bits_to_send; i++) {
-                    raddr_output_schedule(1, t_last_tx_duration);
-                    raddr_output_schedule(0, t_last_tx_duration);
-                }
-            }
-            t_last_tx = now;
-        }
-
-        /* Collect all the transmitted bits */
-        int cnt = receive_bits_available();
-        if (cnt != bits_to_send)
-            continue;
-
-        for(int i = 0; i < bits_to_send; i++) {
-            uint32_t received_bits_read(void);
-            uint32_t t = received_bits_read() & 0xFFFF;
-
-            int diff = t - t_last_tx_duration;
-            if (diff < 0)
-                diff *= -1;
-            if (diff > 3)
-                printf("%ld - %ld = %d\r\n", t, t_last_tx_duration, diff);
-        }
-    }
+#ifdef TIMING_DEBUG
+    debug_find_lowest_values();
 #endif
 
     /* Main loop */
