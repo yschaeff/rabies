@@ -33,7 +33,7 @@ bool K_BINARY_INPUTS[K] = {0};
 
 
 
-static void cfg_pin(uint32_t pin, uint32_t mode, uint32_t pull)
+static void cfg_pin(uint32_t pin, uint32_t mode, uint32_t pull, uint32_t alternate)
 {
     GPIO_InitTypeDef pin_cfg;
 
@@ -41,19 +41,17 @@ static void cfg_pin(uint32_t pin, uint32_t mode, uint32_t pull)
     pin_cfg.Mode  = mode;
     pin_cfg.Pull  = pull;
     pin_cfg.Speed = GPIO_SPEED_FREQ_HIGH;
-    //MEGA HACK SMELLY CODE.
-    //We only specify mode = Alternate Function for one pin. and so this works.
-    //Do not do try this at home.
-    pin_cfg.Alternate = GPIO_AF13_TIM1;
+    pin_cfg.Alternate = alternate;
     HAL_GPIO_Init(GPIOA, &pin_cfg);
 }
 
 static void cfg_gpio(void)
 {
     __HAL_RCC_GPIOA_CLK_ENABLE();
-    cfg_pin(SWC_PIN,     GPIO_MODE_IT_RISING_FALLING, GPIO_PULLUP);
-    cfg_pin(KEY_IN_PIN,  GPIO_MODE_AF_OD, GPIO_PULLUP);
-    cfg_pin(KEY_OUT_PIN, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL);
+    cfg_pin(SWC_PIN,     GPIO_MODE_IT_RISING_FALLING, GPIO_PULLUP, 0);
+    cfg_pin(KEY_IN_PIN,  GPIO_MODE_AF_OD, GPIO_PULLUP, GPIO_AF13_TIM1);
+    cfg_pin(KEY_OUT_PIN, GPIO_MODE_OUTPUT_PP, GPIO_NOPULL, 0);
+    //cfg_pin(KEY_OUT_PIN, GPIO_MODE_AF_PP, GPIO_PULLDOWN, GPIO_AF2_TIM1);
 
     /* EXTI interrupt init */
     HAL_NVIC_SetPriority(EXTI0_1_IRQn, PRIORITY_LOW, 0);
