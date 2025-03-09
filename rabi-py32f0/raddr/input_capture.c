@@ -54,9 +54,9 @@ uint32_t received_bits_read(void)
     fifo.read = (idx + 1) % FIFO_SIZE;
 
     /* Updating size must be atomic! Against TIM1 ISR(s) */
-    HAL_NVIC_DisableIRQ(TIM1_CC_IRQn);
+    __disable_irq();
     fifo.size--;
-    HAL_NVIC_EnableIRQ(TIM1_CC_IRQn);
+    __enable_irq();
 
     return d;
 }
