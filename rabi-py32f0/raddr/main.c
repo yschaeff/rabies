@@ -68,6 +68,20 @@ void EXTI0_1_IRQHandler(void)
     __HAL_GPIO_EXTI_CLEAR_IT(SWC_PIN);
 }
 
+//#define PASS_THROUGH
+#ifdef PASS_THROUGH
+static void debug_do_pass_through(void)
+{
+    for(;;) {
+        if (receive_bits_available()) {
+            uint16_t low_width = 100; //~4.1 us
+            uint16_t t = received_bits_read();
+            raddr_output_schedule(t, low_width);
+        }
+    }
+}
+#endif
+
 int main(void)
 {
     /* Setup clock BEFORE HAL_Init.
@@ -92,6 +106,10 @@ int main(void)
 
 #ifdef TIMING_DEBUG
     debug_find_lowest_values();
+#endif
+
+#ifdef PASS_THROUGH
+    debug_do_pass_through();
 #endif
 
     /* Main loop */
