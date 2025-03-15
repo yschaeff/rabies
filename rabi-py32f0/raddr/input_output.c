@@ -3,6 +3,7 @@
 #include <py32f0xx_hal.h>
 #include "wolf.h"
 #include "input_output.h"
+#include "timing_debug.h"
 
 
 #define T1US_IN_TICKS   us_to_tick(1)
@@ -42,7 +43,7 @@ uint32_t receive_bits_available(void)
  *
  * For the converted version use receive_bit.
  */
-uint32_t received_bits_read(void)
+uint16_t received_bits_read(void)
 {
     uint32_t idx = rxfifo.read;
     uint32_t d = rxfifo.buf[idx];
@@ -58,7 +59,6 @@ uint32_t received_bits_read(void)
     uint32_t end = (d >> 16) & 0xFFFF;
     uint32_t begin = d & 0xFFFF;
     if (begin > end) {
-        //printf("Too big %ld > %ld ==> %ld \r\n", begin, end, end + (1<<16) - begin);
         end += 1<<16;
     }
 
@@ -169,10 +169,9 @@ static const uint8_t fixed_latency = 3;
 
 static void txfifo_write(uint16_t th, uint16_t tl)
 {
-    uint32_t isr_latency = fixed_latency;
     uint32_t d = tl;
     d <<= 16;
-    d |= (th - isr_latency);
+    d |= (th - fixed_latency);
 
     uint32_t idx = txfifo.write;
     txfifo.buf[idx] = d;
@@ -329,7 +328,9 @@ void raddr_output_bulk_begin(void)
 void raddr_output_bulk_schedule(uint16_t th, uint16_t tl)
 {
     if (txfifo.bulk_size + txfifo.size >= TX_FIFO_SIZE) {
+#if defined(USE_SEMIHOSTING)
         printf("Bulk fifo full!\r\n");
+#endif
         return;
     }
     txfifo_write(th, tl);
@@ -375,7 +376,9 @@ void raddr_output_bulk_end(void)
 void raddr_output_schedule(uint16_t th, uint16_t tl)
 {
     if (txfifo_is_full()) {
+#if defined(USE_SEMIHOSTING)
         printf("TX Fifo full!\r\n");
+#endif
         return; //Drop it, sorry. Programmer error
     }
 

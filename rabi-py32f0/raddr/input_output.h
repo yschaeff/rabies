@@ -22,7 +22,7 @@
 #undef RADDR_INPUT_DEBUG
 void raddr_input_output_init(void);
 int receive_bit(void);
-uint32_t received_bits_read(void);
+uint16_t received_bits_read(void);
 uint32_t receive_bits_available(void);
 void receive_bits_flush(void);
 
