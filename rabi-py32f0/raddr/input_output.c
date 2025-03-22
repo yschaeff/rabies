@@ -228,19 +228,23 @@ void TIM1_CC_IRQHandler(void)
 {
     TIM_TypeDef* tim = TIM1;
 
-    uint16_t flags = tim->SR;
+    do
+    {
+        /* Make sure we always clear/acknowledge the flags we read.
+         * We might get another flag et AFTER we have read SR but BEFORE writing SR! */
+        uint16_t flags = tim->SR;
+        TIM1->SR = ~flags;
 
-    /* Clear/acknowledge pending interrupts */
-    TIM1->SR = 0;
-
-    /* CCR4 tx time has passed. transmit of a bit + delay is done. */
-    if (flags & TIM_SR_CC4IF) {
-        raddr_output_handle_irq(tim);
+        /* CCR4 tx time has passed. transmit of a bit + delay is done. */
+        if (flags & TIM_SR_CC4IF) {
+            raddr_output_handle_irq(tim);
+        }
+        /* CCR2 capture, we received something */
+        if (flags & TIM_SR_CC2IF) {
+            raddr_input_handle_irq(tim);
+        }
     }
-    /* CCR2 capture, we received something */
-    if (flags & TIM_SR_CC2IF) {
-        raddr_input_handle_irq(tim);
-    }
+    while(flags & (TIM_SR_CC4IF|TIM_SR_CC2IF))
 }
 
 void raddr_input_output_init(void)
