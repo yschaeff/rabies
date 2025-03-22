@@ -2,10 +2,10 @@
 
 #include <py32f0xx_hal.h>
 /* Bit timings to store when receiving */
-#define RX_FIFO_SIZE 16 //Must be a power of 2
+#define RX_FIFO_SIZE (128/4) //Must be a power of 2
 
 /* Pulse we can buffer when queueing output */
-#define TX_FIFO_SIZE 16 //Must be a power of 2
+#define TX_FIFO_SIZE (128/4) //Must be a power of 2
 
 /* Run at maximum speed */
 #define INPUT_TIMER_DESIRED_BASE_TICK     (1.0/HSI_VALUE)
