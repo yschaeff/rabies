@@ -46,7 +46,7 @@ static void determine_fixed_latency(void)
     /* Drain any available bits */
     receive_bits_flush();
 
-    raddr_output_schedule(cnt, us_to_timer_tick(5));
+    raddr_output_schedule(cnt, us_to_tick(5));
 
     for (;0 == receive_bits_available();) {
     }
@@ -86,6 +86,8 @@ static int send_pulses(uint16_t pulse_width, uint16_t low_width, uint8_t bits_to
             if (HAL_GetTick() - tstart > tmo) {
                 //printf("%d != %d in %d\r\n", a, bits_to_send, tmo);
                 return 666666; //Return a "very-bad-value"
+                receive_bits_flush();
+                return i - bits_to_send; //Return a "very-bad-value"
             }
             if(receive_bits_available()) {
                 uint32_t t = received_bits_read() & 0xFFFF;
@@ -132,6 +134,8 @@ static int send_pulses(uint16_t pulse_width, uint16_t low_width, uint8_t bits_to
 
 void debug_find_lowest_values(void)
 {
+    receive_bits_flush();
+
     if (0)
         send_single_pulse();
 
