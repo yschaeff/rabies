@@ -343,7 +343,7 @@ void raddr_output_bulk_schedule(uint16_t th, uint16_t tl)
 
 static void raddr_output_update_size(uint8_t size)
 {
-    /* Incrementing the fifo must be atomic against the TIM16 ISR.
+    /* Incrementing the fifo must be atomic against the TIM1 ISR.
      * Since Cortex-M0 does not have STREX/LDREX nor SWP instruction we need to rely on libatomic.
      * Which for reasons beyond me is not implemented for arm-gcc-none-eabi and friends.
      * So we tried disabling the TIM1 interrupt.
@@ -352,18 +352,16 @@ static void raddr_output_update_size(uint8_t size)
      * So now we are back at good old disable EVERY interrupt to make it atomic&fast. */
     __disable_irq();
     txfifo.size += size;
-    __enable_irq();
 
     /* Use the TIM_DIER_CC4IE interrupt to check if we need to kick the TX */
     if(!(TIM1->DIER & TIM_DIER_CC4IE)) {
         /* Must be atomic! */
-        __disable_irq();
         /* Enable our interrupt */
         TIM1->DIER |= TIM_DIER_CC4IE;
         /* Generate the interrupt */
         TIM1->EGR |= TIM_EGR_CC4G;
-        __enable_irq();
     }
+    __enable_irq();
 
 }
 
